@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/27 23:47:44 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/28 00:04:31 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,19 @@ int	ft_fractol(char *type, t_complex_number initial_offset)
 
 	if (ft_strcmp(type, "julia") == 0)
 	{
-		printf("\n\n\033[1;31mStarting calculate julia set for Z^2 %+f %+fi%s\n", mlx.formula.x, mlx.formula.y, "\n\033[0m");
+		printf("\n\n\033[1;31mStarting calculate Julia set for Z^2 %+f %+fi%s\n", mlx.formula.x, mlx.formula.y, "\n\033[0m");
 		show_commands(1);
 		init_fractol(&julia_set, &mlx);
 	}
 	else if (ft_strcmp(type, "mandelbrot") == 0)
 	{
+		printf("\n\n\033[1;31mStarting calculate Mandelbrot set %s\n", "\n\033[0m");
 		show_commands(2);
 		init_fractol(&mandelbrot_set, &mlx);
 	}
 	else if (ft_strcmp(type, "apollonian-gasket") == 0)
 	{
+		printf("\n\n\033[1;31mStarting calculate Apollonian-gasket fractal %s\n", "\n\033[0m");
 		mlx.no_pallet = 1;
 		show_commands(3);
 		init_fractol(&apollonian_gasket_set, &mlx);
