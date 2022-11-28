@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/27 23:53:15 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/28 17:55:49 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <unistd.h>
 # include <mlx.h>
+# include "../printf/ft_printf.h"
 
 /* viewport size */
 # define WINDOW_WIDTH 1440
@@ -28,7 +29,7 @@
 /* julia formula offset */
 # define COMPLEX_NUMBER_OFFSET 0.0005
 /* julia divergence max iterations */
-# define MAX_ITER 100
+# define MAX_ITER 50
 /* apollonian min circle radius */
 # define MIN_RADIUS 2
 /* mlx */
@@ -158,7 +159,8 @@ int					ft_strcmp(char *s1, char *s2);
 int					ft_atoi(const char *str);
 double				ft_atof(const char *s);
 int					ft_isdigit(int num);
-char				*ft_strtolower(char *str);
+int					ft_frtolower(int num);
+char				*ft_frstrtolower(char *str);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif

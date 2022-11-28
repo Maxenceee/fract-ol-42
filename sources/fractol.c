@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/28 00:04:31 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/28 17:04:55 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	switch_mlx_image(t_data *mlx)
 
 	if (!img_type)
 		img_type = 0;
-	// printf("switch %d scale %f\n", img_type, mlx->scale);
+	// ft_printf("switch %d scale %f\n", img_type, mlx->scale);
 	// print_complex(mlx->formula);
-	// printf("Center offset ");
+	// ft_printf("Center offset ");
 	// print_complex(mlx->center_offset);
-	// printf("\n");
+	// ft_printf("\n");
 	if (img_type == 0)
 	{
 		mlx->curr_img = mlx->img_1;
@@ -84,19 +84,19 @@ int	ft_fractol(char *type, t_complex_number initial_offset)
 
 	if (ft_strcmp(type, "julia") == 0)
 	{
-		printf("\n\n\033[1;31mStarting calculate Julia set for Z^2 %+f %+fi%s\n", mlx.formula.x, mlx.formula.y, "\n\033[0m");
+		ft_printf("\n\n\033[1;31mStarting calculate Julia set for Z^2 %+f %+fi%s\n", mlx.formula.x, mlx.formula.y, "\n\033[0m");
 		show_commands(1);
 		init_fractol(&julia_set, &mlx);
 	}
 	else if (ft_strcmp(type, "mandelbrot") == 0)
 	{
-		printf("\n\n\033[1;31mStarting calculate Mandelbrot set %s\n", "\n\033[0m");
+		ft_printf("\n\n\033[1;31mStarting calculate Mandelbrot set %s\n", "\n\033[0m");
 		show_commands(2);
 		init_fractol(&mandelbrot_set, &mlx);
 	}
 	else if (ft_strcmp(type, "apollonian-gasket") == 0)
 	{
-		printf("\n\n\033[1;31mStarting calculate Apollonian-gasket fractal %s\n", "\n\033[0m");
+		ft_printf("\n\n\033[1;31mStarting calculate Apollonian-gasket fractal %s\n", "\n\033[0m");
 		mlx.no_pallet = 1;
 		show_commands(3);
 		init_fractol(&apollonian_gasket_set, &mlx);
@@ -114,37 +114,37 @@ int	ft_fractol(char *type, t_complex_number initial_offset)
 
 void	show_commands(int t)
 {
-	printf("\n\033[1;36mCommands\n");
-	printf("\n\033[1;34mYou have access to several actions to interact with the fractals.\n");
-	printf("\n\033[4;32mArrow keys:\033[0m %s", "\033[1;34mMove the content in the viewport.");
-	printf("\n\033[4;32mMouse wheel:\033[0m %s\n", "\033[1;34mZoom or unzoom into the viewport.");
+	ft_printf("\n\033[1;36mCommands\n");
+	ft_printf("\n\033[1;34mYou have access to several actions to interact with the fractals.\n");
+	ft_printf("\n\033[4;32mArrow keys:\033[0m %s", "\033[1;34mMove the content in the viewport.");
+	ft_printf("\n\033[4;32mMouse wheel:\033[0m %s\n", "\033[1;34mZoom or unzoom into the viewport.");
 	if (t != 3)
 	{
-		printf("\n\033[4;32mZ/S:\033[0m %s", "\033[1;34mIncrement or decrement respectively the real part of the formula.");
-		printf("\n\033[4;32mQ/D:\033[0m %s\n", "\033[1;34mIncrement or decrement respectively the imaginary part of the formula.");
-		printf("\n\033[4;32mP:\033[0m %s", "\033[1;34mSwitch the color pallet.");
+		ft_printf("\n\033[4;32mZ/S:\033[0m %s", "\033[1;34mIncrement or decrement respectively the real part of the formula.");
+		ft_printf("\n\033[4;32mQ/D:\033[0m %s\n", "\033[1;34mIncrement or decrement respectively the imaginary part of the formula.");
+		ft_printf("\n\033[4;32mP:\033[0m %s", "\033[1;34mSwitch the color pallet.");
 	}
 	else
-		printf("\n\033[4;32mP:\033[0m %s", "\033[1;34mToggle fractal symmetry.");
-	printf("\n\033[4;32mESC:\033[0m %s\n", "\033[1;34mExit the program.");
-	printf("\n\033[0m");
+		ft_printf("\n\033[4;32mP:\033[0m %s", "\033[1;34mToggle fractal symmetry.");
+	ft_printf("\n\033[4;32mESC:\033[0m %s\n", "\033[1;34mExit the program.");
+	ft_printf("\n\033[0m");
 }
 
 void	show_args(int nt)
 {
 	if (nt == 0)
 	{
-		printf("\n\033[1;31mWrong arguments!\n");
-		printf("\033[1;34mPlease select one of the following arguments ['%s' or '%s', '%s' or '%s', '%s' or '%s'].\n", "\033[1;32m\033[4mjulia\033[0m\033[1;34m", "\033[1;32m\033[4mj\033[0m\033[1;34m", "\033[1;32m\033[4mmandelbrot\033[0m\033[1;34m", "\033[1;32m\033[4mm\033[0m\033[1;34m", "\033[1;32m\033[4mapollonian-gasket\033[0m\033[1;34m", "\033[1;32m\033[4ma\033[0m\033[1;34m");
-		printf("\033[1;34mIf '\033[1;32m\033[4mjulia\033[0m\033[1;34m' is selected you need to specify \033[4mJulia-set\033[0m\033[1;34m formula using two more arguments: a complex number witch his \033[4mreal\033[0m\033[1;34m part is separated of the \033[4mimaginary\033[0m\033[1;34m one [%s;%s] and [%s;%s](i not required).\n", "\033[1;32m\033[4m1\033[0m\033[1;34m", "\033[1;32m\033[4m-1\033[0m\033[1;34m", "\033[1;32m\033[4m1i\033[0m\033[1;34m", "\033[1;32m\033[4m-1i\033[0m\033[1;34m");
+		ft_printf("\n\033[1;31mWrong arguments!\n");
+		ft_printf("\033[1;34mPlease select one of the following arguments ['%s' or '%s', '%s' or '%s', '%s' or '%s'].\n", "\033[1;32m\033[4mjulia\033[0m\033[1;34m", "\033[1;32m\033[4mj\033[0m\033[1;34m", "\033[1;32m\033[4mmandelbrot\033[0m\033[1;34m", "\033[1;32m\033[4mm\033[0m\033[1;34m", "\033[1;32m\033[4mapollonian-gasket\033[0m\033[1;34m", "\033[1;32m\033[4ma\033[0m\033[1;34m");
+		ft_printf("\033[1;34mIf '\033[1;32m\033[4mjulia\033[0m\033[1;34m' is selected you need to specify \033[4mJulia-set\033[0m\033[1;34m formula using two more arguments: a complex number witch his \033[4mreal\033[0m\033[1;34m part is separated of the \033[4mimaginary\033[0m\033[1;34m one [%s;%s] and [%s;%s](i not required).\n", "\033[1;32m\033[4m1\033[0m\033[1;34m", "\033[1;32m\033[4m-1\033[0m\033[1;34m", "\033[1;32m\033[4m1i\033[0m\033[1;34m", "\033[1;32m\033[4m-1i\033[0m\033[1;34m");
 	}
 	else if (nt == 1 || nt == 2)
 	{
 		if (nt == 1)
-			printf("\n\033[1;31mMissing arguments!\n");
+			ft_printf("\n\033[1;31mMissing arguments!\n");
 		else
-			printf("\n\033[1;31mIncorrect arguments!\n");
-		printf("\033[1;34mYou have selected '\033[1;32m\033[4mjulia\033[0m\033[1;34m', you need to specify \033[4mJulia-set\033[0m\033[1;34m formula using two arguments: a complex number witch his \033[4mreal\033[0m\033[1;34m part is separated of the \033[4mimaginary\033[0m\033[1;34m one [%s;%s] and [%s;%s](i not required).\n", "\033[1;32m\033[4m1\033[0m\033[1;34m", "\033[1;32m\033[4m-1\033[0m\033[1;34m", "\033[1;32m\033[4m1i\033[0m\033[1;34m", "\033[1;32m\033[4m-1i\033[0m\033[1;34m");
+			ft_printf("\n\033[1;31mIncorrect arguments!\n");
+		ft_printf("\033[1;34mYou have selected '\033[1;32m\033[4mjulia\033[0m\033[1;34m', you need to specify \033[4mJulia-set\033[0m\033[1;34m formula using two arguments: a complex number witch his \033[4mreal\033[0m\033[1;34m part is separated of the \033[4mimaginary\033[0m\033[1;34m one [%s;%s] and [%s;%s](i not required).\n", "\033[1;32m\033[4m1\033[0m\033[1;34m", "\033[1;32m\033[4m-1\033[0m\033[1;34m", "\033[1;32m\033[4m1i\033[0m\033[1;34m", "\033[1;32m\033[4m-1i\033[0m\033[1;34m");
 	}
 	exit(EXIT_FAILURE);
 }
@@ -153,7 +153,7 @@ void	fractal_selector(int argc, char **argv)
 {
 	t_complex_number offset_f;
 	
-	if (ft_strstr(ft_strtolower(argv[1]), "julia") || ft_strstr(ft_strtolower(argv[1]), "j"))
+	if (ft_strstr(ft_frstrtolower(argv[1]), "julia") || ft_strstr(ft_frstrtolower(argv[1]), "j"))
 	{
 		if (argc > 3)
 			offset_f = create_complex_number(ft_atof(argv[2]), ft_atof(argv[3]));
@@ -161,9 +161,9 @@ void	fractal_selector(int argc, char **argv)
 			show_args(1);
 		ft_fractol("julia", offset_f);
 	}
-	else if (ft_strstr(ft_strtolower(argv[1]), "mandelbrot") || ft_strstr(ft_strtolower(argv[1]), "m"))
+	else if (ft_strstr(ft_frstrtolower(argv[1]), "mandelbrot") || ft_strstr(ft_frstrtolower(argv[1]), "m"))
 		ft_fractol("mandelbrot", create_complex_number(0, 0));
-	else if (ft_strstr(ft_strtolower(argv[1]), "apollonian-gasket") || ft_strstr(ft_strtolower(argv[1]), "a"))
+	else if (ft_strstr(ft_frstrtolower(argv[1]), "apollonian-gasket") || ft_strstr(ft_frstrtolower(argv[1]), "a"))
 		ft_fractol("apollonian-gasket", create_complex_number(0, 0));
 	else
 		show_args(0);

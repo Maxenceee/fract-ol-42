@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/27 23:45:37 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/28 17:26:18 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,29 @@ int	key_down_event(int key_code, void *param)
 	if (key_code == 123)
 	{
 		/* left */
-		mlx->center_offset.x += 50;
+		// mlx->center_offset.x += 50;
+		mlx->center_offset.x -= 50;
 		mlx->key_pressed = 1;
 	}
 	if (key_code == 124)
 	{
 		/* right */
-		mlx->center_offset.x -= 50;
+		// mlx->center_offset.x -= 50;
+		mlx->center_offset.x += 50;
 		mlx->key_pressed = 1;
 	}
 	if (key_code == 125)
 	{
 		/* bottom */
-		mlx->center_offset.y -= 50;
+		// mlx->center_offset.y -= 50;
+		mlx->center_offset.y += 50;
 		mlx->key_pressed = 1;
 	}
 	if (key_code == 126)
 	{
 		/* top */
-		mlx->center_offset.y += 50;
+		// mlx->center_offset.y += 50;
+		mlx->center_offset.y -= 50;
 		mlx->key_pressed = 1;
 	}
 	if (key_code == 13)

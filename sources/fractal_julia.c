@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:28:46 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/28 00:08:14 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/28 17:12:10 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ t_complex_number	convert_corner_to_center(t_complex_number point, t_complex_numb
 	centered_point.x = (point.x + (mouse_offset.x * 1) - (WINDOW_WIDTH / 2)) / (INITIAL_SCALE + scale);
 	centered_point.y = (point.y + (mouse_offset.y * 1) - (WINDOW_HEIGHT / 2)) / (INITIAL_SCALE + scale);
 	
-	// centered_point.x = ((point.x + (WINDOW_WIDTH / 2) - mouse_offset.x) / WINDOW_WIDTH) * 0.5;
-	// centered_point.y = ((point.y + (WINDOW_HEIGHT / 2) - mouse_offset.y) / WINDOW_HEIGHT) * 0.5;
+	// centered_point.x = (point.x - (WINDOW_WIDTH / 2) * (1 / INITIAL_SCALE + scale)) / (WINDOW_WIDTH / 2 + mouse_offset.x);
+	// centered_point.y = (point.y - (WINDOW_HEIGHT / 2) * (1 / INITIAL_SCALE + scale)) / (WINDOW_HEIGHT / 2 + mouse_offset.y);
+	
+
 	// centered_point.y = (point.y - (WINDOW_HEIGHT / 2)) / (INITIAL_SCALE + scale);
 	return (centered_point);
 }

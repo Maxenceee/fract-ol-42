@@ -6,20 +6,20 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 01:24:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/27 22:17:49 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/28 17:03:35 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static int	ft_tolower(int num)
+int	ft_frtolower(int num)
 {
 	if (num >= 65 && num <= 90)
 		num += 32;
 	return (num);
 }
 
-char	*ft_strtolower(char *str)
+char	*ft_frstrtolower(char *str)
 {
 	int	i;
 
