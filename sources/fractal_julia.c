@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:28:46 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/28 00:08:14 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/29 00:25:15 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 void	julia_set(t_data *mlx)
 {
-	int		y;
-	int		x;
-	t_color	pallet;
-	int		pix;
+	int					y;
+	int					x;
+	t_color				pallet;
+	int					pix;
+	t_complex_number	u;
 
+	// u = convert_corner_to_center(
+	// 			create_complex_number(360, 370),
+	// 			create_complex_number(0, 0),
+	// 			30);
+	// return ;
 	y = -1;
 	pallet = mlx->pallets[mlx->pallet_type];
 	while (++y < WINDOW_HEIGHT)
@@ -26,7 +32,7 @@ void	julia_set(t_data *mlx)
 		x = -1;
 		while (++x < WINDOW_WIDTH)
 		{
-			t_complex_number u = convert_corner_to_center(
+			u = convert_corner_to_center(
 				create_complex_number(x, y),
 				mlx->center_offset,
 				mlx->scale);
@@ -59,14 +65,38 @@ int	calule_julia_series(t_complex_number point, t_complex_number point_offset)
 
 t_complex_number	convert_corner_to_center(t_complex_number point, t_complex_number mouse_offset, double scale)
 {
-	t_complex_number centered_point;
+	t_complex_number	centered_point;
+	t_complex_number	f_centered_point;
+	double				midx;
+	double				midy;
+	double				f_scale;
 
-	centered_point.x = (point.x + (mouse_offset.x * 1) - (WINDOW_WIDTH / 2)) / (INITIAL_SCALE + scale);
-	centered_point.y = (point.y + (mouse_offset.y * 1) - (WINDOW_HEIGHT / 2)) / (INITIAL_SCALE + scale);
+	midx = (double)WINDOW_WIDTH / 2;
+	midy = (double)WINDOW_HEIGHT / 2;
+	f_scale = (INITIAL_SCALE + scale);
 	
-	// centered_point.x = ((point.x + (WINDOW_WIDTH / 2) - mouse_offset.x) / WINDOW_WIDTH) * 0.5;
-	// centered_point.y = ((point.y + (WINDOW_HEIGHT / 2) - mouse_offset.y) / WINDOW_HEIGHT) * 0.5;
-	// centered_point.y = (point.y - (WINDOW_HEIGHT / 2)) / (INITIAL_SCALE + scale);
+	// f_centered_point.x = (point.x + mouse_offset.x - midx);
+	// f_centered_point.y = (point.y + mouse_offset.y - midy);
+
+	// print_complex(f_centered_point);
+
+	centered_point.x = (point.x + mouse_offset.x - midx) / f_scale;
+	centered_point.y = (point.y + mouse_offset.y - midy) / f_scale;
+	
+	// print_complex(f_centered_point);
+	// print_complex(centered_point);
+	// print_complex(create_complex_number(f_centered_point.x - centered_point.x, f_centered_point.y - centered_point.y));
+
+	// centered_point.x = (point.x + (f_centered_point.x + centered_point.x) - midx) / f_scale;
+	// centered_point.y = (point.y + (f_centered_point.y + centered_point.y) - midy) / f_scale;
+	// print_complex(centered_point);
+	
+	// centered_point.x = (point.x + ((mouse_offset.x / f_scale) * midx) - midx) / f_scale;
+	// centered_point.y = (point.y + ((mouse_offset.y / f_scale) * midy) - midy) / f_scale;
+	
+	// centered_point.x = (point.x + (mouse_offset.x * ((point.x - mouse_offset.x) / f_scale)) - midx) / f_scale;
+	// centered_point.y = (point.y + (mouse_offset.y * ((point.y - mouse_offset.y) / f_scale)) - midy) / f_scale;
+
 	return (centered_point);
 }
 

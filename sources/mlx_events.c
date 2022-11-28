@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/27 23:45:37 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/28 20:24:06 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	stop_mlx(t_data *mlx)
 
 int	key_down_event(int key_code, void *param)
 {
-	t_data *mlx;
+	t_data	*mlx;
 	double	offset;
 
 	mlx = (t_data *)param;
@@ -38,25 +38,29 @@ int	key_down_event(int key_code, void *param)
 	if (key_code == 123)
 	{
 		/* left */
-		mlx->center_offset.x += 50;
+		// mlx->center_offset.x += 50;
+		mlx->center_offset.x -= 50;
 		mlx->key_pressed = 1;
 	}
 	if (key_code == 124)
 	{
 		/* right */
-		mlx->center_offset.x -= 50;
+		// mlx->center_offset.x -= 50;
+		mlx->center_offset.x += 50;
 		mlx->key_pressed = 1;
 	}
 	if (key_code == 125)
 	{
 		/* bottom */
-		mlx->center_offset.y -= 50;
+		// mlx->center_offset.y -= 50;
+		mlx->center_offset.y += 50;
 		mlx->key_pressed = 1;
 	}
 	if (key_code == 126)
 	{
 		/* top */
-		mlx->center_offset.y += 50;
+		// mlx->center_offset.y += 50;
+		mlx->center_offset.y -= 50;
 		mlx->key_pressed = 1;
 	}
 	if (key_code == 13)
@@ -85,6 +89,7 @@ int	key_down_event(int key_code, void *param)
 	}
 	if (key_code == 35)
 	{
+		/* p */
 		if (mlx->no_pallet)
 		{
 			mlx->pallet_type = !mlx->pallet_type;
@@ -98,12 +103,20 @@ int	key_down_event(int key_code, void *param)
 		}
 		switch_mlx_image(mlx);
 	}
+	if (key_code == 37)
+	{
+		/* l */
+		mlx->saved_formula = mlx->formula;
+		mlx->mouse_lock = !mlx->mouse_lock;
+		if (mlx->mouse_lock == 0)
+			mlx->need_save = 1;
+	}
 	return (0);
 }
 
 int	key_up_event(int key_code, void *param)
 {
-	t_data *mlx;
+	t_data	*mlx;
 
 	mlx = (t_data *)param;
 	if (mlx->key_pressed == 1)
@@ -113,7 +126,7 @@ int	key_up_event(int key_code, void *param)
 
 int mouse_event(int button, int x, int y, void *param)
 {
-	t_data *mlx;
+	t_data		*mlx;
 	static int	zoom;
 
 	mlx = (t_data *)param;
@@ -133,6 +146,33 @@ int mouse_event(int button, int x, int y, void *param)
 		// printf("\n");
 		// mlx->mouse_offset = get_mouse_offset_from_center(create_complex_number(x, y));
 		switch_mlx_image(mlx);
+	return (0);
+}
+
+int mouse_move(int x, int y, void *param)
+{
+	t_data	*mlx;
+	double	rx;
+	double	ry;
+
+	mlx = (t_data *)param;
+	if (mlx->mouse_lock == 0)
+	{
+		rx = 1. / WINDOW_WIDTH * x;
+		ry = 1. / WINDOW_HEIGHT * y;
+		if (rx > 0. && rx < 1. && ry > 0. && ry < 1.)
+		{
+			if (mlx->need_save == 1)
+			{
+				mlx->need_save = 0;
+				mlx->saved_mouse.x = rx;
+				mlx->saved_mouse.y = ry;
+			}
+			mlx->formula.x = (mlx->saved_formula.x - mlx->saved_mouse.x) + rx;
+			mlx->formula.y = (mlx->saved_formula.y - mlx->saved_mouse.y) + ry ;
+			switch_mlx_image(mlx);
+		}
+	}
 	return (0);
 }
 

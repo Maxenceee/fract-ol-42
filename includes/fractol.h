@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/27 23:53:15 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/29 00:13:50 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <stdio.h>
 # include <math.h>
 # include <unistd.h>
-# include <mlx.h>
+// # include <mlx.h>
+# include "../minilibx_opengl_20191021/mlx.h"
+# include "../printf/ft_printf.h"
 
 /* viewport size */
 # define WINDOW_WIDTH 1440
@@ -28,7 +30,7 @@
 /* julia formula offset */
 # define COMPLEX_NUMBER_OFFSET 0.0005
 /* julia divergence max iterations */
-# define MAX_ITER 100
+# define MAX_ITER 50
 /* apollonian min circle radius */
 # define MIN_RADIUS 2
 /* mlx */
@@ -63,6 +65,9 @@ typedef struct	s_data {
 	void				*window;
 	void				*mlx;
 	t_complex_number	formula;
+	t_complex_number	saved_formula;
+	t_complex_number	saved_mouse;
+	int					need_save;
 	double				scale;
 	t_complex_number	center_offset;
 	int					key_pressed;
@@ -70,6 +75,7 @@ typedef struct	s_data {
 	int					pallet_nb;
 	t_color				*pallets;
 	int					no_pallet;
+	int					mouse_lock;
 	void				(*fractol_function)(struct s_data *);
 }				t_data;
 
@@ -87,7 +93,7 @@ void				show_commands(int t);
 
 /* complex_nums */
 
-void				print_complex(t_complex_number num);
+void				print_complex(t_complex_number num); // to remove after
 double				modulus_complex_2(t_complex_number cpx_num);
 t_complex_number	create_complex_number(double x, double y);
 double				complex_abs(t_complex_number a);
@@ -149,6 +155,7 @@ int					stop_mlx(t_data *frame);
 int					key_down_event(int key_code, void *param);
 int					key_up_event(int key_code, void *param);
 int					mouse_event(int button, int x, int y, void *param);
+int					mouse_move(int x, int y, void *param);
 int					loop_hook_events(void *params);
 
 /*** utils ***/
@@ -158,7 +165,8 @@ int					ft_strcmp(char *s1, char *s2);
 int					ft_atoi(const char *str);
 double				ft_atof(const char *s);
 int					ft_isdigit(int num);
-char				*ft_strtolower(char *str);
+int					ft_frtolower(int num);
+char				*ft_frstrtolower(char *str);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif
