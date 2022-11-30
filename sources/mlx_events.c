@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/28 20:24:06 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/30 15:06:39 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,11 @@ int	key_down_event(int key_code, void *param)
 		if (mlx->mouse_lock == 0)
 			mlx->need_save = 1;
 	}
+	if (key_code == 31)
+	{
+		/* o */
+		ft_printf("\n\033[1;35mCurrent state: %+f %+fi %s\n", mlx->formula.x, mlx->formula.y, "\033[0m");
+	}
 	return (0);
 }
 
@@ -144,7 +149,7 @@ int mouse_event(int button, int x, int y, void *param)
 		// printf("Mouse offset ");
 		// print_complex(get_mouse_offset_from_center(create_complex_number(x, y)));
 		// printf("\n");
-		// mlx->mouse_offset = get_mouse_offset_from_center(create_complex_number(x, y));
+		// mlx->center_offset = get_mouse_offset_from_center(create_complex_number(x, y));
 		switch_mlx_image(mlx);
 	return (0);
 }

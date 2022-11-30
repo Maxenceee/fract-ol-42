@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:46:28 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/28 21:08:38 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/29 21:05:48 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	print_complex(t_complex_number num)
 
 t_complex_number	create_complex_number(double x, double y)
 {
-	t_complex_number num;
-	
+	t_complex_number	num;
+
 	num.x = x;
 	num.y = y;
 	return (num);
@@ -38,9 +38,11 @@ double	complex_abs(t_complex_number a)
 
 double	complex_hypot(double x, double y)
 {
-	double	a = fabs(x);
-	double	b = fabs(y);
+	double	a;
+	double	b;
 
+	a = fabs(x);
+	b = fabs(y);
 	if (a < 3000 && b < 3000)
 		return (sqrtf(a * a + b * b));
 	if (a < b)

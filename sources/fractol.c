@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/29 00:49:33 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/30 15:17:33 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ void	switch_mlx_image(t_data *mlx)
 	}
 	mlx->addr = mlx_get_data_addr(mlx->curr_img, &mlx->bits_per_pixel, &mlx->line_length, &mlx->endian);
 	(*mlx->fractol_function)(mlx);
+	// if (ft_strcmp(mlx->fractal_name, "julia") == 0)
+	// {
+	// 	printf("name %s", mlx->fractal_name);
+	// 	mlx_string_put(mlx->mlx, mlx->window, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 0xFFFFFF, "String on screen");
+	// }
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->curr_img, 0, 0);
 }
 
@@ -87,18 +92,21 @@ int	ft_fractol(char *type, t_complex_number initial_offset)
 
 	if (ft_strcmp(type, "julia") == 0)
 	{
+		mlx.fractal_name = "julia";
 		ft_printf("\n\n\033[1;31mGenerating Julia set...%s\n", "\n\033[0m");
 		show_commands(1);
 		init_fractol(&julia_set, &mlx);
 	}
 	else if (ft_strcmp(type, "mandelbrot") == 0)
 	{
+		mlx.fractal_name = "mandelbrot";
 		ft_printf("\n\n\033[1;31mGenerating Mandelbrot set...%s\n", "\n\033[0m");
 		show_commands(2);
 		init_fractol(&mandelbrot_set, &mlx);
 	}
 	else if (ft_strcmp(type, "apollonian-gasket") == 0)
 	{
+		mlx.fractal_name = "apollonian-gasket";
 		ft_printf("\n\n\033[1;31mGenerating Apollonian gasket fractal...%s\n", "\n\033[0m");
 		mlx.no_pallet = 1;
 		show_commands(3);
@@ -117,7 +125,7 @@ int	ft_fractol(char *type, t_complex_number initial_offset)
 
 void	show_commands(int t)
 {
-	ft_printf("\n\033[1;36mCommands\n");
+	ft_printf("\n\033[1;36m\033[4mCommands\033[0m\n");
 	ft_printf("\n\033[1;34mYou have access to several actions to interact with the fractals.\n");
 	ft_printf("\n\033[4;32mArrow keys:\033[0m %s", "\033[1;34mMove the content in the viewport.");
 	ft_printf("\n\033[4;32mMouse wheel:\033[0m %s\n", "\033[1;34mZoom or unzoom into the viewport.");
@@ -127,9 +135,12 @@ void	show_commands(int t)
 		ft_printf("\n\033[4;32mQ/D:\033[0m %s\n", "\033[1;34mIncrement or decrement respectively the imaginary part of the formula.");
 	}
 	if (t != 3)
-		ft_printf("\n\033[4;32mP:\033[0m %s", "\033[1;34mSwitch the color pallet.");
+		ft_printf("\n\033[4;32mP:\033[0m %s", "\033[1;34mSwitch to the next color pallet.");
 	if (t == 1)
+	{
 		ft_printf("\n\033[4;32mL:\033[0m %s", "\033[1;34mToggle mouse fractal tracking.");
+		ft_printf("\n\033[4;32mO:\033[0m %s", "\033[1;34mPrint the current state.");
+	}
 	if (t == 3)
 		ft_printf("\n\033[4;32mP:\033[0m %s", "\033[1;34mToggle fractal symmetry.");
 	ft_printf("\n\033[4;32mESC:\033[0m %s\n", "\033[1;34mExit the program.");

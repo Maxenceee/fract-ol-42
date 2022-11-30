@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/29 00:13:50 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/30 15:17:50 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct	s_data {
 	int					no_pallet;
 	int					mouse_lock;
 	void				(*fractol_function)(struct s_data *);
+	char				*fractal_name;
 }				t_data;
 
 /* fractol */
@@ -145,9 +146,19 @@ void				recursive_circle(t_circle c1, t_circle c2, t_circle c3, t_circle c4, t_d
 int					mix(int from, int to, float mix);
 int					get_color(float iterations, int *pallet, int colors_nb);
 // int					simple_hsl_to_rgb(double hue);
-int					Color(int r, int g, int b);
+int					color(int r, int g, int b);
 void				init_pallets(t_data *mlx);
 void				pallet_error(int *colors, t_color *color_data);
+
+/* pallets */
+
+void	pallet_1(t_color *color_data, int idx);
+void	pallet_2(t_color *color_data, int idx);
+void	pallet_3(t_color *color_data, int idx);
+void	pallet_4(t_color *color_data, int idx);
+void	pallet_5(t_color *color_data, int idx);
+void	pallet_6(t_color *color_data, int idx);
+void	pallet_7(t_color *color_data, int idx);
 
 /* mlx_events */
 

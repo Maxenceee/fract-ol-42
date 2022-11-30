@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:28:46 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/29 00:25:15 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/30 15:04:16 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ t_complex_number	convert_corner_to_center(t_complex_number point, t_complex_numb
 
 	centered_point.x = (point.x + mouse_offset.x - midx) / f_scale;
 	centered_point.y = (point.y + mouse_offset.y - midy) / f_scale;
+	
+	// centered_point.x = (point.x - midx) * f_scale * (1 / midx) + mouse_offset.x;
+	// centered_point.y = (point.y - midy) * f_scale * (1 / midy) + mouse_offset.y;
 	
 	// print_complex(f_centered_point);
 	// print_complex(centered_point);

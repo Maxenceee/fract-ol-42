@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:33:45 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/21 14:41:07 by mgama            ###   ########.fr       */
+/*   Updated: 2022/11/29 20:32:39 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,15 @@ void	ft_print_in_u_int_spaces(char *unsi_int, int *count, t_flags flags);
 void	ft_print_u_int_spaces(char *unsi_int, int *count, t_flags flags);
 void	ft_print_u_int(unsigned int unsi, int *count, t_flags flags);
 
+/* print_float */
+size_t	ft_strlen_floating_part(const char *str);
+void	ft_print_in_float_spaces(char *d_i, double save_f,
+			int *count, t_flags flags);
+void	ft_print_float_spaces(char *d_i, double save_f,
+			int *count, t_flags flags);
+void	ft_print_float_flags(t_flags *flags, double *li, int *count);
+void	ft_print_float(double i, int *count, t_flags flags);
+
 /* print_hex */
 void	ft_print_in_hex_spaces(char *hexa, int lower,
 			int *count, t_flags flags);
@@ -107,8 +116,17 @@ char	*ft_itoa(long int n);
 /* uitoa*/
 char	*ft_u_itoa(unsigned int n);
 
+/* ftoa*/
+char	*ft_ftoa(double x, int max);
+
 /* strdup */
 char	*ft_strdup(const char *src);
+
+/* strjoin */
+char	*ft_strjoin(char const *s1, char const *s2);
+
+/* strlcat */
+int		ft_strlcat(char *dest, char *src, unsigned int size);
 
 /* tolower */
 char	*ft_str_tolower(char *str);
