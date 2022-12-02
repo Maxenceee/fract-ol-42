@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:14:30 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/27 23:32:33 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/01 17:33:19 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_circle	flip_circle(t_circle c4, t_circle c1, t_circle c2, t_circle c3)
 	return (create_circle(1 / bend, center));
 }
 
-void	recursive_circle(t_circle c1, t_circle c2, t_circle c3, t_circle c4, t_data *mlx, int depth)
+void	recursive_circle(t_circle c1, t_circle c2, t_circle c3, t_circle c4, t_data *mlx)
 {
 	t_circle	cl1 = flip_circle(c2, c1, c3, c4);
 	t_circle	cl2 = flip_circle(c3, c1, c2, c4);
@@ -47,16 +47,16 @@ void	recursive_circle(t_circle c1, t_circle c2, t_circle c3, t_circle c4, t_data
 	if (cl1.r > MIN_RADIUS)
 	{
 		draw_circle(cl1, mlx);
-		recursive_circle(cl1, c1, c3, c4, mlx, depth + 1);
+		recursive_circle(cl1, c1, c3, c4, mlx);
 	}
 	if (cl2.r > MIN_RADIUS)
 	{
 		draw_circle(cl2, mlx);
-		recursive_circle(cl2, c1, c2, c4, mlx, depth + 1);
+		recursive_circle(cl2, c1, c2, c4, mlx);
 	}
 	if (cl3.r > MIN_RADIUS)
 	{
 		draw_circle(cl3, mlx);
-		recursive_circle(cl3, c1, c2, c3, mlx, depth + 1);
+		recursive_circle(cl3, c1, c2, c3, mlx);
 	}
 }

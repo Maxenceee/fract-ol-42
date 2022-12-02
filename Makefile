@@ -20,6 +20,8 @@ $(NAME):		$(SRCS)
 #				$(CC) $(MLX_INCLUDES) $(SRCS) $(MLX_LIB) -o fractol
 				$(CC) $(SRCS) $(MLX_LIB) -o fractol
 
+bonus: all
+
 clean:
 				$(RM) $(OBJS) $(BONUS_OBJS)
 

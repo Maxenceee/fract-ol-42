@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 20:03:31 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/30 15:22:15 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/01 13:12:01 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,6 @@ int	get_color(float iterations, int *pallet, int colors_nb)
 	}
 	return (0x000000);
 }
-
-// int simple_hsl_to_rgb(double hue)
-// {
-// 	int     ret;
-// 	int     i;
-
-// 	hue -= (long) hue;
-// 	hue = 6.;
-// 	i = (int) hue;
-// 	ret = 0xffffff;
-// 	ret -= 0xff << (i / 2 + 2) % 3 * 8;
-// 	ret -= ((int)(fabs(fmod(hue, 2.) - 1.) * 0xff)) << (7 - i) % 3 * 8;
-// 	return (ret);
-// }
 
 int	color(int r, int g, int b)
 {

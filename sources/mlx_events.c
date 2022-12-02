@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/30 15:06:39 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/02 17:26:31 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,97 +25,17 @@ int	stop_mlx(t_data *mlx)
 int	key_down_event(int key_code, void *param)
 {
 	t_data	*mlx;
-	double	offset;
 
 	mlx = (t_data *)param;
-
-	offset = COMPLEX_NUMBER_OFFSET;
 	// printf("key %d\n", key_code);
 	if (key_code == 53)
 	{
 		stop_mlx(mlx);
 	}
-	if (key_code == 123)
-	{
-		/* left */
-		// mlx->center_offset.x += 50;
-		mlx->center_offset.x -= 50;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 124)
-	{
-		/* right */
-		// mlx->center_offset.x -= 50;
-		mlx->center_offset.x += 50;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 125)
-	{
-		/* bottom */
-		// mlx->center_offset.y -= 50;
-		mlx->center_offset.y += 50;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 126)
-	{
-		/* top */
-		// mlx->center_offset.y += 50;
-		mlx->center_offset.y -= 50;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 13)
-	{
-		/* z; r++ */
-		mlx->formula.x += offset;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 1)
-	{
-		/* s; r-- */
-		mlx->formula.x -= offset;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 0)
-	{
-		/* q; i-- */
-		mlx->formula.y -= offset;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 2)
-	{
-		/* d; i++ */
-		mlx->formula.y += offset;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 35)
-	{
-		/* p */
-		if (mlx->no_pallet)
-		{
-			mlx->pallet_type = !mlx->pallet_type;
-		}
-		else
-		{
-			if (mlx->pallet_type == mlx->pallet_nb - 1)
-				mlx->pallet_type = 0;
-			else
-				mlx->pallet_type++;
-		}
-		switch_mlx_image(mlx);
-	}
-	if (key_code == 37)
-	{
-		/* l */
-		mlx->saved_formula = mlx->formula;
-		mlx->mouse_lock = !mlx->mouse_lock;
-		if (mlx->mouse_lock == 0)
-			mlx->need_save = 1;
-	}
-	if (key_code == 31)
-	{
-		/* o */
-		ft_printf("\n\033[1;35mCurrent state: %+f %+fi %s\n", mlx->formula.x, mlx->formula.y, "\033[0m");
-	}
+	arrow_key_events(key_code, mlx);
+	arrow_letter_events(key_code, mlx);
+	pallet_events(key_code, mlx);
+	key_events(key_code, mlx);
 	return (0);
 }
 
@@ -129,32 +49,65 @@ int	key_up_event(int key_code, void *param)
 	return (0);
 }
 
-int mouse_event(int button, int x, int y, void *param)
+int	mouse_event(int button, int x, int y, void *param)
 {
-	t_data		*mlx;
-	static int	zoom;
+	t_data				*mlx;
+	// static int			zoom;
+	t_complex_number	temp_pos;
+	t_complex_number	mids;
+	double				f_scale;
+	double				factorin = 0.5;
+	double				factorout = 0.3;
+	double				zoom = 1.5;
 
 	mlx = (t_data *)param;
-	if (!zoom)
-		zoom = 30;
+	mids = create_complex_number(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+	// f_scale = (INITIAL_SCALE + mlx->scale);
+	f_scale = (mlx->scale);
+	// temp_pos = get_mouse_offset_from_center(create_complex_number(x, y));
+	temp_pos = create_complex_number(x, y);
+	// if (!zoom)
+	// 	zoom = 30;
 
 	if (button == 5)
-		mlx->scale += zoom;
+	{
+		if (mlx->scale == 0)
+			mlx->scale = 1;
+		else
+			mlx->scale *= zoom;
+
+		mlx->center_offset.x += f_scale * (temp_pos.x - mids.x) / (mids.x) * factorin;
+		mlx->center_offset.y += f_scale * (temp_pos.y - mids.y) / (mids.y) * factorin;
+		print_complex(mlx->center_offset);
+		switch_mlx_image(mlx);
+	}
 	else if (button == 4)
 	{
-		if (INITIAL_SCALE + mlx->scale > 0 )
-			mlx->scale -= zoom;
+		mlx->center_offset.x -= f_scale * (temp_pos.x - mids.x) / (mids.x) * factorout;
+		mlx->center_offset.y -= f_scale * (temp_pos.y - mids.y) / (mids.y) * factorout;
+		if (INITIAL_SCALE + mlx->scale > 1)
+			mlx->scale /= zoom;
+		print_complex(mlx->center_offset);
+		switch_mlx_image(mlx);
 	}
 	if (button == 5 || button == 4)
-		// printf("Mouse offset ");
-		// print_complex(get_mouse_offset_from_center(create_complex_number(x, y)));
-		// printf("\n");
-		// mlx->center_offset = get_mouse_offset_from_center(create_complex_number(x, y));
-		switch_mlx_image(mlx);
+	{
+		printf("Scale %f", mlx->scale);
+		printf("Mouse offset ");
+		print_complex(get_mouse_offset_from_center(create_complex_number(x, y)));
+		printf("\n");
+		// if (mlx->mouse_lock == )
+		// {
+			// temp_pos = mlx->center_offset;
+			// temp_mouse = get_mouse_offset_from_center(create_complex_number(x, y));
+			// mlx->center_offset = create_complex_number(temp_mouse.x - temp_pos.x, temp_mouse.y - temp_pos.y);
+			
+		// }
+	}
 	return (0);
 }
 
-int mouse_move(int x, int y, void *param)
+int	mouse_move(int x, int y, void *param)
 {
 	t_data	*mlx;
 	double	rx;
@@ -173,8 +126,10 @@ int mouse_move(int x, int y, void *param)
 				mlx->saved_mouse.x = rx;
 				mlx->saved_mouse.y = ry;
 			}
-			mlx->formula.x = (mlx->saved_formula.x - mlx->saved_mouse.x) + rx;
-			mlx->formula.y = (mlx->saved_formula.y - mlx->saved_mouse.y) + ry ;
+			mlx->formula.x = (mlx->saved_formula.x
+					- mlx->saved_mouse.x) + rx;
+			mlx->formula.y = (mlx->saved_formula.y
+					- mlx->saved_mouse.y) + ry ;
 			switch_mlx_image(mlx);
 		}
 	}
@@ -183,7 +138,7 @@ int mouse_move(int x, int y, void *param)
 
 int	loop_hook_events(void *param)
 {
-	t_data *mlx;
+	t_data	*mlx;
 
 	mlx = (t_data *)param;
 	if (mlx->key_pressed == 1)

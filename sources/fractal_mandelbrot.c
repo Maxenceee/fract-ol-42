@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 00:37:46 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/28 00:08:17 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/01 13:14:49 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ void	mandelbrot_set(t_data *mlx)
 		x = -1;
 		while (++x < WINDOW_WIDTH)
 		{
-			pix = calule_mandelbrot_series(convert_corner_to_center(create_complex_number(x, y), mlx->center_offset, mlx->scale));
-			my_mlx_pixel_put(mlx, x, y, get_color(pix, pallet.pallet, pallet.pallet_length));
+			pix = calule_mandelbrot_series(
+					convert_corner_to_center(
+						create_complex_number(x, y),
+						mlx->center_offset, mlx->scale));
+			my_mlx_pixel_put(mlx, x, y,
+				get_color(pix, pallet.pallet, pallet.pallet_length));
 		}
 	}
 }
@@ -38,7 +42,7 @@ int	calule_mandelbrot_series(t_complex_number point)
 	t_complex_number	temp_num;
 	int					max_iter;
 	int					i;
-	
+
 	temp_num = create_complex_number(0, 0);
 	num = create_complex_number(0, 0);
 	max_iter = MAX_ITER;
