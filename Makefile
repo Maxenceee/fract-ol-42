@@ -18,7 +18,7 @@ all:			$(NAME)
 
 $(NAME):		$(SRCS)
 #				$(CC) $(MLX_INCLUDES) $(SRCS) $(MLX_LIB) -o fractol
-				$(CC) $(SRCS) $(MLX_LIB) -o fractol
+				$(CC) $(SRCS) $(MLX_LIB) -o $(NAME)
 
 bonus: all
 
