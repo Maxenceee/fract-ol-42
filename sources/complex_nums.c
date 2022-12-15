@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   complex_nums.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:46:28 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/29 21:05:48 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/15 01:27:35 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
-void	print_complex(t_complex_number num)
-{
-	printf("x=%f, y=%f\n", num.x, num.y);
-}
 
 t_complex_number	create_complex_number(double x, double y)
 {

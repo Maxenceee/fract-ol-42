@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:20:15 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/14 20:05:34 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/15 14:01:47 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ void	apollonian_gasket_set(t_data *mlx)
 {
 	t_circle	*circles_s;
 
-	if (mlx->pallet_type % 2 == 0)
+	if (mlx->fractal_symmetry == 0)
 		circles_s = symmetric_set(
-				(double)WINDOW_WIDTH / 2 - mlx->center_offset.x,
-				(double)WINDOW_HEIGHT / 2 - mlx->center_offset.y,
+				(double)WINDOW_WIDTH / 2 - mlx->center_offset.x * (mlx->scale / 2),
+				(double)WINDOW_HEIGHT / 2 - mlx->center_offset.y * (mlx->scale / 2),
 				((double)WINDOW_HEIGHT / 2 - 100 + mlx->scale));
 	else
 		circles_s = a_symmetric_set(
-				(double)WINDOW_WIDTH / 2 - mlx->center_offset.x,
-				(double)WINDOW_HEIGHT / 2 - mlx->center_offset.y,
+				(double)WINDOW_WIDTH / 2 - mlx->center_offset.x * (mlx->scale / 2),
+				(double)WINDOW_HEIGHT / 2 - mlx->center_offset.y * (mlx->scale / 2),
 				((double)WINDOW_HEIGHT / 2 - 100 + mlx->scale));
 	if (!circles_s)
 		return ;

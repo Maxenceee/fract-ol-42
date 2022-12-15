@@ -6,13 +6,14 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 01:10:58 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/15 14:00:45 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
@@ -78,6 +79,9 @@ typedef struct s_data {
 	int					mouse_lock;
 	int					mouse_offset;
 	void				(*fractol_function)(struct s_data *);
+	int					fractal_symmetry;
+	int					fractal_type;
+	int					fractal_count;
 	char				*fractal_name;
 }				t_data;
 
@@ -90,8 +94,12 @@ typedef struct s_r_apollonian_c {
 
 /* fractol */
 
-int					ft_fractol(char *type, t_complex_number initial_offset);
-void				fractal_gen(char *type, t_data *mlx);
+int					ft_fractol(int type, t_complex_number initial_offset);
+void				fractal_gen(t_data *mlx);
+
+/* fractol_parse_args */
+
+void				init_fractol(void (*f)(t_data*), t_data *mlx);
 void				fractal_selector(int argc, char **argv);
 
 /* fractol_output */
@@ -101,13 +109,11 @@ void				show_args(int nt);
 
 /* mlx_draw */
 
-void				init_fractol(void (*f)(t_data*), t_data *mlx);
 void				my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void				switch_mlx_image(t_data *mlx);
 
 /* complex_nums */
 
-void				print_complex(t_complex_number num); // to remove after
 double				modulus_complex_2(t_complex_number cpx_num);
 t_complex_number	create_complex_number(double x, double y);
 double				complex_abs(t_complex_number a);

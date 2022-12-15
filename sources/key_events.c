@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:43:58 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/14 23:51:06 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/15 14:01:26 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	pallet_events(int key_code, t_data *mlx)
 	{
 		if (mlx->no_pallet)
 		{
-			mlx->pallet_type = !mlx->pallet_type;
+			mlx->fractal_symmetry = !mlx->fractal_symmetry;
 		}
 		else
 		{
@@ -103,9 +103,17 @@ void	key_events(int key_code, t_data *mlx)
 	}
 	if (key_code == 31)
 	{
-		ft_printf("\n\033[1;35mCurrent state: %+f %+fi %s\n",
+		ft_printf("\n\033[1;35mCurrent state: %+.3f %+.3fi %s\n",
 			mlx->formula.x, mlx->formula.y, "\033[0m");
 	}
 	if (key_code == 34)
 		mlx->mouse_offset = !mlx->mouse_offset;
+	if (key_code == 17)
+	{
+		if (mlx->fractal_type + 1 < mlx->fractal_count)
+			mlx->fractal_type++;
+		else
+			mlx->fractal_type = 0;
+		fractal_gen(mlx);
+	}
 }

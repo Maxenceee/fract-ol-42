@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:30:45 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 01:05:47 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/15 13:55:42 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	mouse_scroll(int button, t_complex_number mouse_pos,
 			mlx->scale = 1;
 		else
 			mlx->scale *= 1.5;
-		fflush(NULL);
 		if (mlx->mouse_offset)
 			mlx->center_offset = aspect_scale(mlx, mouse_pos,
 					mids, 0.5 / mlx->scale);
