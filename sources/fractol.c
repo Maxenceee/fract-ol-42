@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 14:04:45 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/15 15:47:54 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,13 @@ void	fractal_gen(t_data *mlx)
 		show_commands(2);
 		init_fractol(&mandelbrot_set, mlx);
 	}
+	else if (mlx->fractal_type == 5)
+	{
+		mlx->fractal_name = "mandelbrot3";
+		ft_printf("\n\n\033[1;31mGenerating Mandelbrot 3 set...%s\n", "\n\033[0m");
+		show_commands(2);
+		init_fractol(&mandelbrot_3_set, mlx);
+	}
 	else
 		fractal_gen_p(mlx);
 }
@@ -76,7 +83,7 @@ int	ft_fractol(int type, t_complex_number initial_offset)
 	mlx.formula = initial_offset;
 	mlx.pallet_type = 0;
 	mlx.fractal_type = type;
-	mlx.fractal_count = 5;
+	mlx.fractal_count = 6;
 	mlx.fractal_symmetry = 0;
 	mlx.img_1 = mlx_new_image(mlx.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	mlx.img_2 = mlx_new_image(mlx.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 14:04:29 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/15 15:47:49 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,15 @@ static void	parse_julia(int argc, char **argv)
 void	fractal_selector(int argc, char **argv)
 {
 	if (ft_strcmp(ft_frstrtolower(argv[1]), "mandelbrot") == 0
-		|| ft_strcmp(ft_frstrtolower(argv[1]), "m") == 0)
-		ft_fractol(2, create_complex_number(0, 0));
+		|| ft_strcmp(ft_frstrtolower(argv[1]), "m") == 0
+		|| ft_strcmp(ft_frstrtolower(argv[1]), "mandelbrot3") == 0
+		|| ft_strcmp(ft_frstrtolower(argv[1]), "m3") == 0)
+	{
+		if (ft_strstr(argv[1], "3"))
+			ft_fractol(5, create_complex_number(0, 0));
+		else
+			ft_fractol(2, create_complex_number(0, 0));
+	}
 	else if (ft_strcmp(ft_frstrtolower(argv[1]), "apollonian") == 0
 		|| ft_strcmp(ft_frstrtolower(argv[1]), "a") == 0)
 		ft_fractol(3, create_complex_number(0, 0));
