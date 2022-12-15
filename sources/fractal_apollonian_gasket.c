@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractal_apollonian_gasket.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:20:15 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/01 18:24:36 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/14 20:05:34 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ void	draw_gasket(t_circle crls[3], t_data *mlx)
 	draw_circle(crls[2], mlx);
 	draw_circle(c4, mlx);
 	draw_circle(c5, mlx);
-	recursive_circle(crls[0], crls[1], crls[2], c4, mlx);
-	recursive_circle(c5, crls[1], crls[2], c4, mlx);
+	recursive_circle(create_recursive_circle(crls[0], crls[1],
+			crls[2], c4), mlx);
+	recursive_circle(create_recursive_circle(c5, crls[1], crls[2], c4), mlx);
 	free(crls);
 }
 

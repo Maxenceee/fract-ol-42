@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractal_julia.c                                    :+:      :+:    :+:   */
+/*   fractal_julia3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 23:28:46 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 01:18:58 by mgama            ###   ########.fr       */
+/*   Created: 2022/12/14 22:55:16 by mgama             #+#    #+#             */
+/*   Updated: 2022/12/15 01:19:29 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	julia_set(t_data *mlx)
+void	julia3_set(t_data *mlx)
 {
 	int					y;
 	int					x;
@@ -31,14 +31,14 @@ void	julia_set(t_data *mlx)
 					create_complex_number(x, y),
 					mlx->center_offset,
 					mlx->scale);
-			pix = calule_julia_series(u, mlx->formula, mlx->scale);
+			pix = calule_julia_3_series(u, mlx->formula, mlx->scale);
 			my_mlx_pixel_put(mlx, x, y,
 				get_color(pix, pallet.pallet, pallet.pallet_length));
 		}
 	}
 }
 
-int	calule_julia_series(t_complex_number point,
+int	calule_julia_3_series(t_complex_number point,
 	t_complex_number point_offset, double scale)
 {
 	t_complex_number	num;
@@ -53,39 +53,11 @@ int	calule_julia_series(t_complex_number point,
 	while (modulus_complex_2(num) < 4. && i < max_iter)
 	{
 		temp_num = num;
-		num.x = temp_num.x * temp_num.x - temp_num.y * temp_num.y
-			+ point_offset.x;
-		num.y = 2. * temp_num.x * temp_num.y + point_offset.y;
+		num.x = temp_num.x * temp_num.x * temp_num.x - 3 * temp_num.x
+			* temp_num.y * temp_num.y + point_offset.x;
+		num.y = 3. * temp_num.x * temp_num.x * temp_num.y - temp_num.y
+			* temp_num.y * temp_num.y + point_offset.y;
 		i++;
 	}
 	return (i);
-}
-
-int	get_max_iter_from_scale(double scale)
-{
-	return (MAX_ITER);
-}
-
-t_complex_number	convert_corner_to_center(t_complex_number point,
-	t_complex_number mouse_offset, double scale)
-{
-	t_complex_number	centered_point;
-	t_complex_number	f_centered_point;
-	double				midx;
-	double				midy;
-
-	midx = (double)WINDOW_WIDTH / 2;
-	midy = (double)WINDOW_HEIGHT / 2;
-	centered_point.x = (point.x - midx) / scale + mouse_offset.x;
-	centered_point.y = (point.y - midy) / scale + mouse_offset.y;
-	return (centered_point);
-}
-
-t_complex_number	get_mouse_offset_from_center(t_complex_number point)
-{
-	t_complex_number	corner_point;
-
-	corner_point.x = (point.x - WINDOW_WIDTH / 2) * 1;
-	corner_point.y = (point.y - WINDOW_HEIGHT / 2) * 1;
-	return (corner_point);
 }

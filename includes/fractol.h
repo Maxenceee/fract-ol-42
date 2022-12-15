@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/01 18:55:49 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/15 01:10:58 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <math.h>
 # include <unistd.h>
 # include "../minilibx_opengl_20191021/mlx.h"
@@ -24,40 +23,38 @@
 /* viewport size */
 # define WINDOW_WIDTH 1440
 # define WINDOW_HEIGHT 740
-// # define WINDOW_WIDTH 500
-// # define WINDOW_HEIGHT 500
 /* viewport defaults scale */
 # define INITIAL_SCALE 200
 /* julia formula offset */
 # define COMPLEX_NUMBER_OFFSET 0.005
 /* julia divergence max iterations */
 # ifndef MAX_ITER
-#  define MAX_ITER 50
+#  define MAX_ITER 100
 # endif
 /* apollonian min circle radius */
 # define MIN_RADIUS 2
 /* mlx */
 # define MLX_ERROR 1
 
-typedef struct	s_complex_number
+typedef struct s_complex_number
 {
 	double	x;
 	double	y;
 }				t_complex_number;
 
-typedef struct	s_color {
+typedef struct s_color {
 	int		pallet_length;
 	int		*pallet;
 }				t_color;
 
-typedef struct	s_circle {
+typedef struct s_circle {
 	double				r;
 	double				b;
 	t_complex_number	bc;
 	t_complex_number	center;
 }				t_circle;
 
-typedef struct	s_data {
+typedef struct s_data {
 	void				*img_1;
 	void				*img_2;
 	void				*curr_img;
@@ -79,21 +76,34 @@ typedef struct	s_data {
 	t_color				*pallets;
 	int					no_pallet;
 	int					mouse_lock;
+	int					mouse_offset;
 	void				(*fractol_function)(struct s_data *);
 	char				*fractal_name;
 }				t_data;
 
+typedef struct s_r_apollonian_c {
+	t_circle	c1;
+	t_circle	c2;
+	t_circle	c3;
+	t_circle	c4;
+}				t_r_apollonian_c;
+
 /* fractol */
 
-void				my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void				switch_mlx_image(t_data *mlx);
+int					ft_fractol(char *type, t_complex_number initial_offset);
+void				fractal_gen(char *type, t_data *mlx);
+void				fractal_selector(int argc, char **argv);
+
+/* fractol_output */
+
+void				show_commands(int t);
+void				show_args(int nt);
+
+/* mlx_draw */
 
 void				init_fractol(void (*f)(t_data*), t_data *mlx);
-/* MAIN */
-int					ft_fractol(char *type, t_complex_number initial_offset);
-
-void				show_args(int nt);
-void				show_commands(int t);
+void				my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void				switch_mlx_image(t_data *mlx);
 
 /* complex_nums */
 
@@ -114,14 +124,29 @@ t_complex_number	complex_sqrt(t_complex_number cmpl);
 /* julia */
 
 void				julia_set(t_data *mlx);
-int					calule_julia_series(t_complex_number point, t_complex_number point_offset);
-t_complex_number	convert_corner_to_center(t_complex_number point, t_complex_number mouse_offset, double scale);
+int					calule_julia_series(t_complex_number point,
+						t_complex_number point_offset, double scale);
+int					get_max_iter_from_scale(double scale);
+t_complex_number	convert_corner_to_center(t_complex_number point,
+						t_complex_number mouse_offset, double scale);
 t_complex_number	get_mouse_offset_from_center(t_complex_number point);
+
+/* julia3 */
+
+void				julia3_set(t_data *mlx);
+int					calule_julia_3_series(t_complex_number point,
+						t_complex_number point_offset, double scale);
 
 /* mandelbrot */
 
 void				mandelbrot_set(t_data *mlx);
 int					calule_mandelbrot_series(t_complex_number point);
+
+/* burningship */
+
+void				burningship_set(t_data *mlx);
+int					calule_burningship_series(t_complex_number point,
+						double scale);
 
 /* apollonian_gasket */
 
@@ -136,13 +161,17 @@ int					ft_min(int a, int b);
 t_circle			create_circle(double r, t_complex_number center);
 t_circle			*symmetric_set(double x, double y, double radius);
 t_circle			*a_symmetric_set(double x, double y, double radius);
-t_complex_number	solve_equation(t_complex_number a, t_complex_number b, t_complex_number c);
+t_complex_number	solve_equation(t_complex_number a, t_complex_number b,
+						t_complex_number c);
 
 /* circles_utils */
 
 t_circle			get_adjacent(t_circle c1, t_circle c2, t_circle c3);
-t_circle			flip_circle(t_circle c1, t_circle c2, t_circle c3, t_circle c4);
-void				recursive_circle(t_circle c1, t_circle c2, t_circle c3, t_circle c4, t_data *mlx);
+t_circle			flip_circle(t_circle c1, t_circle c2,
+						t_circle c3, t_circle c4);
+t_r_apollonian_c	create_recursive_circle(t_circle c1, t_circle c2,
+						t_circle c3, t_circle c4);
+void				recursive_circle(t_r_apollonian_c circles, t_data *mlx);
 
 /* colors */
 
@@ -154,25 +183,35 @@ void				pallet_error(int *colors, t_color *color_data);
 
 /* pallets */
 
-void	pallet_1(t_color *color_data, int idx);
-void	pallet_2(t_color *color_data, int idx);
-void	pallet_3(t_color *color_data, int idx);
-void	pallet_4(t_color *color_data, int idx);
-void	pallet_5(t_color *color_data, int idx);
-void	pallet_6(t_color *color_data, int idx);
-void	pallet_7(t_color *color_data, int idx);
+void				pallet_1(t_color *color_data, int idx);
+void				pallet_2(t_color *color_data, int idx);
+void				pallet_3(t_color *color_data, int idx);
+void				pallet_4(t_color *color_data, int idx);
+void				pallet_5(t_color *color_data, int idx);
+void				pallet_6(t_color *color_data, int idx);
+void				pallet_7(t_color *color_data, int idx);
 
 /* mlx_events */
 
 int					stop_mlx(t_data *frame);
 int					key_down_event(int key_code, void *param);
 int					key_up_event(int key_code, void *param);
+int					loop_hook_events(void *params);
+
+/* mouse_events */
+
+t_complex_number	aspect_scale(t_data *mlx, t_complex_number mouse_pos,
+						t_complex_number mids, double scale);
+void				mouse_scroll(int button, t_complex_number temp_pos,
+						t_complex_number mids, t_data *mlx);
 int					mouse_event(int button, int x, int y, void *param);
 int					mouse_move(int x, int y, void *param);
-int					loop_hook_events(void *params);
+
+/* key_events */
+
 void				arrow_key_events(int key_code, t_data *mlx);
-void				pallet_events(int key_code, t_data *mlx);
 void				arrow_letter_events(int key_code, t_data *mlx);
+void				pallet_events(int key_code, t_data *mlx);
 void				key_events(int key_code, t_data *mlx);
 
 /*** utils ***/
@@ -186,4 +225,4 @@ int					ft_frtolower(int num);
 char				*ft_frstrtolower(char *str);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 
-#endif
+#endif /* fractol_h */

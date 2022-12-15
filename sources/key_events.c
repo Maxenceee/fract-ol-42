@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:43:58 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/01 19:35:52 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/14 23:51:06 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	arrow_key_events(int key_code, t_data *mlx)
 {
-	t_complex_number factor;
-	
-	factor = create_complex_number(50, 50);
+	t_complex_number	factor;
+
+	factor = create_complex_number(INITIAL_SCALE / mlx->scale,
+			INITIAL_SCALE / mlx->scale);
 	if (key_code == 123)
 	{
 		mlx->center_offset.x -= factor.x;
@@ -96,7 +97,7 @@ void	key_events(int key_code, t_data *mlx)
 	}
 	if (key_code == 49)
 	{
-		mlx->scale = 0;
+		mlx->scale = INITIAL_SCALE;
 		mlx->center_offset = create_complex_number(0, 0);
 		switch_mlx_image(mlx);
 	}
@@ -105,4 +106,6 @@ void	key_events(int key_code, t_data *mlx)
 		ft_printf("\n\033[1;35mCurrent state: %+f %+fi %s\n",
 			mlx->formula.x, mlx->formula.y, "\033[0m");
 	}
+	if (key_code == 34)
+		mlx->mouse_offset = !mlx->mouse_offset;
 }
