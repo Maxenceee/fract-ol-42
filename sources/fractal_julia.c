@@ -57,6 +57,7 @@ int	calule_julia_series(t_complex_number point,
 		num.x = temp_num.x * temp_num.x - temp_num.y * temp_num.y
 			+ point_offset.x;
 		num.y = 2. * temp_num.x * temp_num.y + point_offset.y;
+		// complex_sub(complex_mul(temp_num, temp_num), point_offset);
 		i++;
 	}
 	return (i);
