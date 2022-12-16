@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:55:16 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 15:48:44 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:48:23 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,18 @@ int	calule_julia_3_series(t_complex_number point,
 	int					max_iter;
 	int					i;
 
-	temp_num = create_complex_number(0, 0);
+	// temp_num = create_complex_number(0, 0);
 	num = create_complex_number(point.x, point.y);
 	max_iter = get_max_iter_from_scale(scale);
 	i = 0;
 	while (modulus_complex_2(num) < 4. && i < max_iter)
 	{
 		temp_num = num;
-		num.x = temp_num.x * temp_num.x * temp_num.x - 3 * temp_num.x
-			* temp_num.y * temp_num.y + point_offset.x;
-		num.y = 3. * temp_num.x * temp_num.x * temp_num.y - temp_num.y
-			* temp_num.y * temp_num.y + point_offset.y;
+		// num.x = temp_num.x * temp_num.x * temp_num.x - 3 * temp_num.x
+		// 	* temp_num.y * temp_num.y + point_offset.x;
+		// num.y = 3. * temp_num.x * temp_num.x * temp_num.y - temp_num.y
+		// 	* temp_num.y * temp_num.y + point_offset.y;
+		num = complex_add(complex_rational_pow(temp_num, 3), point_offset); // 3
 		i++;
 	}
 	return (i);

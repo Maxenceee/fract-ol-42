@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 21:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 15:48:58 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:46:38 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,12 @@ int	calule_mandelbrot_3_series(t_complex_number point)
 	while (modulus_complex_2(num) < 4. && i < max_iter)
 	{
 		temp_num = num;
-		num.x = temp_num.x * temp_num.x * temp_num.x - 3 * temp_num.x
-			* temp_num.y * temp_num.y + point.x;
-		num.y = 3. * temp_num.x * temp_num.x * temp_num.y - temp_num.y
-			* temp_num.y * temp_num.y + point.y;
+		// num.x = temp_num.x * temp_num.x * temp_num.x - 3 * temp_num.x
+		// 	* temp_num.y * temp_num.y + point.x;
+		// num.y = 3. * temp_num.x * temp_num.x * temp_num.y - temp_num.y
+		// 	* temp_num.y * temp_num.y + point.y;
+		num = complex_add(complex_mul(complex_mul(temp_num, temp_num), temp_num), point); // 3
+		// num = complex_add(complex_mul(complex_mul(complex_mul(temp_num, temp_num), complex_mul(temp_num, temp_num)), temp_num), point); // 5
 		i++;
 	}
 	return (i);

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 16:39:58 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:48:44 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ t_complex_number	complex_add(t_complex_number a, t_complex_number b);
 t_complex_number	complex_sub(t_complex_number a, t_complex_number b);
 t_complex_number	complex_div(t_complex_number a, t_complex_number b);
 t_complex_number	complex_sqrt(t_complex_number cmpl);
+t_complex_number	complex_rational_pow(t_complex_number a, unsigned int b);
 
 /* julia */
 

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:11:20 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 18:53:53 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/16 19:48:30 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,17 @@ t_complex_number	complex_sqrt(t_complex_number cmpl)
 	if (b < 0)
 		im = -im;
 	return (create_complex_number(re, im));
+}
+
+t_complex_number	complex_rational_pow(t_complex_number a, unsigned int b)
+{
+	unsigned int		i;
+	t_complex_number	n;
+
+	i = -1;
+	while (++i < b)
+	{
+		n = complex_mul(n, a);
+	}
+	return (n);
 }
