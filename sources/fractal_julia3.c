@@ -6,13 +6,13 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:55:16 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 18:49:58 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/16 15:48:44 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	julia3_set(t_data *mlx)
+void	julia3_set(t_data *mlx, t_screen_dim s_dims)
 {
 	int					y;
 	int					x;
@@ -22,17 +22,18 @@ void	julia3_set(t_data *mlx)
 
 	y = -1;
 	pallet = mlx->pallets[mlx->pallet_type];
-	while (++y < WINDOW_HEIGHT)
+	while (++y < s_dims.height)
 	{
 		x = -1;
-		while (++x < WINDOW_WIDTH)
+		while (++x < s_dims.width)
 		{
 			u = convert_corner_to_center(
-					create_complex_number(x, y),
+					create_complex_number(s_dims.left + x, s_dims.top + y),
 					mlx->center_offset,
-					mlx->scale);
+					mlx->scale,
+					create_complex_number(s_dims.center_x, s_dims.center_y));
 			pix = calule_julia_3_series(u, mlx->formula, mlx->scale);
-			my_mlx_pixel_put(mlx, x, y,
+			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
 				get_color(pix, pallet.pallet, pallet.pallet_length));
 		}
 	}

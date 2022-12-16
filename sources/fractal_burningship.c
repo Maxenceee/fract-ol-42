@@ -6,13 +6,13 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:56:17 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 01:09:49 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/16 15:49:12 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	burningship_set(t_data *mlx)
+void	burningship_set(t_data *mlx, t_screen_dim s_dims)
 {
 	int		y;
 	int		x;
@@ -21,16 +21,18 @@ void	burningship_set(t_data *mlx)
 
 	y = -1;
 	pallet = mlx->pallets[mlx->pallet_type];
-	while (++y < WINDOW_HEIGHT)
+	while (++y < s_dims.height)
 	{
 		x = -1;
-		while (++x < WINDOW_WIDTH)
+		while (++x < s_dims.width)
 		{
 			pix = calule_burningship_series(
 					convert_corner_to_center(
-						create_complex_number(x, y),
-						mlx->center_offset, mlx->scale), mlx->scale);
-			my_mlx_pixel_put(mlx, x, y,
+						create_complex_number(s_dims.left + x, s_dims.top + y),
+						mlx->center_offset, mlx->scale,
+						create_complex_number(s_dims.center_x, s_dims.center_y)),
+						mlx->scale);
+			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
 				get_color(pix, pallet.pallet, pallet.pallet_length));
 		}
 	}

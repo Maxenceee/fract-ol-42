@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 20:12:24 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 13:36:21 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/16 15:25:38 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	switch_mlx_image(t_data *mlx)
+void	mlx_update_image(t_data *mlx)
 {
-	static int	img_type;
-
-	if (!img_type)
-		img_type = 0;
-	if (img_type == 0)
-	{
-		mlx->curr_img = mlx->img_1;
-		img_type = 1;
-	}
-	else if (img_type == 1)
-	{
-		mlx->curr_img = mlx->img_2;
-		img_type = 0;
-	}
-	mlx->addr = mlx_get_data_addr(mlx->curr_img, &mlx->bits_per_pixel,
+	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,
 			&mlx->line_length, &mlx->endian);
-	(*mlx->fractol_function)(mlx);
-	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->curr_img, 0, 0);
+	(*mlx->fractal_list[mlx->current_fractal_type].fractol_function)(mlx, mlx->screen_dims);
+	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img, 0, 0);
 }

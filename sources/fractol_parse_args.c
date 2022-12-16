@@ -6,65 +6,52 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 15:47:49 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/16 13:57:21 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	init_fractol(void (*f)(t_data*), t_data *mlx)
+void	parse_arg_in_mlx(t_data *mlx, int type, t_complex_number start_off)
 {
-	mlx->fractol_function = *f;
-	mlx->scale = INITIAL_SCALE;
-	mlx->mouse_offset = 1;
-	mlx->key_pressed = 0;
-	mlx->mouse_lock = 1;
-	mlx->need_save = 0;
-	mlx->center_offset = create_complex_number(0, 0);
-	switch_mlx_image(mlx);
+	if (start_off.x > 1 || start_off.x < -1
+		|| start_off.y > 1 || start_off.y < -1)
+		show_args(2);
+	mlx->formula = start_off;
+	mlx->current_fractal_type = type;
+	on_fractal_gen(mlx);
+	mlx_update_image(mlx);
 }
 
-static void	parse_julia(int argc, char **argv)
+static void	parse_julia(int argc, char **argv, t_data *mlx)
 {
 	t_complex_number	offset_f;
 
 	if (ft_strcmp(ft_frstrtolower(argv[1]), "julia") == 0
-		|| ft_strcmp(ft_frstrtolower(argv[1]), "j") == 0
-		|| ft_strcmp(ft_frstrtolower(argv[1]), "julia3") == 0
-		|| ft_strcmp(ft_frstrtolower(argv[1]), "j3") == 0)
+		|| ft_strcmp(ft_frstrtolower(argv[1]), "j") == 0)
 	{
 		if (argc > 3)
 			offset_f = create_complex_number(ft_atof(argv[2]),
 					ft_atof(argv[3]));
 		else
 			show_args(1);
-		if (ft_strstr(argv[1], "3"))
-			ft_fractol(1, offset_f);
-		else
-			ft_fractol(0, offset_f);
+		parse_arg_in_mlx(mlx, 0, offset_f);
 	}
 	else
 		show_args(0);
 }
 
-void	fractal_selector(int argc, char **argv)
+void	fractal_selector(int argc, char **argv, t_data *mlx)
 {
 	if (ft_strcmp(ft_frstrtolower(argv[1]), "mandelbrot") == 0
-		|| ft_strcmp(ft_frstrtolower(argv[1]), "m") == 0
-		|| ft_strcmp(ft_frstrtolower(argv[1]), "mandelbrot3") == 0
-		|| ft_strcmp(ft_frstrtolower(argv[1]), "m3") == 0)
-	{
-		if (ft_strstr(argv[1], "3"))
-			ft_fractol(5, create_complex_number(0, 0));
-		else
-			ft_fractol(2, create_complex_number(0, 0));
-	}
-	else if (ft_strcmp(ft_frstrtolower(argv[1]), "apollonian") == 0
-		|| ft_strcmp(ft_frstrtolower(argv[1]), "a") == 0)
-		ft_fractol(3, create_complex_number(0, 0));
+		|| ft_strcmp(ft_frstrtolower(argv[1]), "m") == 0)
+		parse_arg_in_mlx(mlx, 1, create_complex_number(0, 0));
 	else if (ft_strcmp(ft_frstrtolower(argv[1]), "burningship") == 0
 		|| ft_strcmp(ft_frstrtolower(argv[1]), "b") == 0)
-		ft_fractol(4, create_complex_number(0, 0));
+		parse_arg_in_mlx(mlx, 2, create_complex_number(0, 0));
+	else if (ft_strcmp(ft_frstrtolower(argv[1]), "apollonian") == 0
+		|| ft_strcmp(ft_frstrtolower(argv[1]), "a") == 0)
+		parse_arg_in_mlx(mlx, 3, create_complex_number(0, 0));
 	else
-		parse_julia(argc, argv);
+		parse_julia(argc, argv, mlx);
 }

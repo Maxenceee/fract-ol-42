@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:30:45 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 13:55:42 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/16 15:34:07 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	mouse_scroll(int button, t_complex_number mouse_pos,
 		if (mlx->mouse_offset)
 			mlx->center_offset = aspect_scale(mlx, mouse_pos,
 					mids, 0.5 / mlx->scale);
-		switch_mlx_image(mlx);
+		mlx_update_image(mlx);
 	}
 	else if (button == 4)
 	{
@@ -42,7 +42,7 @@ void	mouse_scroll(int button, t_complex_number mouse_pos,
 		if (mlx->mouse_offset)
 			mlx->center_offset = aspect_scale(mlx, mouse_pos,
 					mids, -1. / 3. / mlx->scale);
-		switch_mlx_image(mlx);
+		mlx_update_image(mlx);
 	}
 }
 
@@ -53,6 +53,8 @@ int	mouse_event(int button, int x, int y, void *param)
 	t_complex_number	mids;
 
 	mlx = (t_data *)param;
+	if (mlx->is_home)
+		return (0);
 	mids = create_complex_number((double)WINDOW_WIDTH / 2,
 			(double)WINDOW_HEIGHT / 2);
 	temp_pos = create_complex_number(x, y);
@@ -62,13 +64,17 @@ int	mouse_event(int button, int x, int y, void *param)
 
 int	mouse_move(int x, int y, void *param)
 {
-	t_data	*mlx;
-	double	rx;
-	double	ry;
+	t_data		*mlx;
+	double		rx;
+	double		ry;
 
 	mlx = (t_data *)param;
+	if (mlx->is_home)
+		return (0);
 	if (mlx->mouse_lock == 0)
 	{
+		if (!mlx->fractal_list[mlx->current_fractal_type].has_formula)
+			return (0);
 		rx = 1. / WINDOW_WIDTH * x;
 		ry = 1. / WINDOW_HEIGHT * y;
 		if (rx > 0. && rx < 1. && ry > 0. && ry < 1.)
@@ -82,8 +88,9 @@ int	mouse_move(int x, int y, void *param)
 			mlx->formula.x = (mlx->saved_formula.x
 					- mlx->saved_mouse.x) + rx;
 			mlx->formula.y = (mlx->saved_formula.y
-					- mlx->saved_mouse.y) + ry ;
-			switch_mlx_image(mlx);
+					- mlx->saved_mouse.y) + ry;
+			mlx->fractal_list[mlx->current_fractal_type].formula = mlx->formula;
+			mlx_update_image(mlx);
 		}
 	}
 	return (0);

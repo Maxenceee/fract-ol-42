@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:43:58 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 14:01:26 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/15 21:42:25 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,19 @@ void	arrow_letter_events(int key_code, t_data *mlx)
 
 void	pallet_events(int key_code, t_data *mlx)
 {
+	t_fractal	fractal;
+
+	fractal = mlx->fractal_list[mlx->current_fractal_type];
 	if (key_code == 35)
 	{
-		if (mlx->no_pallet)
-		{
-			mlx->fractal_symmetry = !mlx->fractal_symmetry;
-		}
-		else
+		if (!fractal.no_pallet)
 		{
 			if (mlx->pallet_type == mlx->pallet_nb - 1)
 				mlx->pallet_type = 0;
 			else
 				mlx->pallet_type++;
 		}
-		switch_mlx_image(mlx);
+		mlx_update_image(mlx);
 	}
 }
 
@@ -99,7 +98,7 @@ void	key_events(int key_code, t_data *mlx)
 	{
 		mlx->scale = INITIAL_SCALE;
 		mlx->center_offset = create_complex_number(0, 0);
-		switch_mlx_image(mlx);
+		mlx_update_image(mlx);
 	}
 	if (key_code == 31)
 	{
@@ -109,11 +108,5 @@ void	key_events(int key_code, t_data *mlx)
 	if (key_code == 34)
 		mlx->mouse_offset = !mlx->mouse_offset;
 	if (key_code == 17)
-	{
-		if (mlx->fractal_type + 1 < mlx->fractal_count)
-			mlx->fractal_type++;
-		else
-			mlx->fractal_type = 0;
-		fractal_gen(mlx);
-	}
+		switch_fractal(mlx);
 }

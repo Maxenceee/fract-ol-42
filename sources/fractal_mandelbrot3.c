@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractal_mandelbrot.c                               :+:      :+:    :+:   */
+/*   fractal_mandelbrot3.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 00:37:46 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 15:48:52 by mgama            ###   ########.fr       */
+/*   Created: 2022/12/15 21:52:14 by mgama             #+#    #+#             */
+/*   Updated: 2022/12/16 15:48:58 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	mandelbrot_set(t_data *mlx, t_screen_dim s_dims)
+void	mandelbrot_3_set(t_data *mlx, t_screen_dim s_dims)
 {
 	int		y;
 	int		x;
@@ -26,7 +26,7 @@ void	mandelbrot_set(t_data *mlx, t_screen_dim s_dims)
 		x = -1;
 		while (++x < s_dims.width)
 		{
-			pix = calule_mandelbrot_series(
+			pix = calule_mandelbrot_3_series(
 					convert_corner_to_center(
 						create_complex_number(s_dims.left + x, s_dims.top + y),
 						mlx->center_offset, mlx->scale,
@@ -37,7 +37,7 @@ void	mandelbrot_set(t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-int	calule_mandelbrot_series(t_complex_number point)
+int	calule_mandelbrot_3_series(t_complex_number point)
 {
 	t_complex_number	num;
 	t_complex_number	temp_num;
@@ -51,8 +51,10 @@ int	calule_mandelbrot_series(t_complex_number point)
 	while (modulus_complex_2(num) < 4. && i < max_iter)
 	{
 		temp_num = num;
-		num.x = temp_num.x * temp_num.x - temp_num.y * temp_num.y + point.x;
-		num.y = 2. * temp_num.x * temp_num.y + point.y;
+		num.x = temp_num.x * temp_num.x * temp_num.x - 3 * temp_num.x
+			* temp_num.y * temp_num.y + point.x;
+		num.y = 3. * temp_num.x * temp_num.x * temp_num.y - temp_num.y
+			* temp_num.y * temp_num.y + point.y;
 		i++;
 	}
 	return (i);

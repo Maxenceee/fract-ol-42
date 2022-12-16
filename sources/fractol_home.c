@@ -1,0 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol_home.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
+/*   Updated: 2022/12/16 16:59:44 by mgama            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/fractol.h"
+
+int	parse_screen_dims(int width, int height, int parts, t_data *mlx)
+{
+	t_screen_dim	*screens;
+	int				i;
+	t_screen_dim	temp_s;
+	
+	screens = malloc(parts * sizeof(t_screen_dim));
+	if (!screens)
+		return (0);
+	i = -1;
+	while (++i < parts)
+	{
+		temp_s.top = (height / 2) * (i % 2);
+		temp_s.left = (width / (parts / 2)) / 2 * (i - i % 2);
+		temp_s.width = (width / (parts / 2));
+		temp_s.height = (height / 2);
+		temp_s.center_x = temp_s.left + (temp_s.width / 2);
+		temp_s.center_y = temp_s.top + (temp_s.height / 2);
+		screens[i] = temp_s;
+	}
+	draw_screen_image(screens, parts, mlx);
+	return (1);
+}
+
+void	draw_screen_image(t_screen_dim *screens, int screens_count, t_data *mlx)
+{
+	int	i;
+
+	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,
+			&mlx->line_length, &mlx->endian);
+	i = -1;
+	while (++i < screens_count)
+	{
+		mlx->scale = 100;
+		if (mlx->fractal_list[i].id == 4)
+			mlx->scale = 1;
+		
+		if (mlx->fractal_list[i].has_formula)
+		{
+			mlx->formula.x = ((float)rand() / (float)(RAND_MAX)) * 1;
+			if ((float)rand() / (float)(RAND_MAX) > 0.5)
+				mlx->formula.x = -mlx->formula.x;
+				
+			mlx->formula.y = ((float)rand() / (float)(RAND_MAX)) * 1;
+			if ((float)rand() / (float)(RAND_MAX) > 0.5)
+				mlx->formula.y = -mlx->formula.y;
+		}
+		if (!mlx->fractal_list[i].no_pallet)
+			mlx->pallet_type = (int)((float)rand() / (float)RAND_MAX * mlx->pallet_nb);
+			
+		(*mlx->fractal_list[i].fractol_function)(mlx, screens[i]);
+	}
+	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img, 0, 0);
+}
+
+int	show_home(t_data *mlx)
+{
+	int				segments;
+
+	mlx->is_home = 1;
+	segments = mlx->fractal_count;
+	if (segments % 2 > 0)
+		segments++;
+	if (!parse_screen_dims(WINDOW_WIDTH, WINDOW_HEIGHT, segments, mlx))
+	{
+		perror("Could not parse screen");
+		exit(EXIT_FAILURE);
+	}
+	return (0);
+}
