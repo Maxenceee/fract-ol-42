@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 19:48:44 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 01:09:33 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ double				modulus_complex_2(t_complex_number cpx_num);
 t_complex_number	create_complex_number(double x, double y);
 double				complex_abs(t_complex_number a);
 double				complex_hypot(double x, double y);
+t_complex_number	complex_rational_pow(t_complex_number a, unsigned int b);
 
 /* complex_nums_opperators */
 
@@ -178,7 +179,6 @@ t_complex_number	complex_add(t_complex_number a, t_complex_number b);
 t_complex_number	complex_sub(t_complex_number a, t_complex_number b);
 t_complex_number	complex_div(t_complex_number a, t_complex_number b);
 t_complex_number	complex_sqrt(t_complex_number cmpl);
-t_complex_number	complex_rational_pow(t_complex_number a, unsigned int b);
 
 /* julia */
 
@@ -258,6 +258,9 @@ void				pallet_4(t_color *color_data, int idx);
 void				pallet_5(t_color *color_data, int idx);
 void				pallet_6(t_color *color_data, int idx);
 void				pallet_7(t_color *color_data, int idx);
+void				pallet_8(t_color *color_data, int idx);
+void				pallet_9(t_color *color_data, int idx);
+void				pallet_10(t_color *color_data, int idx);
 
 /* mlx_events */
 

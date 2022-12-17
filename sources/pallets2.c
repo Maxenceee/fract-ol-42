@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pallets2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 21:01:33 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/29 21:02:58 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 01:15:25 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,17 @@ void	pallet_6(t_color *color_data, int idx)
 	int			*colors;
 	t_color		temp_color_data;
 
-	colors = malloc(11 * sizeof(int));
+	colors = malloc(6 * sizeof(int));
 	if (!colors)
 		pallet_error(colors, color_data);
 	colors[0] = 0x25153b;
-	colors[1] = 0xff8200;
+	colors[1] = 0xff0000;
 	colors[2] = 0x06f9db;
-	colors[3] = 0xa600f5;
-	colors[4] = 0xff0000;
-	colors[5] = 0xf774ba;
-	colors[6] = 0x1104f4;
-	colors[7] = 0xf114ee;
-	colors[8] = 0xfffa00;
-	colors[9] = 0x057bf2;
-	colors[10] = 0x5dff00;
+	colors[3] = 0xf774ba;
+	colors[4] = 0xa600f5;
+	colors[5] = 0xff8200;
 	temp_color_data.pallet = colors;
-	temp_color_data.pallet_length = 11;
+	temp_color_data.pallet_length = 6;
 	color_data[idx] = temp_color_data;
 }
 
@@ -51,5 +46,51 @@ void	pallet_7(t_color *color_data, int idx)
 	colors[4] = 0xfdff6a;
 	temp_color_data.pallet = colors;
 	temp_color_data.pallet_length = 5;
+	color_data[idx] = temp_color_data;
+}
+
+void	pallet_8(t_color *color_data, int idx)
+{
+	int			*colors;
+	t_color		temp_color_data;
+
+	colors = malloc(2 * sizeof(int));
+	if (!colors)
+		pallet_error(colors, color_data);
+	colors[0] = 0x000000;
+	colors[1] = 0xffffff;
+	temp_color_data.pallet = colors;
+	temp_color_data.pallet_length = 2;
+	color_data[idx] = temp_color_data;
+}
+
+void	pallet_9(t_color *color_data, int idx)
+{
+	int			*colors;
+	t_color		temp_color_data;
+
+	colors = malloc(2 * sizeof(int));
+	if (!colors)
+		pallet_error(colors, color_data);
+	colors[0] = 0x0B1F39;
+	colors[1] = 0xf78166;
+	temp_color_data.pallet = colors;
+	temp_color_data.pallet_length = 2;
+	color_data[idx] = temp_color_data;
+}
+
+void	pallet_10(t_color *color_data, int idx)
+{
+	int			*colors;
+	t_color		temp_color_data;
+
+	colors = malloc(3 * sizeof(int));
+	if (!colors)
+		pallet_error(colors, color_data);
+	colors[0] = 0xCEF3FC;
+	colors[1] = 0x2D3E2B;
+	colors[2] = 0xFCCEF2;
+	temp_color_data.pallet = colors;
+	temp_color_data.pallet_length = 3;
 	color_data[idx] = temp_color_data;
 }

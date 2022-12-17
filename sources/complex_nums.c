@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:46:28 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 01:27:35 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 00:48:05 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,17 @@ double	complex_hypot(double x, double y)
 	else
 		b = x / y;
 	return (a * sqrtf(1 + b * b));
+}
+
+t_complex_number	complex_rational_pow(t_complex_number a, unsigned int b)
+{
+	unsigned int		i;
+	t_complex_number	n;
+
+	i = -1;
+	while (++i < b)
+	{
+		n = complex_mul(n, a);
+	}
+	return (n);
 }

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 19:40:10 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 00:55:23 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ int	ft_fractol(int argc, char **argv)
 		mlx_update_image(&mlx);
 	}
 	else
+	{
+		if (!register_fractals(&mlx))
+			exit(EXIT_FAILURE);
 		show_home(&mlx);
+	}
 	
 	mlx_loop(mlx.mlx);
 	return (0);
