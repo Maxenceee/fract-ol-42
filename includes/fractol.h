@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 01:09:33 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 20:57:58 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@
 struct s_complex_number;
 struct s_color;
 struct s_circle;
+struct s_screen_dim;
 struct s_data;
 struct s_fractal;
 struct s_r_apollonian_c;
-struct s_screen_dim;
 
 typedef struct s_complex_number {
 	double	x;
@@ -63,8 +63,7 @@ typedef struct s_circle {
 	t_complex_number	center;
 }				t_circle;
 
-typedef	struct s_screen_dim
-{
+typedef	struct s_screen_dim {
 	int		top;
 	int		left;
 	int		width;
@@ -115,6 +114,9 @@ typedef struct s_fractal {
 	int					has_variants;
 	int					command_id;
 	int					variants_count;
+	t_screen_dim		home_dims;
+	int					home_pallet;
+	// t_complex_number	home_formula;
 }				t_fractal;
 
 typedef struct s_r_apollonian_c {
@@ -146,8 +148,8 @@ void				show_args(int nt);
 
 /* fractol_home */
 
-int		parse_screen_dims(int width, int height, int parts, t_data *mlx);
-void	draw_screen_image(t_screen_dim *screens, int screens_count, t_data *mlx);
+int					parse_screen_dims(int width, int height, int parts, t_data *mlx);
+void				draw_screen_image(t_screen_dim *screens, int screens_count, t_data *mlx);
 int					show_home(t_data *mlx);
 
 /* fractol_list */
@@ -261,6 +263,7 @@ void				pallet_7(t_color *color_data, int idx);
 void				pallet_8(t_color *color_data, int idx);
 void				pallet_9(t_color *color_data, int idx);
 void				pallet_10(t_color *color_data, int idx);
+void				pallet_11(t_color *color_data, int idx);
 
 /* mlx_events */
 
@@ -284,6 +287,11 @@ void				arrow_key_events(int key_code, t_data *mlx);
 void				arrow_letter_events(int key_code, t_data *mlx);
 void				pallet_events(int key_code, t_data *mlx);
 void				key_events(int key_code, t_data *mlx);
+
+/* home_events */
+
+int					mouse_home_event(t_data *mlx, int button, int x, int y);
+void				catch_fractal_from_screen(t_data *mlx, int x, int y);
 
 /*** utils ***/
 

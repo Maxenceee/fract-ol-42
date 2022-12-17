@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:30:45 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 15:34:07 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 20:58:40 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ int	mouse_event(int button, int x, int y, void *param)
 
 	mlx = (t_data *)param;
 	if (mlx->is_home)
+	{
+		mouse_home_event(mlx, button, x, y);
 		return (0);
+	}
 	mids = create_complex_number((double)WINDOW_WIDTH / 2,
 			(double)WINDOW_HEIGHT / 2);
 	temp_pos = create_complex_number(x, y);

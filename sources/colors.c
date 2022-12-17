@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 20:03:31 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 01:09:23 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 12:04:16 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	init_pallets(t_data *mlx)
 	t_color		*color_data;
 	t_color		temp_color_data;
 
-	nb = 10;
+	nb = 11;
 	color_data = malloc(nb * sizeof(t_color));
 	if (!color_data)
 		pallet_error(colors, color_data);
@@ -73,6 +73,7 @@ void	init_pallets(t_data *mlx)
 	pallet_8(color_data, 7);
 	pallet_9(color_data, 8);
 	pallet_10(color_data, 9);
+	pallet_11(color_data, 10);
 	mlx->pallets = color_data;
 	mlx->pallet_nb = nb;
 }

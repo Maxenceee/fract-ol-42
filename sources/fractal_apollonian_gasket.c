@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:20:15 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 00:56:56 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 19:23:42 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims)
 	circles_s = symmetric_set(
 			s_dims.center_x - mlx->center_offset.x * (mlx->scale / 2),
 			s_dims.center_y - mlx->center_offset.y * (mlx->scale / 2),
-			(s_dims.center_y - s_dims.height / 7 + (mlx->scale - INITIAL_SCALE)));
+			((s_dims.height / 2) - s_dims.height / 5 + (mlx->scale / 2)));
 	// if (mlx->fractal_symmetry == 0)
 	// else
 	// 	circles_s = a_symmetric_set(

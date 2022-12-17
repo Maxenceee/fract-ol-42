@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 19:35:57 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 20:58:14 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,33 @@ void	init_mlx_f(t_data *mlx)
 	mlx_loop_hook(mlx->mlx, &loop_hook_events, mlx);
 }
 
+void	init_home_f(t_data *mlx)
+{
+	int	i;
+
+	i = -1;
+	while (++i < mlx->fractal_count)
+	{
+		if (!mlx->fractal_list[i].no_pallet)
+			mlx->fractal_list[i].home_pallet = (int)((float)rand() / (float)RAND_MAX * mlx->pallet_nb);
+
+		if (!mlx->fractal_list[i].has_formula)
+			continue ;
+		mlx->fractal_list[i].formula.x = ((float)rand() / (float)(RAND_MAX)) * 1;
+		if ((float)rand() / (float)(RAND_MAX) > 0.5)
+			mlx->fractal_list[i].formula.x = -mlx->fractal_list[i].formula.x;
+
+		mlx->fractal_list[i].formula.y = ((float)rand() / (float)(RAND_MAX)) * 1;
+		if ((float)rand() / (float)(RAND_MAX) > 0.5)
+			mlx->fractal_list[i].formula.y = -mlx->fractal_list[i].formula.y;
+	}
+}
+
 int	register_fractals(t_data *mlx)
 {
 	t_fractal	*fractals;
 
-	mlx->fractal_count = 6;
+	mlx->fractal_count = 4;
 	fractals = malloc(mlx->fractal_count * sizeof(t_fractal));
 	if (!fractals)
 		return (0);
@@ -61,8 +83,9 @@ int	register_fractals(t_data *mlx)
 	fractals[1] = f_mandelbrot(1);
 	fractals[2] = f_burningship(2);
 	fractals[3] = f_apollonian(3);
-	fractals[4] = f_julia_3(mlx->formula, 4);
-	fractals[5] = f_mandelbrot_3(5);
+	// fractals[4] = f_julia_3(mlx->formula, 4);
+	// fractals[5] = f_mandelbrot_3(5);
 	mlx->fractal_list = fractals;
+	init_home_f(mlx);
 	return (1);
 }

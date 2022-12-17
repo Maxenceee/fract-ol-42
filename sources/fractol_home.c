@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 01:27:50 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 20:59:55 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,12 @@ void	draw_screen_image(t_screen_dim *screens, int screens_count, t_data *mlx)
 		mlx->scale = 100;
 		
 		if (mlx->fractal_list[i].has_formula)
-		{
-			mlx->formula.x = ((float)rand() / (float)(RAND_MAX)) * 1;
-			if ((float)rand() / (float)(RAND_MAX) > 0.5)
-				mlx->formula.x = -mlx->formula.x;
-				
-			mlx->formula.y = ((float)rand() / (float)(RAND_MAX)) * 1;
-			if ((float)rand() / (float)(RAND_MAX) > 0.5)
-				mlx->formula.y = -mlx->formula.y;
-		}
+			mlx->formula = mlx->fractal_list[i].formula;
+
 		if (!mlx->fractal_list[i].no_pallet)
-			mlx->pallet_type = (int)((float)rand() / (float)RAND_MAX * mlx->pallet_nb);
-			
+			mlx->pallet_type = mlx->fractal_list[i].home_pallet;
+		
+		mlx->fractal_list[i].home_dims = screens[i];
 		(*mlx->fractal_list[i].fractol_function)(mlx, screens[i]);
 	}
 	free(screens);
@@ -71,6 +65,7 @@ int	show_home(t_data *mlx)
 	int				segments;
 
 	mlx->is_home = 1;
+	mlx->mouse_lock = 1;
 	segments = mlx->fractal_count;
 	if (segments % 2 > 0)
 		segments++;

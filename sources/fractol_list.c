@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:17:33 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 15:52:58 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 19:15:18 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_fractal	f_apollonian(int type)
 	fractal.fractol_function = &apollonian_gasket_set;
 	fractal.has_variants = 0;
 	fractal.variants_count = 0;
-	fractal.no_pallet = 0;
+	fractal.no_pallet = 1;
 	fractal.command_id = 3;
 	fractal.type_i = type;
 	return (fractal);
@@ -104,7 +104,7 @@ t_fractal	f_burningship(int type)
 	fractal.fractol_function = &burningship_set;
 	fractal.has_variants = 0;
 	fractal.variants_count = 0;
-	fractal.no_pallet = 1;
+	fractal.no_pallet = 0;
 	fractal.command_id = 2;
 	fractal.type_i = type;
 	return (fractal);

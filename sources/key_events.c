@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:43:58 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 21:42:25 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 20:56:13 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,15 @@ void	arrow_letter_events(int key_code, t_data *mlx)
 
 void	pallet_events(int key_code, t_data *mlx)
 {
-	t_fractal	fractal;
-
-	fractal = mlx->fractal_list[mlx->current_fractal_type];
 	if (key_code == 35)
 	{
-		if (!fractal.no_pallet)
+		if (!mlx->fractal_list[mlx->current_fractal_type].no_pallet)
 		{
 			if (mlx->pallet_type == mlx->pallet_nb - 1)
 				mlx->pallet_type = 0;
 			else
 				mlx->pallet_type++;
+			mlx->fractal_list[mlx->current_fractal_type].home_pallet = mlx->pallet_type;
 		}
 		mlx_update_image(mlx);
 	}
@@ -109,4 +107,6 @@ void	key_events(int key_code, t_data *mlx)
 		mlx->mouse_offset = !mlx->mouse_offset;
 	if (key_code == 17)
 		switch_fractal(mlx);
+	if (key_code == 4)
+		show_home(mlx);
 }
