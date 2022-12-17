@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 20:57:58 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 21:41:33 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ typedef struct s_fractal {
 	int					variants_count;
 	t_screen_dim		home_dims;
 	int					home_pallet;
-	// t_complex_number	home_formula;
+	int					is_registered;
 }				t_fractal;
 
 typedef struct s_r_apollonian_c {

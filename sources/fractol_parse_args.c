@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 02:00:56 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 21:42:17 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	parse_arg_in_mlx(t_data *mlx, int type, t_complex_number start_off)
 		show_args(2);
 	mlx->current_fractal_type = type;
 	mlx->formula = start_off;
+	mlx->fractal_list[type].formula = start_off;
+	mlx->fractal_list[type].home_pallet = mlx->pallet_type;
 }
 
 static void	parse_julia(int argc, char **argv, t_data *mlx)

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 19:11:10 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/17 21:41:27 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	ft_fractol(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		fractal_selector(argc, argv, &mlx);
 		if (!register_fractals(&mlx))
 			exit(EXIT_FAILURE);
+		fractal_selector(argc, argv, &mlx);
 		on_fractal_gen(&mlx);
 		mlx_update_image(&mlx);
 	}
@@ -75,11 +75,12 @@ int	main(int argc, char **argv)
 /*
 julia
 
--0.81, -0.27,
-0.27, 0.7
-0.4, -0
+-0.81 -0.27,
+0.27 0.7
+0.4 -0
+-0.752 0.429
 
 julia3
--0.782, 0.138
--0.727, 0.213
+-0.782 0.138
+-0.727 0.213
 */
