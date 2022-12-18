@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 21:41:33 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/18 17:26:47 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,8 @@ int					calule_julia_series(t_complex_number point,
 int					get_max_iter_from_scale(double scale);
 
 t_complex_number	convert_corner_to_center(t_complex_number point,
-	t_complex_number mouse_offset, double scale, t_complex_number mids);
+						t_complex_number mouse_offset, double scale,
+						t_complex_number mids);
 t_complex_number	get_mouse_offset_from_center(t_complex_number point);
 
 /* julia3 */

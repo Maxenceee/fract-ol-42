@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 20:55:18 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/15 20:19:07 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/18 17:25:27 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,16 @@ void	pallet_3(t_color *color_data, int idx)
 	int			*colors;
 	t_color		temp_color_data;
 
-	colors = malloc(6 * sizeof(int));
+	colors = malloc(5 * sizeof(int));
 	if (!colors)
 		pallet_error(colors, color_data);
 	colors[0] = color(96, 125, 139);
 	colors[1] = color(1, 40, 64);
 	colors[2] = color(69, 0, 3);
 	colors[3] = color(92, 20, 140);
-	colors[4] = color(255, 220, 0);
-	colors[5] = color(150, 202, 45);
+	colors[4] = color(20, 13, 140);
 	temp_color_data.pallet = colors;
-	temp_color_data.pallet_length = 6;
+	temp_color_data.pallet_length = 5;
 	color_data[idx] = temp_color_data;
 }
 
