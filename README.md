@@ -10,4 +10,4 @@ Compile files using the Makefile
 make all
 ```
 
-Use the program running `./fractol`
+Then run `./fractol`
