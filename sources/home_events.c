@@ -36,6 +36,7 @@ void	catch_fractal_from_screen(t_data *mlx, int x, int y)
 			mlx->pallet_type = mlx->fractal_list[i].home_pallet;
 			on_fractal_gen(mlx);
 			mlx_update_image(mlx);
+			break ;
 		}
 	}
 }
