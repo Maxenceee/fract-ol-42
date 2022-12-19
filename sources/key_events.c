@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:43:58 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 20:56:13 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/19 19:49:11 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,22 @@ void	pallet_events(int key_code, t_data *mlx)
 	}
 }
 
+void	variants_events(int key_code, t_data *mlx)
+{
+	if (key_code == 9 && mlx->fractal_list[mlx->current_fractal_type].has_variants)
+	{
+		mlx->next_variant = 1;
+		mlx_update_image(mlx);
+		mlx->next_variant = 0;
+	}
+	if (key_code == 11 && mlx->fractal_list[mlx->current_fractal_type].has_variants)
+	{
+		mlx->prev_variant = 1;
+		mlx_update_image(mlx);
+		mlx->prev_variant = 0;
+	}
+}
+
 void	key_events(int key_code, t_data *mlx)
 {
 	if (key_code == 37)
@@ -99,10 +115,8 @@ void	key_events(int key_code, t_data *mlx)
 		mlx_update_image(mlx);
 	}
 	if (key_code == 31)
-	{
 		ft_printf("\n\033[1;35mCurrent state: %+.3f %+.3fi %s\n",
 			mlx->formula.x, mlx->formula.y, "\033[0m");
-	}
 	if (key_code == 34)
 		mlx->mouse_offset = !mlx->mouse_offset;
 	if (key_code == 17)

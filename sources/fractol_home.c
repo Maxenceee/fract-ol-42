@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 20:59:55 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/19 22:22:21 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	draw_screen_image(t_screen_dim *screens, int screens_count, t_data *mlx)
 	i = -1;
 	while (++i < screens_count)
 	{
+		mlx->current_fractal_type = i;
 		mlx->scale = 100;
-		
 		if (mlx->fractal_list[i].has_formula)
 			mlx->formula = mlx->fractal_list[i].formula;
 
@@ -72,7 +72,7 @@ int	show_home(t_data *mlx)
 	
 	if (!parse_screen_dims(WINDOW_WIDTH, WINDOW_HEIGHT, segments, mlx))
 	{
-		perror("Could not parse screen");
+		perror("Cannot parse screen");
 		exit(EXIT_FAILURE);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 21:41:52 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/19 22:15:04 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ int	register_fractals(t_data *mlx)
 	fractals[1] = f_mandelbrot(1);
 	fractals[2] = f_burningship(2);
 	fractals[3] = f_apollonian(3);
-	// fractals[4] = f_julia_3(mlx->formula, 4);
-	// fractals[5] = f_mandelbrot_3(5);
 	mlx->fractal_list = fractals;
 	init_home_f(mlx);
 	return (1);

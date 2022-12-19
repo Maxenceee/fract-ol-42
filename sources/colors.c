@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 20:03:31 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 12:04:16 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/19 22:20:30 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ void	pallet_error(int *colors, t_color *color_data)
 {
 	free(colors);
 	free(color_data);
+	perror("Cannot generate color pallets");
 	exit(EXIT_FAILURE);
 }

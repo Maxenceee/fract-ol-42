@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:56:17 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 15:49:12 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/19 21:42:02 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	burningship_set(t_data *mlx, t_screen_dim s_dims)
 	int		pix;
 
 	y = -1;
+	handle_exp_variants(mlx);
 	pallet = mlx->pallets[mlx->pallet_type];
 	while (++y < s_dims.height)
 	{
@@ -31,21 +32,22 @@ void	burningship_set(t_data *mlx, t_screen_dim s_dims)
 						create_complex_number(s_dims.left + x, s_dims.top + y),
 						mlx->center_offset, mlx->scale,
 						create_complex_number(s_dims.center_x, s_dims.center_y)),
-						mlx->scale);
+						mlx->scale, mlx);
 			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
 				get_color(pix, pallet.pallet, pallet.pallet_length));
 		}
 	}
 }
 
-int	calule_burningship_series(t_complex_number point, double scale)
+int	calule_burningship_series(t_complex_number point, double scale, t_data *mlx)
 {
 	t_complex_number	num;
 	t_complex_number	temp_num;
 	int					max_iter;
 	int					i;
+	int					mul;
 
-	temp_num = create_complex_number(0, 0);
+	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
 	num = create_complex_number(0, 0);
 	max_iter = get_max_iter_from_scale(scale);
 	i = 0;
@@ -54,8 +56,7 @@ int	calule_burningship_series(t_complex_number point, double scale)
 		num.x = fabs(num.x);
 		num.y = fabs(num.y);
 		temp_num = num;
-		num.x = temp_num.x * temp_num.x - temp_num.y * temp_num.y + point.x;
-		num.y = 2. * temp_num.x * temp_num.y + point.y;
+		num = complex_add(complex_rational_pow(temp_num, mul), point);
 		i++;
 	}
 	return (i);

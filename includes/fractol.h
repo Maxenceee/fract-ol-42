@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/18 17:26:47 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/19 21:41:36 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ typedef struct s_data {
 	int					key_pressed;
 	int					mouse_lock;
 	int					mouse_offset;
+	int					next_variant;
+	int					prev_variant;
 	
 	int					pallet_type;
 	int					pallet_nb;
@@ -110,10 +112,11 @@ typedef struct s_fractal {
 	int					no_pallet;
 	int					has_formula;
 	t_complex_number	formula;
+	int					formula_exp;
 	void				(*fractol_function)(t_data *, t_screen_dim);
 	int					has_variants;
 	int					command_id;
-	int					variants_count;
+	// int					variants_count;
 	t_screen_dim		home_dims;
 	int					home_pallet;
 	int					is_registered;
@@ -186,13 +189,13 @@ t_complex_number	complex_sqrt(t_complex_number cmpl);
 
 void				julia_set(t_data *mlx, t_screen_dim s_dims);
 int					calule_julia_series(t_complex_number point,
-						t_complex_number point_offset, double scale);
+						t_complex_number point_offset, double scale, t_data *mlx);
+int					handle_exp_variants(t_data *mlx);
 int					get_max_iter_from_scale(double scale);
 
 t_complex_number	convert_corner_to_center(t_complex_number point,
 						t_complex_number mouse_offset, double scale,
 						t_complex_number mids);
-t_complex_number	get_mouse_offset_from_center(t_complex_number point);
 
 /* julia3 */
 
@@ -205,7 +208,7 @@ int					calule_julia_3_series(t_complex_number point,
 /* mandelbrot */
 
 void				mandelbrot_set(t_data *mlx, t_screen_dim s_dims);
-int					calule_mandelbrot_series(t_complex_number point);
+int					calule_mandelbrot_series(t_complex_number point, t_data *mlx);
 
 /* mandelbrot3 */
 
@@ -216,7 +219,7 @@ int					calule_mandelbrot_3_series(t_complex_number point);
 
 void				burningship_set(t_data *mlx, t_screen_dim s_dims);
 int					calule_burningship_series(t_complex_number point,
-						double scale);
+						double scale, t_data *mlx);
 
 /* apollonian_gasket */
 
@@ -287,6 +290,7 @@ int					mouse_move(int x, int y, void *param);
 void				arrow_key_events(int key_code, t_data *mlx);
 void				arrow_letter_events(int key_code, t_data *mlx);
 void				pallet_events(int key_code, t_data *mlx);
+void				variants_events(int key_code, t_data *mlx);
 void				key_events(int key_code, t_data *mlx);
 
 /* home_events */

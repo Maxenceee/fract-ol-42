@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 01:19:31 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/19 19:08:40 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	key_down_event(int key_code, void *param)
 	arrow_letter_events(key_code, mlx);
 	pallet_events(key_code, mlx);
 	key_events(key_code, mlx);
+	variants_events(key_code, mlx);
 	return (0);
 }
 
