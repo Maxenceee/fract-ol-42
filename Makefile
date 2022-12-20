@@ -8,25 +8,23 @@ CFLAGS			= -Wall -Wextra -Werror
 #MLX_INCLUDES	= -I /usr/X11/include
 #MLX_LIB			= -L /usr/X11/lib -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
 MLX_LIB			= -L ./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
-
 NAME			= fractol
-
-# %.o: %.c $(HEADERS) Makefile
-# 	$(CC) $(CFLAGS) -c $< -o $@ $(HEADERS)
 
 all:			$(NAME)
 
 $(NAME):		$(SRCS)
-#				$(CC) $(MLX_INCLUDES) $(SRCS) $(MLX_LIB) -o fractol
-				$(CC) $(SRCS) $(MLX_LIB) -o $(NAME)
+				@$(CC) $(SRCS) $(MLX_LIB) -o $(NAME)
 
-bonus: all
+bonus:			all
+
+mlx:
+				@cd minilibx_opengl_20191021/ && make
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
+				@$(RM) $(OBJS)
 
 fclean:			clean
-				$(RM) $(NAME)
+				@$(RM) $(NAME)
 
 re:				fclean all
 

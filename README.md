@@ -4,7 +4,13 @@
 
 ## Usage
 
-Compile files using the Makefile
+Compile the MinilibX running
+
+```sh
+make mlx
+```
+
+Then compile the project files running
 
 ```sh
 make all
