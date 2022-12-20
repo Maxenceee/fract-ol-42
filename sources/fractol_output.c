@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 20:10:10 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/19 22:09:01 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 18:49:34 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ respectively the imaginary part of the formula.");
 	ft_printf("\n\033[4;32mV/B:\033[0m %s\n", "\033[1;34mNext/Previous fractal variant.");
 	ft_printf("\n\033[4;32mI:\033[0m %s", "\033[1;34mToggle mouse zoom tracking.");
 	ft_printf("\n\033[4;32mT:\033[0m %s\n", "\033[1;34mSwitch to next fractal.");
-	ft_printf("\n\033[4;32mSPACE:\033[0m %s", "\033[1;34mReset zoom.");
+	ft_printf("\n\033[4;32mSPACE:\033[0m %s", "\033[1;34mReset zoom and recenter the view.");
 	ft_printf("\n\033[4;32mESC:\033[0m %s\n", "\033[1;34mExit the program.");
 	ft_printf("\n\033[0m");
 }

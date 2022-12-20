@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   circles.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:20:57 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/01 16:20:18 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 16:56:09 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,11 @@ t_complex_number	solve_equation(t_complex_number a, t_complex_number b,
 	ks = complex_add(k1, complex_add(k2, k3));
 	return (complex_add(complex_mul(complex_sqrt(ks),
 				create_complex_number(2, 0)), s));
+}
+
+int	ft_min(int a, int b)
+{
+	if (a > b)
+		return (b);
+	return (a);
 }

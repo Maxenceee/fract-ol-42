@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/19 22:15:04 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 18:11:29 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ void	init_fractol(t_data *mlx)
 	mlx->scale = INITIAL_SCALE;
 	mlx->mouse_offset = 1;
 	mlx->key_pressed = 0;
+	mlx->mouse_clicked = 0;
 	mlx->mouse_lock = 1;
 	mlx->need_save = 0;
 	mlx->pallet_type = 0;
 	mlx->is_home = 0;
+	mlx->prev_variant = 0;
+	mlx->next_variant = 0;
 	init_screen_dims(mlx);
 	mlx->center_offset = create_complex_number(0, 0);
 }
@@ -44,8 +47,9 @@ void	init_mlx_f(t_data *mlx)
 	mlx_hook(mlx->window, 17, 1L << 0, &stop_mlx, mlx);
 	mlx_hook(mlx->window, 2, 0L, &key_down_event, mlx);
 	mlx_hook(mlx->window, 3, 0L, &key_up_event, mlx);
+	mlx_hook(mlx->window, 4, 0L, &mouse_down_event, mlx);
+	mlx_hook(mlx->window, 5, 0L, &mouse_up_event, mlx);
 	mlx_hook(mlx->window, 6, 1L << 6, &mouse_move, mlx);
-	mlx_mouse_hook(mlx->window, &mouse_event, mlx);
 	mlx_loop_hook(mlx->mlx, &loop_hook_events, mlx);
 }
 

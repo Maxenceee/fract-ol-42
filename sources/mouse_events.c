@@ -6,20 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:30:45 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/17 20:58:40 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 18:48:23 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
-t_complex_number	aspect_scale(t_data *mlx, t_complex_number mouse_pos,
-	t_complex_number mids, double scale)
-{
-	return (create_complex_number(
-			(mouse_pos.x - mids.x) * scale + mlx->center_offset.x,
-			(mouse_pos.y - mids.y) * scale + mlx->center_offset.y
-		));
-}
 
 void	mouse_scroll(int button, t_complex_number mouse_pos,
 	t_complex_number mids, t_data *mlx)
@@ -74,7 +65,9 @@ int	mouse_move(int x, int y, void *param)
 	mlx = (t_data *)param;
 	if (mlx->is_home)
 		return (0);
-	if (mlx->mouse_lock == 0)
+	if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT)
+		mlx->mouse_clicked = 0;
+	if (mlx->mouse_lock == 0 && mlx->mouse_clicked == 0)
 	{
 		if (!mlx->fractal_list[mlx->current_fractal_type].has_formula)
 			return (0);
@@ -96,5 +89,39 @@ int	mouse_move(int x, int y, void *param)
 			mlx_update_image(mlx);
 		}
 	}
+	else if (mlx->mouse_clicked)
+	{
+		mlx->center_offset.x = (mlx->mouse_pos_save.x - (double)x) \
+				/ mlx->scale;
+		mlx->center_offset.y = (mlx->mouse_pos_save.y - (double)y) \
+				/ mlx->scale;
+		mlx_update_image(mlx);
+	}
+	return (0);
+}
+
+int	mouse_down_event(int button, int x, int y, void *param)
+{
+	t_data		*mlx;
+
+	mlx = (t_data *)param;
+	if (button == 1 && !mlx->is_home)
+	{
+		mlx->mouse_pos_save = create_complex_number(
+				(mlx->center_offset.x * mlx->scale) + x,
+				(mlx->center_offset.y * mlx->scale) + y);
+		mlx->mouse_clicked = 1;
+	}
+	mouse_event(button, x, y, param);
+	return (0);
+}
+
+int	mouse_up_event(int button, int x, int y, void *param)
+{
+	t_data		*mlx;
+
+	mlx = (t_data *)param;
+	if (button == 1)
+		mlx->mouse_clicked = 0;
 	return (0);
 }

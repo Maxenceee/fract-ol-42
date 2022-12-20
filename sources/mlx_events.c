@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/19 19:08:40 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 17:21:11 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int	loop_hook_events(void *param)
 	if (mlx->is_home)
 		return (0);
 	if (mlx->key_pressed == 1)
-	{
 		mlx_update_image(mlx);
-	}
 	return (0);
 }

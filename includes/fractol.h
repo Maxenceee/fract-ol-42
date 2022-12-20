@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/19 21:41:36 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 18:50:05 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define WINDOW_HEIGHT 740
 /* viewport defaults scale */
 # define INITIAL_SCALE 200
+# define HOME_SCALE 100
 /* julia formula offset */
 # define COMPLEX_NUMBER_OFFSET 0.005
 /* julia divergence max iterations */
@@ -91,7 +92,9 @@ typedef struct s_data {
 	double				scale;
 	t_complex_number	center_offset;
 	int					key_pressed;
+	int					mouse_clicked;
 	int					mouse_lock;
+	t_complex_number	mouse_pos_save;
 	int					mouse_offset;
 	int					next_variant;
 	int					prev_variant;
@@ -168,6 +171,8 @@ t_fractal			f_mandelbrot_3(int type);
 
 void				my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void				mlx_update_image(t_data *mlx);
+t_complex_number	aspect_scale(t_data *mlx, t_complex_number mouse_pos,
+						t_complex_number mids, double scale);
 
 /* complex_nums */
 
@@ -227,7 +232,7 @@ void				apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims);
 void				draw_circle(t_circle circle, t_data *mlx, t_screen_dim s_dims);
 void				clear_image(t_data *mlx, t_screen_dim s_dims);
 void				draw_gasket(t_circle crls[3], t_data *mlx, t_screen_dim s_dims);
-int					ft_min(int a, int b);
+t_circle			*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims);
 
 /* circles */
 
@@ -236,6 +241,7 @@ t_circle			*symmetric_set(double x, double y, double radius);
 t_circle			*a_symmetric_set(double x, double y, double radius);
 t_complex_number	solve_equation(t_complex_number a, t_complex_number b,
 						t_complex_number c);
+int					ft_min(int a, int b);
 
 /* circles_utils */
 
@@ -278,12 +284,13 @@ int					loop_hook_events(void *params);
 
 /* mouse_events */
 
-t_complex_number	aspect_scale(t_data *mlx, t_complex_number mouse_pos,
-						t_complex_number mids, double scale);
 void				mouse_scroll(int button, t_complex_number temp_pos,
 						t_complex_number mids, t_data *mlx);
 int					mouse_event(int button, int x, int y, void *param);
 int					mouse_move(int x, int y, void *param);
+int					mouse_down_event(int button, int x, int y, void *param);
+int					mouse_up_event(int button, int x, int y, void *param);
+int					mouse_leave_event(int button, int x, int y, void *param);
 
 /* key_events */
 
