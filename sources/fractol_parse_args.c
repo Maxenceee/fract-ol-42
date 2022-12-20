@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/18 17:15:21 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 19:15:27 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	parse_julia(int argc, char **argv, t_data *mlx)
 		if (argc > 4)
 			show_args(0);
 		offset_f = create_complex_number(ft_atof(argv[2]),
-					ft_atof(argv[3]));
+				ft_atof(argv[3]));
 		parse_arg_in_mlx(mlx, 0, offset_f);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/20 18:50:05 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 19:39:18 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 /* viewport size */
 # define WINDOW_WIDTH 1440
 # define WINDOW_HEIGHT 740
-/* viewport defaults scale */
+/* viewport defaults scales */
 # define INITIAL_SCALE 200
 # define HOME_SCALE 100
 /* julia formula offset */
@@ -39,13 +39,13 @@
 /* mlx */
 # define MLX_ERROR 1
 
-struct s_complex_number;
-struct s_color;
-struct s_circle;
-struct s_screen_dim;
-struct s_data;
-struct s_fractal;
-struct s_r_apollonian_c;
+struct	s_complex_number;
+struct	s_color;
+struct	s_circle;
+struct	s_screen_dim;
+struct	s_data;
+struct	s_fractal;
+struct	s_r_apollonian_c;
 
 typedef struct s_complex_number {
 	double	x;
@@ -64,7 +64,7 @@ typedef struct s_circle {
 	t_complex_number	center;
 }				t_circle;
 
-typedef	struct s_screen_dim {
+typedef struct s_screen_dim {
 	int		top;
 	int		left;
 	int		width;
@@ -79,12 +79,10 @@ typedef struct s_data {
 	int					bits_per_pixel;
 	int					line_length;
 	int					endian;
-	
 	void				*window;
 	void				*mlx;
 	t_screen_dim		screen_dims;
 	int					is_home;
-	
 	t_complex_number	formula;
 	t_complex_number	saved_formula;
 	t_complex_number	saved_mouse;
@@ -98,11 +96,9 @@ typedef struct s_data {
 	int					mouse_offset;
 	int					next_variant;
 	int					prev_variant;
-	
 	int					pallet_type;
 	int					pallet_nb;
 	t_color				*pallets;
-	
 	struct s_fractal	*fractal_list;
 	int					current_fractal_type;
 	int					fractal_count;
@@ -119,7 +115,6 @@ typedef struct s_fractal {
 	void				(*fractol_function)(t_data *, t_screen_dim);
 	int					has_variants;
 	int					command_id;
-	// int					variants_count;
 	t_screen_dim		home_dims;
 	int					home_pallet;
 	int					is_registered;
@@ -154,8 +149,10 @@ void				show_args(int nt);
 
 /* fractol_home */
 
-int					parse_screen_dims(int width, int height, int parts, t_data *mlx);
-void				draw_screen_image(t_screen_dim *screens, int screens_count, t_data *mlx);
+int					parse_screen_dims(int width, int height,
+						int parts, t_data *mlx);
+void				draw_screen_image(t_screen_dim *screens,
+						int screens_count, t_data *mlx);
 int					show_home(t_data *mlx);
 
 /* fractol_list */
@@ -164,8 +161,6 @@ t_fractal			f_julia(t_complex_number formula, int type);
 t_fractal			f_mandelbrot(int type);
 t_fractal			f_apollonian(int type);
 t_fractal			f_burningship(int type);
-t_fractal			f_julia_3(t_complex_number formula, int type);
-t_fractal			f_mandelbrot_3(int type);
 
 /* mlx_draw */
 
@@ -194,7 +189,8 @@ t_complex_number	complex_sqrt(t_complex_number cmpl);
 
 void				julia_set(t_data *mlx, t_screen_dim s_dims);
 int					calule_julia_series(t_complex_number point,
-						t_complex_number point_offset, double scale, t_data *mlx);
+						t_complex_number point_offset,
+						double scale, t_data *mlx);
 int					handle_exp_variants(t_data *mlx);
 int					get_max_iter_from_scale(double scale);
 
@@ -202,23 +198,11 @@ t_complex_number	convert_corner_to_center(t_complex_number point,
 						t_complex_number mouse_offset, double scale,
 						t_complex_number mids);
 
-/* julia3 */
-
-void				julia3_set(t_data *mlx, t_screen_dim s_dims);
-int					calule_julia_3_series(t_complex_number point,
-						t_complex_number point_offset, double scale);
-// int					calule_julia_4_series(t_complex_number point,
-// 						t_complex_number point_offset, double scale);
-
 /* mandelbrot */
 
 void				mandelbrot_set(t_data *mlx, t_screen_dim s_dims);
-int					calule_mandelbrot_series(t_complex_number point, t_data *mlx);
-
-/* mandelbrot3 */
-
-void				mandelbrot_3_set(t_data *mlx, t_screen_dim s_dims);
-int					calule_mandelbrot_3_series(t_complex_number point);
+int					calule_mandelbrot_series(t_complex_number point,
+						t_data *mlx);
 
 /* burningship */
 
@@ -229,9 +213,11 @@ int					calule_burningship_series(t_complex_number point,
 /* apollonian_gasket */
 
 void				apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims);
-void				draw_circle(t_circle circle, t_data *mlx, t_screen_dim s_dims);
+void				draw_circle(t_circle circle, t_data *mlx,
+						t_screen_dim s_dims);
 void				clear_image(t_data *mlx, t_screen_dim s_dims);
-void				draw_gasket(t_circle crls[3], t_data *mlx, t_screen_dim s_dims);
+void				draw_gasket(t_circle crls[3], t_data *mlx,
+						t_screen_dim s_dims);
 t_circle			*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims);
 
 /* circles */
@@ -250,8 +236,8 @@ t_circle			flip_circle(t_circle c1, t_circle c2,
 						t_circle c3, t_circle c4);
 t_r_apollonian_c	create_recursive_circle(t_circle c1, t_circle c2,
 						t_circle c3, t_circle c4);
-void				recursive_circle(t_r_apollonian_c circles, t_data *mlx,
-						t_screen_dim s_dims);
+void				recursive_circle(t_r_apollonian_c circles,
+						t_data *mlx, t_screen_dim s_dims);
 
 /* colors */
 
@@ -287,10 +273,13 @@ int					loop_hook_events(void *params);
 void				mouse_scroll(int button, t_complex_number temp_pos,
 						t_complex_number mids, t_data *mlx);
 int					mouse_event(int button, int x, int y, void *param);
-int					mouse_move(int x, int y, void *param);
 int					mouse_down_event(int button, int x, int y, void *param);
 int					mouse_up_event(int button, int x, int y, void *param);
-int					mouse_leave_event(int button, int x, int y, void *param);
+
+/* mouse_move */
+
+int					mouse_move(int x, int y, void *param);
+void				handle_on_mouse_lock(int x, int y, t_data *mlx);
 
 /* key_events */
 

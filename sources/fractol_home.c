@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/20 17:19:32 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 19:13:54 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	parse_screen_dims(int width, int height, int parts, t_data *mlx)
 	t_screen_dim	*screens;
 	int				i;
 	t_screen_dim	temp_s;
-	
+
 	screens = malloc(parts * sizeof(t_screen_dim));
 	if (!screens)
 		return (0);
@@ -49,10 +49,8 @@ void	draw_screen_image(t_screen_dim *screens, int screens_count, t_data *mlx)
 		mlx->scale = HOME_SCALE;
 		if (mlx->fractal_list[i].has_formula)
 			mlx->formula = mlx->fractal_list[i].formula;
-
 		if (!mlx->fractal_list[i].no_pallet)
 			mlx->pallet_type = mlx->fractal_list[i].home_pallet;
-		
 		mlx->fractal_list[i].home_dims = screens[i];
 		(*mlx->fractal_list[i].fractol_function)(mlx, screens[i]);
 	}
@@ -69,7 +67,6 @@ int	show_home(t_data *mlx)
 	segments = mlx->fractal_count;
 	if (segments % 2 > 0)
 		segments++;
-	
 	if (!parse_screen_dims(WINDOW_WIDTH, WINDOW_HEIGHT, segments, mlx))
 	{
 		perror("Cannot parse screen");

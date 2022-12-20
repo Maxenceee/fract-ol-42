@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/20 18:11:29 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 19:28:34 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,16 @@ void	init_home_f(t_data *mlx)
 	while (++i < mlx->fractal_count)
 	{
 		if (!mlx->fractal_list[i].no_pallet)
-			mlx->fractal_list[i].home_pallet = (int)((float)rand() / (float)RAND_MAX * mlx->pallet_nb);
-
+			mlx->fractal_list[i].home_pallet = (int)((float)rand()
+					/ (float)RAND_MAX * mlx->pallet_nb);
 		if (!mlx->fractal_list[i].has_formula)
 			continue ;
-		mlx->fractal_list[i].formula.x = ((float)rand() / (float)(RAND_MAX)) * 1;
+		mlx->fractal_list[i].formula.x = ((float)rand()
+				/ (float)(RAND_MAX)) * 1;
 		if ((float)rand() / (float)(RAND_MAX) > 0.5)
 			mlx->fractal_list[i].formula.x = -mlx->fractal_list[i].formula.x;
-
-		mlx->fractal_list[i].formula.y = ((float)rand() / (float)(RAND_MAX)) * 1;
+		mlx->fractal_list[i].formula.y = ((float)rand()
+				/ (float)(RAND_MAX)) * 1;
 		if ((float)rand() / (float)(RAND_MAX) > 0.5)
 			mlx->fractal_list[i].formula.y = -mlx->fractal_list[i].formula.y;
 	}

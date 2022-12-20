@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:14:30 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/16 15:38:52 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 19:19:04 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ t_r_apollonian_c	create_recursive_circle(t_circle c1, t_circle c2,
 	return (c);
 }
 
-void	recursive_circle(t_r_apollonian_c circles, t_data *mlx, t_screen_dim s_dims)
+void	recursive_circle(t_r_apollonian_c circles,
+	t_data *mlx, t_screen_dim s_dims)
 {
 	t_circle	cl1;
 	t_circle	cl2;

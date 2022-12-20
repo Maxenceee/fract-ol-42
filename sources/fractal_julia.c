@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:28:46 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/19 19:43:29 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 19:16:19 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	handle_exp_variants(t_data *mlx)
 {
 	if (mlx->next_variant == 1)
 		mlx->fractal_list[mlx->current_fractal_type].formula_exp++;
-	if (mlx->prev_variant == 1 && mlx->fractal_list[mlx->current_fractal_type].formula_exp > 1)
+	if (mlx->prev_variant == 1
+		&& mlx->fractal_list[mlx->current_fractal_type].formula_exp > 1)
 		mlx->fractal_list[mlx->current_fractal_type].formula_exp--;
 	return (mlx->fractal_list[mlx->current_fractal_type].formula_exp);
 }
