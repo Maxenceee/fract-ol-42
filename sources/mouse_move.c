@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:33:15 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/20 19:36:26 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/20 19:41:08 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	handle_on_mouse_lock(int x, int y, t_data *mlx)
 	double		ry;
 
 	if (!mlx->fractal_list[mlx->current_fractal_type].has_formula)
-		return (0);
+		return ;
 	rx = 1. / WINDOW_WIDTH * x;
 	ry = 1. / WINDOW_HEIGHT * y;
 	if (rx > 0. && rx < 1. && ry > 0. && ry < 1.)
