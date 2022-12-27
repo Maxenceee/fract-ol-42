@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/20 19:13:54 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/26 17:33:56 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	show_home(t_data *mlx)
 
 	mlx->is_home = 1;
 	mlx->mouse_lock = 1;
+	mlx->center_offset = create_complex_number(0, 0);
 	segments = mlx->fractal_count;
 	if (segments % 2 > 0)
 		segments++;

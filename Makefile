@@ -6,7 +6,7 @@ CC				= cc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror 
 #MLX_INCLUDES	= -I /usr/X11/include
-#MLX_LIB			= -L /usr/X11/lib -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
+#MLX_LIB		= -L /usr/X11/lib -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
 MLX_LIB			= -L ./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
 NAME			= fractol
 
