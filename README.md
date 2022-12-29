@@ -10,7 +10,7 @@ Compile the MinilibX running
 make mlx
 ```
 
-Then compile the project files running
+Then compile the project running
 
 ```sh
 make all
