@@ -6,7 +6,7 @@
 
 First clone the project.
 
-Compile the MinilibX running
+Compile the MinilibX Lib running
 
 ```sh
 make mlx
