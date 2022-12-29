@@ -4,6 +4,8 @@
 
 ## Usage
 
+First clone the project.
+
 Compile the MinilibX running
 
 ```sh
