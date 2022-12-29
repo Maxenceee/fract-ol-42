@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/20 17:21:11 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/29 23:37:10 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ int	key_down_event(int key_code, void *param)
 		return (0);
 	arrow_key_events(key_code, mlx);
 	arrow_letter_events(key_code, mlx);
-	pallet_events(key_code, mlx);
-	key_events(key_code, mlx);
-	variants_events(key_code, mlx);
 	return (0);
 }
 
@@ -50,6 +47,9 @@ int	key_up_event(int key_code, void *param)
 		return (0);
 	if (mlx->key_pressed == 1)
 		mlx->key_pressed = 0;
+	pallet_events(key_code, mlx);
+	variants_events(key_code, mlx);
+	key_events(key_code, mlx);
 	return (0);
 }
 
