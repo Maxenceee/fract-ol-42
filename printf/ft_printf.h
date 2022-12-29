@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:33:45 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/19 18:28:27 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/29 15:33:59 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdlib.h>
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
 
 typedef struct s_flags
 {
@@ -95,11 +100,26 @@ char	*ft_strjoin(char const *s1, char const *s2);
 /* strlcat */
 int		ft_strlcat(char *dest, char *src, unsigned int size);
 
+/* strcat */
+char	*ft_strcat(char *dest, char *src);
+
 /* tolower */
 char	*ft_str_tolower(char *str);
 int		ft_tolower(int num);
 
 /* convert base */
 char	*ft_convert_base(unsigned long long ull, int base);
+
+/* ft_calloc */
+void	*ft_calloc(size_t count, size_t size);
+
+/* ft_memset */
+void	*ft_memset(void *b, int c, size_t len);
+
+/* ft_bzero */
+void	ft_bzero(void *s, size_t n);
+
+/* ft_pow */
+int	ft_pow(int nb, int power);
 
 #endif /* ft_printf_h */
