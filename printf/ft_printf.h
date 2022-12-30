@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:33:45 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/29 15:47:47 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/30 00:54:14 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 
 /* ft_pow */
-int	ft_pow(int nb, int power);
+double	ft_pow(double x, double y);
 
 #endif /* ft_printf_h */
