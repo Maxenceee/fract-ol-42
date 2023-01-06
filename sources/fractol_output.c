@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 20:10:10 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/20 19:17:00 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/06 19:10:16 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ respectively the imaginary part of the formula.");
 	ft_printf("\n\033[0m");
 }
 
-static void	show_args_0(void)
+static void	show_args_0(int n)
 {
-	ft_printf("\n\n\033[1;31mWrong arguments!\n");
+	if (n != 4)
+		ft_printf("\n\n\033[1;31mWrong arguments!\n");
 	ft_printf("\033[1;34mPlease select one of the following arguments \
 ['%s' or '%s', '%s' or '%s', '%s' or '%s', '%s' or '%s'].\n",
 		"\033[1;32m\033[4mjulia\033[0m\033[1;34m",
@@ -67,17 +68,19 @@ static void	show_args_0(void)
 	ft_printf("\033[1;34mIf '\033[1;32m\033[4mjulia\033[0m\033[1;34m' is selected \
 you need to specify \033[4mJulia set formula\033[0m\033[1;34m using two \
 more arguments: a complex number witch his \033[4mreal\033[0m\033[1;34m \
-part is separated of the \033[4mimaginary\033[0m\033[1;34m one [%s;%s] \
-and [%s;%s](i not required).\n", "\033[1;32m\033[4m1\033[0m\033[1;34m",
+part [%s;%s] is separated of the \033[4mimaginary\033[0m\033[1;34m one \
+[%s;%s](i not required).\n", "\033[1;32m\033[4m1\033[0m\033[1;34m",
 		"\033[1;32m\033[4m-1\033[0m\033[1;34m",
 		"\033[1;32m\033[4m1i\033[0m\033[1;34m",
 		"\033[1;32m\033[4m-1i\033[0m\033[1;34m");
+	ft_printf("\033[1;34mYou can also launch the program without any arguments, \
+this will directly display the home.%s", "\033[0m");
 }
 
 void	show_args(int nt)
 {
-	if (nt == 0)
-		show_args_0();
+	if (nt == 0 || nt == 4)
+		show_args_0(nt);
 	else if (nt == 1 || nt == 2)
 	{
 		if (nt == 1)
@@ -86,8 +89,8 @@ void	show_args(int nt)
 			ft_printf("\n\n\033[1;31mIncorrect arguments!\n");
 		ft_printf("\033[1;34mYou have selected '\033[1;32m\033[4mjulia\033[0m\033[1;34m', \
 you need to specify \033[4mJulia set formula\033[0m\033[1;34m using two arguments: \
-a complex number witch his \033[4mreal\033[0m\033[1;34m part is separated of the \
-\033[4mimaginary\033[0m\033[1;34m one [%s;%s] and [%s;%s]\
+a complex number witch his \033[4mreal\033[0m\033[1;34m part [%s;%s] is separated of the \
+\033[4mimaginary\033[0m\033[1;34m one [%s;%s]\
 (i not required).\n",
 			"\033[1;32m\033[4m1\033[0m\033[1;34m",
 			"\033[1;32m\033[4m-1\033[0m\033[1;34m",

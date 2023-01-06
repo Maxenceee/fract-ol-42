@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:17:33 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/20 19:15:12 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/06 19:32:10 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_fractal	f_apollonian(int type)
 
 	fractal.id = 4;
 	fractal.has_formula = 0;
-	fractal.fractal_name = "Apollonian gasket fractal";
+	fractal.fractal_name = "Apollonian gasket";
 	fractal.fractol_function = &apollonian_gasket_set;
 	fractal.has_variants = 1;
 	fractal.formula_exp = -1;

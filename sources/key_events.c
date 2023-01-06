@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:43:58 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/29 23:37:02 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/06 19:34:17 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,6 @@ void	key_events(int key_code, t_data *mlx)
 		mlx->center_offset = create_complex_number(0, 0);
 		mlx_update_image(mlx);
 	}
-	if (key_code == 31)
-		ft_printf("\n\033[1;35mCurrent state: %+.3f %+.3fi %s\n",
-			mlx->formula.x, mlx->formula.y, "\033[0m");
 	if (key_code == 34)
 		mlx->mouse_offset = !mlx->mouse_offset;
 	if (key_code == 17)

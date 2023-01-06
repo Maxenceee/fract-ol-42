@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/29 23:37:10 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/06 19:34:21 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,19 @@ int	key_up_event(int key_code, void *param)
 	pallet_events(key_code, mlx);
 	variants_events(key_code, mlx);
 	key_events(key_code, mlx);
+	if (key_code == 31)
+	{
+		ft_printf("\n\033[1;35mCurrent fractal: \033[4m%s%s\n",
+			mlx->fractal_list[mlx->current_fractal_type].fractal_name,
+			"\033[0m");
+		if (mlx->fractal_list[mlx->current_fractal_type].has_formula)
+			ft_printf("\033[1;35mCurrent formula: %+.3f %+.3fi %s\n",
+				mlx->formula.x, mlx->formula.y, "\033[0m");
+		if (mlx->fractal_list[mlx->current_fractal_type].formula_exp != -1)
+			ft_printf("\033[1;35mCurrent exponent: %d %s\n",
+				mlx->fractal_list[mlx->current_fractal_type].formula_exp,
+				"\033[0m");
+	}
 	return (0);
 }
 
