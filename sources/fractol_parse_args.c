@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/07 14:56:23 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/07 15:53:06 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ static void	parse_julia(t_args args, t_data *mlx)
 	parse_arg_in_mlx(mlx, 0, offset_f);
 }
 
-static void parse_args(t_args args, t_data *mlx) {
+static void	parse_args(t_args args, t_data *mlx)
+{
 	int	pallet;
-	
+
 	if (args.argc > 2)
 	{
 		pallet = atoi(args.argv[2]);
