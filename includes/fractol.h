@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/30 12:21:15 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/07 14:50:09 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ struct	s_screen_dim;
 struct	s_data;
 struct	s_fractal;
 struct	s_r_apollonian_c;
+struct	s_args;
 
 typedef struct s_complex_number {
 	double	x;
@@ -126,6 +127,11 @@ typedef struct s_r_apollonian_c {
 	t_circle	c3;
 	t_circle	c4;
 }				t_r_apollonian_c;
+
+typedef struct s_args {
+	int		argc;
+	char	**argv;
+}				t_args;
 
 /* fractol */
 
