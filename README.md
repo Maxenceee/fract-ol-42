@@ -4,7 +4,7 @@
 
 ## Usage
 
-First clone the project and open the `Bonus` directory.
+First clone the project and open the `bonus` directory.
 
 Compile the MinilibX Lib running
 
