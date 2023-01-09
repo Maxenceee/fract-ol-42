@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/07 14:24:31 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/09 18:46:51 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	ft_fractol(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	srand(time(NULL));
 	if (ft_fractol(argc, argv))
 		return (1);
 	return (0);

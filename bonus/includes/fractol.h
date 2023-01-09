@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/07 14:50:09 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/09 18:46:14 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include <unistd.h>
 # include <time.h>
 # include "../minilibx_opengl_20191021/mlx.h"
 # include "../printf/ft_printf.h"
