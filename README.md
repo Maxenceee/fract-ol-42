@@ -9,13 +9,13 @@ First clone the project and open the `bonus` directory.
 Compile the MinilibX Lib running
 
 ```sh
-make mlx
+$> make mlx
 ```
 
 Then compile the project running
 
 ```sh
-make all
+$> make all
 ```
 
 Finally run `./fractol` and enjoy the beauty of fractals :)
