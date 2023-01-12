@@ -4,15 +4,15 @@
 
 ## Usage
 
-Compile the MinilibX Lib running
+First clone the project and compile the MinilibX Library running
 
-```sh
+```bash
 $> make mlx
 ```
 
 Then compile the project running
 
-```sh
+```bash
 $> make bonus
 ```
 
