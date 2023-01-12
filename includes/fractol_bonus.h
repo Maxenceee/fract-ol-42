@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:51:47 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/12 17:00:31 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FRACTOL_H
 
 # include <stdio.h>
-# include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
 # include <time.h>
