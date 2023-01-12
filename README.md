@@ -6,13 +6,13 @@
 
 First clone the project and compile the MinilibX Library running
 
-```bash
+```sh
 $> make mlx
 ```
 
 Then compile the project running
 
-```bash
+```sh
 $> make bonus
 ```
 
