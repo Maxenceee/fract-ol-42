@@ -1,0 +1,5 @@
+fractol
+*.o
+a.out
+.vscode
+*/.vscode
