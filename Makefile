@@ -1,68 +1,74 @@
-SRCS			=	./mandatory/circles_utils.c	\
-					./mandatory/circles.c	\
-					./mandatory/colors.c	\
-					./mandatory/complex_nums_opperators.c	\
-					./mandatory/complex_nums.c	\
-					./mandatory/fractal_apollonian_gasket.c	\
-					./mandatory/fractal_burningship.c	\
-					./mandatory/fractal_julia.c	\
-					./mandatory/fractal_mandelbrot.c	\
-					./mandatory/fractol_home.c	\
-					./mandatory/fractol_init.c	\
-					./mandatory/fractol_list.c	\
-					./mandatory/fractol_output.c	\
-					./mandatory/fractol_parse_args.c	\
-					./mandatory/fractol.c	\
-					./mandatory/ft_atof.c	\
-					./mandatory/ft_atoi.c	\
-					./mandatory/ft_isdigit.c	\
-					./mandatory/ft_memcpy.c	\
-					./mandatory/ft_strcmp.c	\
-					./mandatory/ft_strstr.c	\
-					./mandatory/ft_strtolower.c	\
-					./mandatory/home_events.c	\
-					./mandatory/key_events.c	\
-					./mandatory/mlx_draw.c	\
-					./mandatory/mlx_events.c	\
-					./mandatory/mouse_events.c	\
-					./mandatory/mouse_move.c	\
-					./mandatory/pallets.c	\
-					./mandatory/pallets2.c	\
-					./mandatory/pallets3.c
-OBJS			=	$(SRCS:.c=.o)
+MANDATORY_DIR	=	mandatory
+BONUS_DIR		=	bonus
+OBJ_DIR			=	.objs
 
-SRCS_BONUS		=	./bonus/circles_utils_bonus.c	\
-					./bonus/circles_bonus.c	\
-					./bonus/colors_bonus.c	\
-					./bonus/complex_nums_opperators_bonus.c	\
-					./bonus/complex_nums_bonus.c	\
-					./bonus/fractal_apollonian_gasket_bonus.c	\
-					./bonus/fractal_burningship_bonus.c	\
-					./bonus/fractal_julia_bonus.c	\
-					./bonus/fractal_mandelbrot_bonus.c	\
-					./bonus/fractol_home_bonus.c	\
-					./bonus/fractol_init_bonus.c	\
-					./bonus/fractol_list_bonus.c	\
-					./bonus/fractol_output_bonus.c	\
-					./bonus/fractol_parse_args_bonus.c	\
-					./bonus/fractol_bonus.c	\
-					./bonus/ft_atof_bonus.c	\
-					./bonus/ft_atoi_bonus.c	\
-					./bonus/ft_isdigit_bonus.c	\
-					./bonus/ft_memcpy_bonus.c	\
-					./bonus/ft_strcmp_bonus.c	\
-					./bonus/ft_strstr_bonus.c	\
-					./bonus/ft_strtolower_bonus.c	\
-					./bonus/home_events_bonus.c	\
-					./bonus/key_events_bonus.c	\
-					./bonus/mlx_draw_bonus.c	\
-					./bonus/mlx_events_bonus.c	\
-					./bonus/mouse_events_bonus.c	\
-					./bonus/mouse_move_bonus.c	\
-					./bonus/pallets_bonus.c	\
-					./bonus/pallets2_bonus.c	\
-					./bonus/pallets3_bonus.c	
-OBJS_BONUS		=	$(SRCS_BONUS:.c=.o)
+SRCS			=	$(MANDATORY_DIR)/circles_utils.c	\
+					$(MANDATORY_DIR)/circles.c	\
+					$(MANDATORY_DIR)/colors.c	\
+					$(MANDATORY_DIR)/complex_nums_opperators.c	\
+					$(MANDATORY_DIR)/complex_nums.c	\
+					$(MANDATORY_DIR)/fractal_apollonian_gasket.c	\
+					$(MANDATORY_DIR)/fractal_burningship.c	\
+					$(MANDATORY_DIR)/fractal_julia.c	\
+					$(MANDATORY_DIR)/fractal_mandelbrot.c	\
+					$(MANDATORY_DIR)/fractol_home.c	\
+					$(MANDATORY_DIR)/fractol_init.c	\
+					$(MANDATORY_DIR)/fractol_list.c	\
+					$(MANDATORY_DIR)/fractol_output.c	\
+					$(MANDATORY_DIR)/fractol_parse_args.c	\
+					$(MANDATORY_DIR)/fractol.c	\
+					$(MANDATORY_DIR)/ft_atof.c	\
+					$(MANDATORY_DIR)/ft_atoi.c	\
+					$(MANDATORY_DIR)/ft_isdigit.c	\
+					$(MANDATORY_DIR)/ft_memcpy.c	\
+					$(MANDATORY_DIR)/ft_strcmp.c	\
+					$(MANDATORY_DIR)/ft_strstr.c	\
+					$(MANDATORY_DIR)/ft_strtolower.c	\
+					$(MANDATORY_DIR)/home_events.c	\
+					$(MANDATORY_DIR)/key_events.c	\
+					$(MANDATORY_DIR)/mlx_draw.c	\
+					$(MANDATORY_DIR)/mlx_events.c	\
+					$(MANDATORY_DIR)/mouse_events.c	\
+					$(MANDATORY_DIR)/mouse_move.c	\
+					$(MANDATORY_DIR)/pallets.c	\
+					$(MANDATORY_DIR)/pallets2.c	\
+					$(MANDATORY_DIR)/pallets3.c
+# OBJS			=	$(SRCS:.c=.o)
+OBJS			=	$(patsubst $(MANDATORY_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
+
+SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
+					$(BONUS_DIR)/circles_bonus.c	\
+					$(BONUS_DIR)/colors_bonus.c	\
+					$(BONUS_DIR)/complex_nums_opperators_bonus.c	\
+					$(BONUS_DIR)/complex_nums_bonus.c	\
+					$(BONUS_DIR)/fractal_apollonian_gasket_bonus.c	\
+					$(BONUS_DIR)/fractal_burningship_bonus.c	\
+					$(BONUS_DIR)/fractal_julia_bonus.c	\
+					$(BONUS_DIR)/fractal_mandelbrot_bonus.c	\
+					$(BONUS_DIR)/fractol_home_bonus.c	\
+					$(BONUS_DIR)/fractol_init_bonus.c	\
+					$(BONUS_DIR)/fractol_list_bonus.c	\
+					$(BONUS_DIR)/fractol_output_bonus.c	\
+					$(BONUS_DIR)/fractol_parse_args_bonus.c	\
+					$(BONUS_DIR)/fractol_bonus.c	\
+					$(BONUS_DIR)/ft_atof_bonus.c	\
+					$(BONUS_DIR)/ft_atoi_bonus.c	\
+					$(BONUS_DIR)/ft_isdigit_bonus.c	\
+					$(BONUS_DIR)/ft_memcpy_bonus.c	\
+					$(BONUS_DIR)/ft_strcmp_bonus.c	\
+					$(BONUS_DIR)/ft_strstr_bonus.c	\
+					$(BONUS_DIR)/ft_strtolower_bonus.c	\
+					$(BONUS_DIR)/home_events_bonus.c	\
+					$(BONUS_DIR)/key_events_bonus.c	\
+					$(BONUS_DIR)/mlx_draw_bonus.c	\
+					$(BONUS_DIR)/mlx_events_bonus.c	\
+					$(BONUS_DIR)/mouse_events_bonus.c	\
+					$(BONUS_DIR)/mouse_move_bonus.c	\
+					$(BONUS_DIR)/pallets_bonus.c	\
+					$(BONUS_DIR)/pallets2_bonus.c	\
+					$(BONUS_DIR)/pallets3_bonus.c	
+# OBJS_BONUS		=	$(SRCS_BONUS:.c=.o)
+OBJS_BONUS		=	$(patsubst $(BONUS_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS_BONUS))
 
 HEADER_SRCS		=	fractol.h fractol_bonus.h
 HEADERS_DIR		=	includes/
@@ -75,7 +81,15 @@ CFLAGS			=	-Wall -Wextra -Werror -o3
 MLX_LIB			=	-L ./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
 NAME			=	fractol
 
-%.o: %.c $(HEADERS) Makefile
+GREEN			=	\033[1;32m
+DEFAULT			=	\033[0m
+
+$(OBJ_DIR)/%.o: $(MANDATORY_DIR)/%.c $(HEADERS) Makefile
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@ 
+
+$(OBJ_DIR)/%.o: $(BONUS_DIR)/%.c $(HEADERS) Makefile
+	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@ 
 
 all:			$(NAME)
