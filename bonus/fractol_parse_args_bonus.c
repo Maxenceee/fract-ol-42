@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:44 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/19 22:41:46 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	parse_julia(t_args args, t_data *mlx)
 		show_args(1);
 	if (args.argc > 4)
 	{
-		pallet = atoi(args.argv[4]);
+		pallet = ft_atoi(args.argv[4]);
 		if (pallet > mlx->pallet_nb - 1)
 			show_args(0);
 		mlx->pallet_type = pallet;
@@ -48,7 +48,7 @@ static void	parse_args(t_args args, t_data *mlx)
 
 	if (args.argc > 2)
 	{
-		pallet = atoi(args.argv[2]);
+		pallet = ft_atoi(args.argv[2]);
 		if (pallet > mlx->pallet_nb - 1)
 			show_args(0);
 		mlx->pallet_type = pallet;

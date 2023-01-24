@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/06 19:34:21 by mgama            ###   ########.fr       */
+/*   Updated: 2023/01/19 22:57:07 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 int	stop_mlx(t_data *mlx)
 {
-	mlx_destroy_image(mlx->mlx, mlx->img);
-	mlx_destroy_window(mlx->mlx, mlx->window);
-	free(mlx->pallets->pallet);
-	free(mlx->fractal_list);
+	if (mlx->img != NULL)
+		mlx_destroy_image(mlx->mlx, mlx->img);
+	if (mlx->window != NULL)
+		mlx_destroy_window(mlx->mlx, mlx->window);
+	if (mlx->pallets->pallet != NULL)
+		free(mlx->pallets->pallet);
+	if (mlx->fractal_list != NULL)
+		free(mlx->fractal_list);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
