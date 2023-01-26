@@ -2,4 +2,5 @@ fractol
 *.o
 a.out
 .vscode
+.objs
 */.vscode
