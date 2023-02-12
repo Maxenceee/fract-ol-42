@@ -82,14 +82,17 @@ MLX_LIB			=	-L ./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework App
 NAME			=	fractol
 
 GREEN			=	\033[1;32m
+BLUE			=	\033[1;34m
 DEFAULT			=	\033[0m
 
 $(OBJ_DIR)/%.o: $(MANDATORY_DIR)/%.c $(HEADERS) Makefile
 	@mkdir -p $(OBJ_DIR)
+	@echo "$(BLUE)Compiling$(DEFAULT) $<"
 	@$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(OBJ_DIR)/%.o: $(BONUS_DIR)/%.c $(HEADERS) Makefile
 	@mkdir -p $(OBJ_DIR)
+	@echo "$(BLUE)Compiling$(DEFAULT) $<"
 	@$(CC) $(CFLAGS) -c $< -o $@ 
 
 all:			$(NAME)
