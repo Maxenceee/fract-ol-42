@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/19 22:56:10 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/18 18:08:10 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,19 @@ int	key_up_event(int key_code, void *param)
 	key_events(key_code, mlx);
 	if (key_code == 31)
 		print_state(mlx);
+	if (key_code == 6)
+	{
+		t_transition trans;
+		struct timeval  tv;
+		gettimeofday(&tv, NULL);
+		double time_in_mill = (tv.tv_sec) * 1000 + (tv.tv_usec) / 1000;
+		
+		trans.start_time = time_in_mill;
+		trans.duration = 500;
+		trans.current_time = time_in_mill;
+		mlx->current_transition = trans;
+		mlx->transition_req = 1;
+	}
 	return (0);
 }
 
@@ -84,5 +97,22 @@ int	loop_hook_events(void *param)
 		return (0);
 	if (mlx->key_pressed == 1)
 		mlx_update_image(mlx);
+
+	struct timeval  tv;
+	gettimeofday(&tv, NULL);
+	double time_in_mill = (tv.tv_sec) * 1000 + (tv.tv_usec) / 1000;
+	mlx->current_transition.current_time = time_in_mill;
+	if (mlx->transition_req && mlx->current_transition.current_time >= mlx->current_transition.start_time && mlx->current_transition.current_time <= mlx->current_transition.start_time + mlx->current_transition.duration)
+	{
+		// printf("time %f %f\n", mlx->current_transition.current_time, mlx->current_transition.start_time);
+		t_complex_number start = create_complex_number(0, 0);
+		t_complex_number end = create_complex_number(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+		t_complex_number t = transition_cubic(start, end, mlx->current_transition);
+		// mlx_update_image(mlx);
+		
+		my_mlx_pixel_put(mlx, t.x, t.y, 0XFF0000);
+		mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img, 0, 0);
+		// mlx->transition_req = 0;
+	}
 	return (0);
 }

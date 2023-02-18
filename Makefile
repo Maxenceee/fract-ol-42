@@ -66,7 +66,9 @@ SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 					$(BONUS_DIR)/mouse_move_bonus.c	\
 					$(BONUS_DIR)/pallets_bonus.c	\
 					$(BONUS_DIR)/pallets2_bonus.c	\
-					$(BONUS_DIR)/pallets3_bonus.c	
+					$(BONUS_DIR)/pallets3_bonus.c	\
+					$(BONUS_DIR)/transitions.c	
+
 # OBJS_BONUS		=	$(SRCS_BONUS:.c=.o)
 OBJS_BONUS		=	$(patsubst $(BONUS_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS_BONUS))
 
@@ -75,10 +77,10 @@ HEADERS_DIR		=	includes/
 HEADERS			=	$(addprefix $(HEADERS_DIR), $(HEADER_SRCS))
 CC				=	cc
 RM				=	rm -f
-CFLAGS			=	-Wall -Wextra -Werror -o3
+# CFLAGS			=	-Wall -Wextra -Werror -o3
 #MLX_INCLUDES	=	-I /usr/X11/include
 #MLX_LIB		=	-L /usr/X11/lib -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
-MLX_LIB			=	-L ./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
+MLX_LIB			=	-L ./libmlx -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
 NAME			=	fractol
 
 GREEN			=	\033[1;32m
@@ -106,7 +108,7 @@ bonus:			$(OBJS_BONUS)
 				@echo "$(GREEN)$(NAME) bonus compiled!$(DEFAULT)"
 
 mlx:
-				@cd minilibx_opengl_20191021/ && make
+				@cd libmlx/ && make
 
 clean:
 				@$(RM) $(OBJS) $(OBJS_BONUS)

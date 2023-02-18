@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 17:00:31 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/18 18:42:08 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <unistd.h>
 # include <math.h>
 # include <time.h>
-# include "../minilibx_opengl_20191021/mlx.h"
+# include <sys/time.h>
+# include <pthread.h>
+# include "../libmlx/mlx.h"
 # include "../printf/ft_printf.h"
 
 /* viewport size */
@@ -34,6 +36,8 @@
 # endif
 /* apollonian min circle radius */
 # define MIN_RADIUS 2
+/* threads */
+# define THREADS 4
 /* mlx */
 # define MLX_ERROR 1
 # define UNUSED(x) (void)(x)
@@ -46,6 +50,9 @@ struct	s_data;
 struct	s_fractal;
 struct	s_r_apollonian_c;
 struct	s_args;
+struct	s_transition;
+struct	s_thread;
+struct	s_render;
 
 typedef struct s_complex_number {
 	double	x;
@@ -72,6 +79,26 @@ typedef struct s_screen_dim {
 	int		center_x;
 	int		center_y;
 }				t_screen_dim;
+
+typedef struct s_transition {
+	double				start_time;
+	double				current_time;
+	double				duration;
+	t_complex_number	*st;
+	t_complex_number	*ed;
+}				t_transition;
+
+typedef struct s_thread
+{
+	int				id;
+	struct s_data	*mlx;
+}				t_thread;
+
+typedef struct s_render
+{
+	pthread_t	threads[THREADS];
+	t_thread	args[THREADS];
+}				t_render;
 
 typedef struct s_data {
 	void				*img;
@@ -102,6 +129,9 @@ typedef struct s_data {
 	struct s_fractal	*fractal_list;
 	int					current_fractal_type;
 	int					fractal_count;
+	int					transition_req;
+	t_transition		current_transition;
+	t_render	render;
 }				t_data;
 
 typedef struct s_fractal {
@@ -298,6 +328,10 @@ void				key_events(int key_code, t_data *mlx);
 
 int					mouse_home_event(t_data *mlx, int button, int x, int y);
 void				catch_fractal_from_screen(t_data *mlx, int x, int y);
+
+/* transitions */
+
+t_complex_number	transition_cubic(t_complex_number start_coords, t_complex_number end_coords, t_transition trans);
 
 /*** utils ***/
 
