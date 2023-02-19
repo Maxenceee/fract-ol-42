@@ -12,6 +12,8 @@ $> make bonus
 
 Finally run `./fractol` and enjoy the beauty of fractals :)
 
+#### Help
+
 Run `-h` parameter to display the help menu.
 
 <!-- You can also generate a specific fractal among the following, the Julia set, the Mandelbrot set, the Burningship set or the Apollonian gasket fractal. -->
