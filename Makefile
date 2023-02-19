@@ -41,10 +41,13 @@ SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 					$(BONUS_DIR)/colors_utils_bonus.c	\
 					$(BONUS_DIR)/complex_nums_opperators_bonus.c	\
 					$(BONUS_DIR)/complex_nums_bonus.c	\
+					$(BONUS_DIR)/complex_nums_trigo_bonus.c	\
 					$(BONUS_DIR)/fractal_apollonian_gasket_bonus.c	\
 					$(BONUS_DIR)/fractal_burningship_bonus.c	\
 					$(BONUS_DIR)/fractal_julia_bonus.c	\
 					$(BONUS_DIR)/fractal_mandelbrot_bonus.c	\
+					$(BONUS_DIR)/fractal_tricorn_bonus.c	\
+					$(BONUS_DIR)/fractal_v.c	\
 					$(BONUS_DIR)/fractol_home_bonus.c	\
 					$(BONUS_DIR)/fractol_init_bonus.c	\
 					$(BONUS_DIR)/fractol_list_bonus.c	\

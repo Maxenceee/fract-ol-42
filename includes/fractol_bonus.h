@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 03:12:10 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 19:53:28 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 /* apollonian min circle radius */
 # define MIN_RADIUS 2
 /* threads */
-# define THREADS 16
+# define THREADS 8
 /* mlx */
 # define MLX_ERROR 1
 # define UNUSED(x) (void)(x)
@@ -146,6 +146,7 @@ typedef struct s_data {
 
 typedef struct s_fractal {
 	int					id;
+	int					mfvar;
 	char				*fractal_name;
 	int					type_i;
 	int					no_pallet;
@@ -209,10 +210,9 @@ void				show_args(int nt);
 
 /* fractol_home */
 
-int					parse_screen_dims(int width, int height,
-						int parts, t_data *mlx);
-void				draw_screen_image(t_screen_dim *screens,
-						int screens_count, t_data *mlx);
+void				parse_screen_dims(t_screen_dim *screens,
+						t_complex_number dims, int parts, t_data *mlx);
+void				draw_screen_image(t_screen_dim *screens, t_data *mlx);
 int					show_home(t_data *mlx);
 
 /* fractol_list */
@@ -221,6 +221,8 @@ t_fractal			f_julia(t_complex_number formula, int type);
 t_fractal			f_mandelbrot(int type);
 t_fractal			f_apollonian(int type);
 t_fractal			f_burningship(int type);
+t_fractal			f_fractal_tricorn(int type);
+t_fractal			f_fractal_v(int type);
 
 /* mlx_draw */
 
@@ -245,6 +247,12 @@ t_complex_number	complex_add(t_complex_number a, t_complex_number b);
 t_complex_number	complex_sub(t_complex_number a, t_complex_number b);
 t_complex_number	complex_div(t_complex_number a, t_complex_number b);
 t_complex_number	complex_sqrt(t_complex_number cmpl);
+
+/* complex_nums_trigo */
+
+t_complex_number	complex_sinh(t_complex_number a);
+t_complex_number	complex_sin(t_complex_number a);
+t_complex_number	complex_cos(t_complex_number a);
 
 /* julia */
 
@@ -283,6 +291,18 @@ void				clear_image(t_data *mlx, t_screen_dim s_dims);
 void				draw_gasket(t_circle crls[3], t_data *mlx,
 						t_screen_dim s_dims);
 t_circle			*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims);
+
+/* fractal_tricorn */
+
+void				fractal_tricorn(t_data *mlx, t_screen_dim s_dims);
+void				render_fractal_tricorn(t_data *mlx, t_screen_dim s_dims, int x, int y);
+t_pixel				calcule_tricorn_series(t_complex_number point, t_data *mlx);
+
+/* fractal_v */
+
+void				fractal_v(t_data *mlx, t_screen_dim s_dims);
+void				render_fractal_v(t_data *mlx, t_screen_dim s_dims, int x, int y);
+t_pixel				calcule_fractal_v_series(t_complex_number point, t_data *mlx);
 
 /* circles */
 

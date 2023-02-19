@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:46:28 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:19 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 18:02:52 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 t_complex_number	create_complex_number(double x, double y)
 {
-	t_complex_number	num;
-
-	num.x = x;
-	num.y = y;
-	return (num);
+	return ((t_complex_number){.x = x, .y = y});
 }
 
 double	modulus_complex_2(t_complex_number a)

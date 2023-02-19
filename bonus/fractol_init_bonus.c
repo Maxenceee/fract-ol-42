@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 01:05:09 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 18:40:55 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	register_fractals(t_data *mlx)
 {
 	t_fractal	*fractals;
 
-	mlx->fractal_count = 4;
+	mlx->fractal_count = 5;
 	fractals = malloc(mlx->fractal_count * sizeof(t_fractal));
 	if (!fractals)
 		return (0);
@@ -103,6 +103,8 @@ int	register_fractals(t_data *mlx)
 	fractals[1] = f_mandelbrot(1);
 	fractals[2] = f_burningship(2);
 	fractals[3] = f_apollonian(3);
+	fractals[4] = f_fractal_tricorn(4);
+	// fractals[0] = f_fractal_v(0);
 	mlx->fractal_list = fractals;
 	init_home_f(mlx);
 	return (1);
