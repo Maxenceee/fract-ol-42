@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/18 16:09:35 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 01:05:09 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	init_fractol(t_data *mlx)
 	mlx->is_home = 0;
 	mlx->prev_variant = 0;
 	mlx->next_variant = 0;
+	mlx->smooth = 1;
+	mlx->no_multithp = 0;
 	init_screen_dims(mlx);
 	mlx->center_offset = create_complex_number(0, 0);
 }

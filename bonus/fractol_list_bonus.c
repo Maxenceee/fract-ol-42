@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:17:33 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:38 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/18 19:20:44 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ t_fractal	f_julia(t_complex_number formula, int type)
 	fractal.has_formula = 1;
 	fractal.formula = formula;
 	fractal.fractal_name = "Julia set";
-	fractal.fractol_function = &julia_set;
+	fractal.fractol_function = &render_julia_set;
+	fractal.fractol_function_nothp = &julia_set;
 	fractal.has_variants = 1;
 	fractal.formula_exp = 2;
 	fractal.no_pallet = 0;
@@ -36,7 +37,8 @@ t_fractal	f_mandelbrot(int type)
 	fractal.id = 2;
 	fractal.has_formula = 0;
 	fractal.fractal_name = "Mandelbrot set";
-	fractal.fractol_function = &mandelbrot_set;
+	fractal.fractol_function = &render_mandelbrot_set;
+	fractal.fractol_function_nothp = &mandelbrot_set;
 	fractal.has_variants = 1;
 	fractal.formula_exp = 2;
 	fractal.no_pallet = 0;
@@ -52,7 +54,8 @@ t_fractal	f_apollonian(int type)
 	fractal.id = 4;
 	fractal.has_formula = 0;
 	fractal.fractal_name = "Apollonian gasket";
-	fractal.fractol_function = &apollonian_gasket_set;
+	fractal.fractol_function = NULL;
+	fractal.fractol_function_nothp = &apollonian_gasket_set;
 	fractal.has_variants = 1;
 	fractal.formula_exp = -1;
 	fractal.no_pallet = 1;
@@ -68,7 +71,8 @@ t_fractal	f_burningship(int type)
 	fractal.id = 5;
 	fractal.has_formula = 0;
 	fractal.fractal_name = "Burningship set";
-	fractal.fractol_function = &burningship_set;
+	fractal.fractol_function = &render_burningship_set;
+	fractal.fractol_function_nothp = &burningship_set;
 	fractal.has_variants = 1;
 	fractal.formula_exp = 2;
 	fractal.no_pallet = 0;

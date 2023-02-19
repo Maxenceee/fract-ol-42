@@ -6,45 +6,36 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 20:10:10 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:40:20 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:03:37 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol_bonus.h"
 
-static void	show_commands_head(void)
+void	show_commands(int t)
 {
 	ft_printf("\n\033[1;36m\033[4mCommands\033[0m\n");
 	ft_printf("\n\033[1;34mYou have access to several actions to interact \
 with the fractals.\n");
 	ft_printf("\n\033[4;32mMouse wheel:\033[0m %s",
-		"\033[1;34mZoom or unzoom in the viewport.");
+		"\033[1;34mZoom/unzoom in the viewport.");
 	ft_printf("\n\033[4;32mArrow keys:\033[0m %s\n",
-		"\033[1;34mMove the content in the viewport.");
-}
-
-void	show_commands(int t)
-{
-	show_commands_head();
-	if (t == 1)
-	{
-		ft_printf("\n\033[4;32mW/S:\033[0m %s", "\033[1;34mIncrement or decrement \
-respectively the real part of the formula.");
-		ft_printf("\n\033[4;32mA/D:\033[0m %s\n", "\033[1;34mIncrement or decrement \
-respectively the imaginary part of the formula.");
-		ft_printf("\n\033[4;32mL:\033[0m %s",
-			"\033[1;34mToggle mouse fractal tracking.");
-		ft_printf("\n\033[4;32mO:\033[0m %s\n",
-			"\033[1;34mPrint the current state.");
-	}
+		"\033[1;34mMove the viewport.");
 	ft_printf("\n\033[4;32mH:\033[0m %s", "\033[1;34mShow home.");
-	if (t != 3)
-		ft_printf("\n\033[4;32mP:\033[0m %s",
-			"\033[1;34mSwitch to the next color pallet.");
+	ft_printf("\n\033[4;32mO:\033[0m %s\n",
+		"\033[1;34mPrint the current state.");
+	ft_printf("\n\033[4;32mP:\033[0m %s",
+		"\033[1;34mSwitch to the next color pallet.");
+	ft_printf("\n\033[4;32mS:\033[0m %s\n",
+		"\033[1;34mToggle smooth color.");
+	ft_printf("\n\033[4;32mT:\033[0m %s", "\033[1;34mSwitch to next fractal.");
 	ft_printf("\n\033[4;32mV/B:\033[0m %s\n",
 		"\033[1;34mNext/Previous fractal variant.");
-	ft_printf("\n\033[4;32mI:\033[0m %s", "\033[1;34mToggle mouse zoom tracking.");
-	ft_printf("\n\033[4;32mT:\033[0m %s\n", "\033[1;34mSwitch to next fractal.");
+	ft_printf("\n\033[4;32mL:\033[0m %s",
+		"\033[1;34mToggle mouse fractal tracking.");
+	ft_printf("\n\033[4;32mI:\033[0m %s\n", "\033[1;34mToggle mouse zoom tracking.");
+	ft_printf("\n\033[4;32mM:\033[0m %s\n",
+		"\033[1;34mDisable multithreaded rendering.");
 	ft_printf("\n\033[4;32mSPACE:\033[0m %s",
 		"\033[1;34mReset zoom and recenter the view.");
 	ft_printf("\n\033[4;32mESC:\033[0m %s\n", "\033[1;34mExit the program.");
@@ -76,7 +67,7 @@ part [%s;%s] is separated of the \033[4mimaginary\033[0m\033[1;34m one \
 	ft_printf("\033[1;34mIf you want, you can specify the color pallet of the \
 fractal after the other arguments [%s:%s].\n",
 		"\033[1;32m\033[4m0\033[0m\033[1;34m",
-		"\033[1;32m\033[4m10\033[0m\033[1;34m");
+		"\033[1;32m\033[4m11\033[0m\033[1;34m");
 	ft_printf("\n\033[1;34mYou can also launch the program without any arguments, \
 this will directly display the home.%s", "\033[0m");
 }

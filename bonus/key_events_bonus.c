@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:43:58 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:36:07 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:02:56 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	arrow_key_events(int key_code, t_data *mlx)
 {
 	t_complex_number	factor;
 
-	factor = create_complex_number(INITIAL_SCALE / mlx->scale,
-			INITIAL_SCALE / mlx->scale);
+	factor = create_complex_number(INITIAL_SCALE / 2 / mlx->scale,
+			INITIAL_SCALE / 2 / mlx->scale);
 	if (key_code == 123)
 	{
 		mlx->center_offset.x -= factor.x;
@@ -40,33 +40,6 @@ void	arrow_key_events(int key_code, t_data *mlx)
 	}
 }
 
-void	arrow_letter_events(int key_code, t_data *mlx)
-{
-	double	offset;
-
-	offset = COMPLEX_NUMBER_OFFSET;
-	if (key_code == 13)
-	{
-		mlx->formula.x += offset;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 1)
-	{
-		mlx->formula.x -= offset;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 0)
-	{
-		mlx->formula.y -= offset;
-		mlx->key_pressed = 1;
-	}
-	if (key_code == 2)
-	{
-		mlx->formula.y += offset;
-		mlx->key_pressed = 1;
-	}
-}
-
 void	pallet_events(int key_code, t_data *mlx)
 {
 	if (key_code == 35)
@@ -80,7 +53,7 @@ void	pallet_events(int key_code, t_data *mlx)
 			mlx->fractal_list[mlx
 				->current_fractal_type].home_pallet = mlx->pallet_type;
 		}
-		mlx_update_image(mlx);
+		mlx_update_image_multitp(mlx);
 	}
 }
 
@@ -90,14 +63,14 @@ void	variants_events(int key_code, t_data *mlx)
 			->current_fractal_type].has_variants)
 	{
 		mlx->next_variant = 1;
-		mlx_update_image(mlx);
+		mlx_update_image_multitp(mlx);
 		mlx->next_variant = 0;
 	}
 	if (key_code == 11 && mlx->fractal_list[mlx
 			->current_fractal_type].has_variants)
 	{
 		mlx->prev_variant = 1;
-		mlx_update_image(mlx);
+		mlx_update_image_multitp(mlx);
 		mlx->prev_variant = 0;
 	}
 }
@@ -115,7 +88,7 @@ void	key_events(int key_code, t_data *mlx)
 	{
 		mlx->scale = INITIAL_SCALE;
 		mlx->center_offset = create_complex_number(0, 0);
-		mlx_update_image(mlx);
+		mlx_update_image_multitp(mlx);
 	}
 	if (key_code == 34)
 		mlx->mouse_offset = !mlx->mouse_offset;

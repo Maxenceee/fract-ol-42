@@ -33,12 +33,12 @@ SRCS			=	$(MANDATORY_DIR)/circles_utils.c	\
 					$(MANDATORY_DIR)/pallets.c	\
 					$(MANDATORY_DIR)/pallets2.c	\
 					$(MANDATORY_DIR)/pallets3.c
-# OBJS			=	$(SRCS:.c=.o)
 OBJS			=	$(patsubst $(MANDATORY_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 					$(BONUS_DIR)/circles_bonus.c	\
 					$(BONUS_DIR)/colors_bonus.c	\
+					$(BONUS_DIR)/colors_utils_bonus.c	\
 					$(BONUS_DIR)/complex_nums_opperators_bonus.c	\
 					$(BONUS_DIR)/complex_nums_bonus.c	\
 					$(BONUS_DIR)/fractal_apollonian_gasket_bonus.c	\
@@ -69,7 +69,6 @@ SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 					$(BONUS_DIR)/pallets3_bonus.c	\
 					$(BONUS_DIR)/transitions.c	
 
-# OBJS_BONUS		=	$(SRCS_BONUS:.c=.o)
 OBJS_BONUS		=	$(patsubst $(BONUS_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS_BONUS))
 
 HEADER_SRCS		=	fractol.h fractol_bonus.h
@@ -85,36 +84,46 @@ NAME			=	fractol
 
 GREEN			=	\033[1;32m
 BLUE			=	\033[1;34m
+RED				=	\033[1;31m
+YELLOW      	=	\033[1;33m
 DEFAULT			=	\033[0m
+UP				=	"\033[A"
+CUT				=	"\033[K"
 
 $(OBJ_DIR)/%.o: $(MANDATORY_DIR)/%.c $(HEADERS) Makefile
 	@mkdir -p $(OBJ_DIR)
-	@echo "$(BLUE)Compiling$(DEFAULT) $<"
-	@$(CC) $(CFLAGS) -c $< -o $@ 
+	@echo "$(YELLOW)Compiling [$<]$(DEFAULT)"
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf ${UP}${CUT}
 
 $(OBJ_DIR)/%.o: $(BONUS_DIR)/%.c $(HEADERS) Makefile
 	@mkdir -p $(OBJ_DIR)
-	@echo "$(BLUE)Compiling$(DEFAULT) $<"
-	@$(CC) $(CFLAGS) -c $< -o $@ 
+	@echo "$(YELLOW)Compiling [$<]$(DEFAULT)"
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf ${UP}${CUT}
 
-all:			$(NAME)
+all: lib $(NAME)
 
-$(NAME):		$(OBJS)
-				@$(CC) $(OBJS) $(MLX_LIB) -o $(NAME)
-				@echo "$(GREEN)$(NAME) compiled!$(DEFAULT)"
+lib:
+	@echo "$(YELLOW)Make MLX$(DEFAULT)"
+	@make -C libmlx
+	@echo "$(BLUE)Compiling...$(DEFAULT)"
 
-bonus:			$(OBJS_BONUS)
-				@$(CC) $(OBJS_BONUS) $(MLX_LIB) -o $(NAME)
-				@echo "$(GREEN)$(NAME) bonus compiled!$(DEFAULT)"
+$(NAME): $(OBJS)
+	@$(CC) $(OBJS) $(MLX_LIB) -o $(NAME)
+	@echo "$(GREEN)$(NAME) compiled!$(DEFAULT)"
 
-mlx:
-				@cd libmlx/ && make
+bonus: lib $(OBJS_BONUS)
+	@$(CC) $(OBJS_BONUS) $(MLX_LIB) -o $(NAME)
+	@echo "$(GREEN)$(NAME) bonus compiled!$(DEFAULT)"
 
 clean:
-				@$(RM) $(OBJS) $(OBJS_BONUS)
+	@echo "$(RED)Cleaning build folder$(DEFAULT)"
+	@$(RM) $(OBJS) $(OBJS_BONUS)
 
-fclean:			clean
-				@$(RM) $(NAME)
+fclean: clean
+	@echo "$(RED)Cleaning build folder$(DEFAULT)"
+	@$(RM) $(NAME)
 
 re:				fclean all
 

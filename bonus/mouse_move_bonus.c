@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:33:15 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:36:16 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:03:25 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	mouse_move(int x, int y, void *param)
 				/ mlx->scale;
 		mlx->center_offset.y = (mlx->mouse_pos_save.y - (double)y) \
 				/ mlx->scale;
-		mlx_update_image(mlx);
+		mlx_update_image_multitp(mlx);
 	}
 	return (0);
 }
@@ -56,6 +56,6 @@ void	handle_on_mouse_lock(int x, int y, t_data *mlx)
 		mlx->formula.y = (mlx->saved_formula.y
 				- mlx->saved_mouse.y) + ry;
 		mlx->fractal_list[mlx->current_fractal_type].formula = mlx->formula;
-		mlx_update_image(mlx);
+		mlx_update_image_multitp(mlx);
 	}
 }

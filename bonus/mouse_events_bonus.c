@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:30:45 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:53:30 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:00:55 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	mouse_scroll(int button, t_complex_number mouse_pos,
 		if (mlx->mouse_offset)
 			mlx->center_offset = aspect_scale(mlx, mouse_pos,
 					mids, 0.5 / mlx->scale);
-		mlx_update_image(mlx);
+		mlx_update_image_multitp(mlx);
 	}
 	else if (button == 4)
 	{
@@ -33,7 +33,7 @@ void	mouse_scroll(int button, t_complex_number mouse_pos,
 		if (mlx->mouse_offset)
 			mlx->center_offset = aspect_scale(mlx, mouse_pos,
 					mids, -1. / 3. / mlx->scale);
-		mlx_update_image(mlx);
+		mlx_update_image_multitp(mlx);
 	}
 }
 

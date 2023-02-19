@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:56:17 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/20 19:13:09 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 01:57:53 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	burningship_set(t_data *mlx, t_screen_dim s_dims)
 		x = -1;
 		while (++x < s_dims.width)
 		{
-			pix = calule_burningship_series(
+			pix = calcule_burningship_series(
 					convert_corner_to_center(
 						create_complex_number(s_dims.left + x, s_dims.top + y),
 						mlx->center_offset, mlx->scale,
@@ -40,7 +40,8 @@ void	burningship_set(t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-int	calule_burningship_series(t_complex_number point, double scale, t_data *mlx)
+int	calcule_burningship_series(t_complex_number point,
+	double scale, t_data *mlx)
 {
 	t_complex_number	num;
 	t_complex_number	temp_num;

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:56:17 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:25 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 01:58:26 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	burningship_set(t_data *mlx, t_screen_dim s_dims)
 	int		y;
 	int		x;
 	t_color	pallet;
-	int		pix;
+	t_pixel	pix;
 
 	y = -1;
 	handle_exp_variants(mlx);
@@ -27,7 +27,7 @@ void	burningship_set(t_data *mlx, t_screen_dim s_dims)
 		x = -1;
 		while (++x < s_dims.width)
 		{
-			pix = calule_burningship_series(
+			pix = calcule_burningship_series(
 					convert_corner_to_center(
 						create_complex_number(s_dims.left + x, s_dims.top + y),
 						mlx->center_offset, mlx->scale,
@@ -35,12 +35,30 @@ void	burningship_set(t_data *mlx, t_screen_dim s_dims)
 							s_dims.center_x, s_dims.center_y)),
 					mlx->scale, mlx);
 			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
-				get_color(pix, pallet.pallet, pallet.pallet_length));
+				get_color(mlx, pix, pallet));
 		}
 	}
 }
 
-int	calule_burningship_series(t_complex_number point, double scale, t_data *mlx)
+void	render_burningship_set(t_data *mlx, t_screen_dim s_dims, int x, int y)
+{
+	t_color	pallet;
+	t_pixel	pix;
+
+	pallet = mlx->pallets[mlx->pallet_type];
+	pix = calcule_burningship_series(
+			convert_corner_to_center(
+				create_complex_number(s_dims.left + x, s_dims.top + y),
+				mlx->center_offset, mlx->scale,
+				create_complex_number(
+					s_dims.center_x, s_dims.center_y)),
+			mlx->scale, mlx);
+	my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
+		get_color(mlx, pix, pallet));
+}
+
+t_pixel	calcule_burningship_series(t_complex_number point,
+	double scale, t_data *mlx)
 {
 	t_complex_number	num;
 	t_complex_number	temp_num;
@@ -52,7 +70,7 @@ int	calule_burningship_series(t_complex_number point, double scale, t_data *mlx)
 	num = create_complex_number(0, 0);
 	max_iter = get_max_iter_from_scale(scale);
 	i = 0;
-	while (modulus_complex_2(num) < 4. && i < max_iter)
+	while (modulus_complex_2(num) < (1 << 8) && i < max_iter)
 	{
 		num.x = fabs(num.x);
 		num.y = fabs(num.y);
@@ -60,5 +78,5 @@ int	calule_burningship_series(t_complex_number point, double scale, t_data *mlx)
 		num = complex_add(complex_rational_pow(temp_num, mul), point);
 		i++;
 	}
-	return (i);
+	return ((t_pixel){.coords = num, .i = i});
 }

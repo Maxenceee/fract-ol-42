@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 12:10:50 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:53:14 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:01:12 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	catch_fractal_from_screen(t_data *mlx, int x, int y)
 			mlx->is_home = 0;
 			mlx->current_fractal_type = i;
 			mlx->pallet_type = mlx->fractal_list[i].home_pallet;
-			mlx_update_image(mlx);
+			mlx_update_image_multitp(mlx);
 			break ;
 		}
 	}

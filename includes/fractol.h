@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/18 18:14:57 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 00:11:53 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ t_complex_number	complex_sqrt(t_complex_number cmpl);
 /* julia */
 
 void				julia_set(t_data *mlx, t_screen_dim s_dims);
-int					calule_julia_series(t_complex_number point,
+int					calcule_julia_series(t_complex_number point,
 						t_complex_number point_offset,
 						double scale, t_data *mlx);
 int					handle_exp_variants(t_data *mlx);
@@ -205,13 +205,13 @@ t_complex_number	convert_corner_to_center(t_complex_number point,
 /* mandelbrot */
 
 void				mandelbrot_set(t_data *mlx, t_screen_dim s_dims);
-int					calule_mandelbrot_series(t_complex_number point,
+int					calcule_mandelbrot_series(t_complex_number point,
 						t_data *mlx);
 
 /* burningship */
 
 void				burningship_set(t_data *mlx, t_screen_dim s_dims);
-int					calule_burningship_series(t_complex_number point,
+int					calcule_burningship_series(t_complex_number point,
 						double scale, t_data *mlx);
 
 /* apollonian_gasket */

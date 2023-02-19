@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:33 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/18 19:15:39 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	draw_screen_image(t_screen_dim *screens, int screens_count, t_data *mlx)
 		if (!mlx->fractal_list[i].no_pallet)
 			mlx->pallet_type = mlx->fractal_list[i].home_pallet;
 		mlx->fractal_list[i].home_dims = screens[i];
-		(*mlx->fractal_list[i].fractol_function)(mlx, screens[i]);
+		(*mlx->fractal_list[i].fractol_function_nothp)(mlx, screens[i]);
 	}
 	free(screens);
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img, 0, 0);

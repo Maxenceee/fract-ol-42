@@ -11,14 +11,16 @@ CFLAGS+=-O2
 # add to match string put with X11 in size and position
 CFLAGS+= -DSTRINGPUTX11
 
+CFLAGS+= -Wno-deprecated-declarations
+
 all: $(NOM)
 
 $(NOM):	$(OBJ)
-	ar -r $(NOM) $(OBJ)
-	ranlib $(NOM)
+	@ar -r $(NOM) $(OBJ)
+	@ranlib $(NOM)
 
 clean:
-	rm -f $(NOM) $(OBJ) *~
-	rm -f mlx_app
+	@rm -f $(NOM) $(OBJ) *~
+	@rm -f mlx_app
 
 re: clean all

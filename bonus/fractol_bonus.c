@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/14 17:32:46 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:03:14 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	switch_fractal(t_data *mlx)
 	if (mlx->fractal_list[mlx->current_fractal_type].has_formula)
 		mlx->formula = mlx->fractal_list[mlx->current_fractal_type].formula;
 	mlx->fractal_list[mlx->current_fractal_type].home_pallet = mlx->pallet_type;
-	mlx_update_image(mlx);
+	mlx_update_image_multitp(mlx);
 }
 
 int	ft_fractol(int argc, char **argv)
@@ -41,13 +41,15 @@ int	ft_fractol(int argc, char **argv)
 	init_mlx_f(&mlx);
 	init_pallets(&mlx);
 	init_fractol(&mlx);
+	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel,
+			&mlx.line_length, &mlx.endian);
 	if (argc > 1)
 	{
 		if (!register_fractals(&mlx))
 			exit(EXIT_FAILURE);
 		fractal_selector(argc, argv, &mlx);
 		on_fractal_gen(&mlx);
-		mlx_update_image(&mlx);
+		mlx_update_image_multitp(&mlx);
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/18 18:42:08 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:06:02 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,24 @@
 # include "../printf/ft_printf.h"
 
 /* viewport size */
-# define WINDOW_WIDTH 1440
-# define WINDOW_HEIGHT 740
+# define WINDOW_WIDTH 1280
+# define WINDOW_HEIGHT 720
 /* viewport defaults scales */
 # define INITIAL_SCALE 200
 # define HOME_SCALE 100
 /* julia formula offset */
 # define COMPLEX_NUMBER_OFFSET 0.005
 /* julia divergence max iterations */
+# ifndef MIN_ITER
+#  define MIN_ITER 32
+# endif
 # ifndef MAX_ITER
-#  define MAX_ITER 100
+#  define MAX_ITER 64
 # endif
 /* apollonian min circle radius */
 # define MIN_RADIUS 2
 /* threads */
-# define THREADS 4
+# define THREADS 16
 /* mlx */
 # define MLX_ERROR 1
 # define UNUSED(x) (void)(x)
@@ -94,6 +97,11 @@ typedef struct s_thread
 	struct s_data	*mlx;
 }				t_thread;
 
+typedef struct s_pixel {
+	int					i;
+	t_complex_number	coords;
+}				t_pixel;
+
 typedef struct s_render
 {
 	pthread_t	threads[THREADS];
@@ -131,7 +139,9 @@ typedef struct s_data {
 	int					fractal_count;
 	int					transition_req;
 	t_transition		current_transition;
-	t_render	render;
+	t_render			render;
+	int					smooth;
+	int					no_multithp;
 }				t_data;
 
 typedef struct s_fractal {
@@ -142,7 +152,8 @@ typedef struct s_fractal {
 	int					has_formula;
 	t_complex_number	formula;
 	int					formula_exp;
-	void				(*fractol_function)(t_data *, t_screen_dim);
+	void				(*fractol_function_nothp)(t_data *, t_screen_dim);
+	void				(*fractol_function)(t_data *, t_screen_dim, int, int);
 	int					has_variants;
 	int					command_id;
 	t_screen_dim		home_dims;
@@ -161,6 +172,20 @@ typedef struct s_args {
 	int		argc;
 	char	**argv;
 }				t_args;
+
+typedef struct		s_rgba
+{
+	uint8_t		b;
+	uint8_t		g;
+	uint8_t		r;
+	uint8_t		a;
+}					t_rgba;
+
+typedef union		u_color
+{
+	int			value;
+	t_rgba		rgba;
+}					t_colorf;
 
 /* fractol */
 
@@ -201,6 +226,7 @@ t_fractal			f_burningship(int type);
 
 void				my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void				mlx_update_image(t_data *mlx);
+void				mlx_update_image_multitp(t_data *mlx);
 t_complex_number	aspect_scale(t_data *mlx, t_complex_number mouse_pos,
 						t_complex_number mids, double scale);
 
@@ -223,26 +249,29 @@ t_complex_number	complex_sqrt(t_complex_number cmpl);
 /* julia */
 
 void				julia_set(t_data *mlx, t_screen_dim s_dims);
-int					calule_julia_series(t_complex_number point,
+void				render_julia_set(t_data *mlx, t_screen_dim s_dims, int x, int y);
+t_pixel					calcule_julia_series(t_complex_number point,
 						t_complex_number point_offset,
 						double scale, t_data *mlx);
 int					handle_exp_variants(t_data *mlx);
 int					get_max_iter_from_scale(double scale);
 
+/* mandelbrot */
+
+void				mandelbrot_set(t_data *mlx, t_screen_dim s_dims);
+void				render_mandelbrot_set(t_data *mlx, t_screen_dim s_dims, int y, int x);
+t_pixel				calcule_mandelbrot_series(t_complex_number point,
+						t_data *mlx);
+
 t_complex_number	convert_corner_to_center(t_complex_number point,
 						t_complex_number mouse_offset, double scale,
 						t_complex_number mids);
 
-/* mandelbrot */
-
-void				mandelbrot_set(t_data *mlx, t_screen_dim s_dims);
-int					calule_mandelbrot_series(t_complex_number point,
-						t_data *mlx);
-
 /* burningship */
 
 void				burningship_set(t_data *mlx, t_screen_dim s_dims);
-int					calule_burningship_series(t_complex_number point,
+void				render_burningship_set(t_data *mlx, t_screen_dim s_dims, int x, int y);
+t_pixel				calcule_burningship_series(t_complex_number point,
 						double scale, t_data *mlx);
 
 /* apollonian_gasket */
@@ -277,7 +306,10 @@ void				recursive_circle(t_r_apollonian_c circles,
 /* colors */
 
 int					mix(int from, int to, float mix);
-int					get_color(float iterations, int *pallet, int colors_nb);
+int					get_color(t_data *mlx, t_pixel pix, t_color pallet);
+int					flinear_color(float iterations, t_color pallet);
+t_colorf			smooth_color(t_pixel p, int max, t_color pal);
+t_colorf			linear_color(double i, int max, t_color p);
 int					color(int r, int g, int b);
 void				init_pallets(t_data *mlx);
 void				pallet_error(int *colors, t_color *color_data);
@@ -295,6 +327,7 @@ void				pallet_8(t_color *color_data, int idx);
 void				pallet_9(t_color *color_data, int idx);
 void				pallet_10(t_color *color_data, int idx);
 void				pallet_11(t_color *color_data, int idx);
+void				pallet_12(t_color *color_data, int idx);
 
 /* mlx_events */
 
@@ -332,6 +365,8 @@ void				catch_fractal_from_screen(t_data *mlx, int x, int y);
 /* transitions */
 
 t_complex_number	transition_cubic(t_complex_number start_coords, t_complex_number end_coords, t_transition trans);
+double				ft_minf(double a, double b);
+double				ft_maxf(double a, double b);
 
 /*** utils ***/
 
