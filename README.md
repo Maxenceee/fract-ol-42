@@ -12,7 +12,7 @@ $> make bonus
 
 Finally run `./fractol` and enjoy the beauty of fractals :)
 
-#### Help
+### Help
 
 Run `-h` parameter to display the help menu.
 
