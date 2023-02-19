@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 20:10:10 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 04:18:36 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 20:04:26 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	show_args_1(void)
 		"[\033[1;32m\033[4m0\033[0m\033[0;34m:\033[1;32m\033[4m11\033[0m\033[0;34m]",
 		"\033[0m\n\n");
 	ft_printf("\n\033[0;34mYou can also launch the program without any arguments, \
-this will directly display the home.%s\n", "\033[0m");
+this will directly display the home.%s\n\n", "\033[0m");
 }
 
 static void	show_args_0(int n)
@@ -69,7 +69,7 @@ static void	show_args_0(int n)
 	ft_printf("\n\033[0;34musage: fractol <fractal> [-f <r> <i>] [-c <pallet>]\n");
 	ft_printf("\n\033[0;34mselect fractal\n    \
 fractal\t-- fractal name ['%s' or '%s', '%s' or\
-'%s', '%s' or '%s', '%s' or '%s']\n",
+'%s', '%s' or '%s', '%s' or '%s', '%s' or '%s']\n",
 		"\033[1;32m\033[4mjulia\033[0m\033[1;34m",
 		"\033[1;32m\033[4mj\033[0m\033[1;34m",
 		"\033[1;32m\033[4mmandelbrot\033[0m\033[1;34m",
@@ -77,7 +77,10 @@ fractal\t-- fractal name ['%s' or '%s', '%s' or\
 		"\033[1;32m\033[4mapollonian\033[0m\033[1;34m",
 		"\033[1;32m\033[4ma\033[0m\033[1;34m",
 		"\033[1;32m\033[4mburningship\033[0m\033[1;34m",
-		"\033[1;32m\033[4mb\033[0m\033[1;34m");
+		"\033[1;32m\033[4mb\033[0m\033[1;34m",
+		"\033[1;32m\033[4mtricorn\033[0m\033[1;34m",
+		"\033[1;32m\033[4mt\033[0m\033[1;34m"
+		);
 	show_args_1();
 }
 

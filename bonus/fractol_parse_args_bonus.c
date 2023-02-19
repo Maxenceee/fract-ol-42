@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 04:07:57 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 20:02:19 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ static void	parse_args(t_args args, t_data *mlx)
 	else if (ft_strcmp(ft_frstrtolower(args.argv[1]), "apollonian") == 0
 		|| ft_strcmp(ft_frstrtolower(args.argv[1]), "a") == 0)
 		parse_arg_in_mlx(mlx, 3);
+	else if (ft_strcmp(ft_frstrtolower(args.argv[1]), "tricorn") == 0
+		|| ft_strcmp(ft_frstrtolower(args.argv[1]), "t") == 0)
+		parse_arg_in_mlx(mlx, 4);
 	else
 		show_args(0);
 }
