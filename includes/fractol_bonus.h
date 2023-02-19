@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 02:06:02 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:17:07 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,7 @@ void				fractal_selector(int argc, char **argv, t_data *mlx);
 
 /* fractol_output */
 
-void				show_commands(int t);
+void				show_commands(void);
 void				show_args(int nt);
 
 /* fractol_home */

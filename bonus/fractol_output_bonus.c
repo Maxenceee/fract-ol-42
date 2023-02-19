@@ -6,13 +6,13 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 20:10:10 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 02:03:37 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:16:44 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol_bonus.h"
 
-void	show_commands(int t)
+void	show_commands(void)
 {
 	ft_printf("\n\033[1;36m\033[4mCommands\033[0m\n");
 	ft_printf("\n\033[1;34mYou have access to several actions to interact \

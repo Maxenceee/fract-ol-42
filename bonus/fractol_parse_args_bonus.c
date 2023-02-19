@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/19 22:41:46 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:18:24 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ void	fractal_selector(int argc, char **argv, t_data *mlx)
 	args.argv = argv;
 	if (ft_strcmp(argv[1], "-h") == 0)
 		show_args(4);
+	if (ft_strcmp(argv[1], "-c") == 0)
+	{
+		show_commands();
+		exit(EXIT_SUCCESS);
+	}
 	if (ft_strcmp(ft_frstrtolower(args.argv[1]), "julia") == 0
 		|| ft_strcmp(ft_frstrtolower(args.argv[1]), "j") == 0)
 		parse_julia(args, mlx);

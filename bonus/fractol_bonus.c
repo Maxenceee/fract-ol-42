@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 02:03:14 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 02:17:24 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	on_fractal_gen(t_data *mlx)
 {
 	ft_printf("\n\n\033[1;31mGenerating %s...%s\n",
 		mlx->fractal_list[mlx->current_fractal_type].fractal_name, "\n\033[0m");
-	show_commands(mlx->fractal_list[mlx->current_fractal_type].command_id);
+	show_commands();
 }
 
 void	switch_fractal(t_data *mlx)
@@ -55,7 +55,7 @@ int	ft_fractol(int argc, char **argv)
 	{
 		if (!register_fractals(&mlx))
 			exit(EXIT_FAILURE);
-		show_commands(1);
+		show_commands();
 		show_home(&mlx);
 	}
 	mlx_loop(mlx.mlx);
