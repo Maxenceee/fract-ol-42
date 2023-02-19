@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 02:17:07 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 03:12:10 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -375,6 +375,7 @@ int					ft_strcmp(char *s1, char *s2);
 int					ft_atoi(const char *str);
 double				ft_atof(char *s);
 int					ft_isdigit(int num);
+int					ft_isstrdigit(char *num);
 int					ft_frtolower(int num);
 char				*ft_frstrtolower(char *str);
 void				*ft_memcpy(void *dst, const void *src, size_t n);

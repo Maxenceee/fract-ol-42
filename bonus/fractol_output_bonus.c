@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 20:10:10 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 02:16:44 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/19 04:18:36 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,34 @@ with the fractals.\n");
 	ft_printf("\n\033[0m\n");
 }
 
+static void	show_args_1(void)
+{
+	ft_printf("\n\033[0;34m-h\t%s\n-m\t%s\n-f\t%s%s%s%s%s%s%s\n-c\t%s%s%s",
+		"-- display the help menu",
+		"-- display the various commands available",
+		"-- if '\033[1;32m\033[4mjulia\033[0m\033[0;34m' is selected you ",
+		"can specify the formula using two more arguments:\n",
+		"\t   a complex number witch his \033[4mreal\033[0m\033[0;34m part ",
+		"[\033[1;32m\033[4m1\033[0m\033[0;34m;\033[1;32m\033[4m-1\033[0m\033[0;34m]",
+		"is separated of the \033[4mimaginary\033[0m\033[0;34m one ",
+		"[\033[1;32m\033[4m1i\033[0m\033[0;34m;\033[1;32m\033[4m-1i\033[0m\033[0;34m] ",
+		"(`i` not required).",
+		"-- specify color pallet",
+		"[\033[1;32m\033[4m0\033[0m\033[0;34m:\033[1;32m\033[4m11\033[0m\033[0;34m]",
+		"\033[0m\n\n");
+	ft_printf("\n\033[0;34mYou can also launch the program without any arguments, \
+this will directly display the home.%s\n", "\033[0m");
+}
+
 static void	show_args_0(int n)
 {
 	if (n != 4)
 		ft_printf("\n\033[1;31mWrong arguments!\n");
-	ft_printf("\n\033[1;34mPlease select one of the following arguments \
-['%s' or '%s', '%s' or '%s', '%s' or '%s', '%s' or '%s'].\n",
+	ft_printf("\n\033[1;35m-- Help --\n");
+	ft_printf("\n\033[0;34musage: fractol <fractal> [-f <r> <i>] [-c <pallet>]\n");
+	ft_printf("\n\033[0;34mselect fractal\n    \
+fractal\t-- fractal name ['%s' or '%s', '%s' or\
+'%s', '%s' or '%s', '%s' or '%s']\n",
 		"\033[1;32m\033[4mjulia\033[0m\033[1;34m",
 		"\033[1;32m\033[4mj\033[0m\033[1;34m",
 		"\033[1;32m\033[4mmandelbrot\033[0m\033[1;34m",
@@ -56,20 +78,7 @@ static void	show_args_0(int n)
 		"\033[1;32m\033[4ma\033[0m\033[1;34m",
 		"\033[1;32m\033[4mburningship\033[0m\033[1;34m",
 		"\033[1;32m\033[4mb\033[0m\033[1;34m");
-	ft_printf("\033[1;34mIf '\033[1;32m\033[4mjulia\033[0m\033[1;34m' is selected \
-you need to specify \033[4mJulia set formula\033[0m\033[1;34m using two \
-more arguments: a complex number witch his \033[4mreal\033[0m\033[1;34m \
-part [%s;%s] is separated of the \033[4mimaginary\033[0m\033[1;34m one \
-[%s;%s](`i` not required).\n", "\033[1;32m\033[4m1\033[0m\033[1;34m",
-		"\033[1;32m\033[4m-1\033[0m\033[1;34m",
-		"\033[1;32m\033[4m1i\033[0m\033[1;34m",
-		"\033[1;32m\033[4m-1i\033[0m\033[1;34m");
-	ft_printf("\033[1;34mIf you want, you can specify the color pallet of the \
-fractal after the other arguments [%s:%s].\n",
-		"\033[1;32m\033[4m0\033[0m\033[1;34m",
-		"\033[1;32m\033[4m11\033[0m\033[1;34m");
-	ft_printf("\n\033[1;34mYou can also launch the program without any arguments, \
-this will directly display the home.%s", "\033[0m");
+	show_args_1();
 }
 
 void	show_args(int nt)
