@@ -10,7 +10,7 @@ Clone the project and compile it running
 $> make bonus
 ```
 
-Finally run `./fractol` and enjoy the beauty of fractals :)
+Run `./fractol` and enjoy the beauty of fractals :)
 
 ### Help
 
