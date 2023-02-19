@@ -47,7 +47,7 @@ SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 					$(BONUS_DIR)/fractal_julia_bonus.c	\
 					$(BONUS_DIR)/fractal_mandelbrot_bonus.c	\
 					$(BONUS_DIR)/fractal_tricorn_bonus.c	\
-					$(BONUS_DIR)/fractal_v.c	\
+					$(BONUS_DIR)/fractal_v_bonus.c	\
 					$(BONUS_DIR)/fractol_home_bonus.c	\
 					$(BONUS_DIR)/fractol_init_bonus.c	\
 					$(BONUS_DIR)/fractol_list_bonus.c	\
@@ -70,7 +70,7 @@ SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 					$(BONUS_DIR)/pallets_bonus.c	\
 					$(BONUS_DIR)/pallets2_bonus.c	\
 					$(BONUS_DIR)/pallets3_bonus.c	\
-					$(BONUS_DIR)/transitions.c	
+					$(BONUS_DIR)/transitions_bonus.c	
 
 OBJS_BONUS		=	$(patsubst $(BONUS_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS_BONUS))
 
