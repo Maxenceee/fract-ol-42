@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:03:08 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 19:23:54 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/25 16:22:58 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,8 @@ t_pixel	calcule_tricorn_series(t_complex_number point, t_data *mlx)
 	t_complex_number	temp_num;
 	int					max_iter;
 	int					i;
-	int					mul;
 
-	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
+	UNUSED(mlx);
 	num = create_complex_number(0, 0);
 	max_iter = MAX_ITER;
 	i = 0;

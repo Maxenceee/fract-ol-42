@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 17:46:37 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 19:59:22 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/25 16:23:46 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ t_pixel	calcule_fractal_v_series(t_complex_number point, t_data *mlx)
 	int					mul;
 
 	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
+	UNUSED(point);
+	UNUSED(mlx);
+	UNUSED(mul);
+	UNUSED(temp_num);
 	num = create_complex_number(0, 0);
 	max_iter = MAX_ITER;
 	i = 0;

@@ -6,14 +6,14 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 19:57:14 by mgama            ###   ########.fr       */
+/*   Updated: 2023/02/25 16:24:17 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol_bonus.h"
 
 static void	get_coords(t_screen_dim *temp_s, int j,
-	t_complex_number dims, int parts)
+	t_complex_number dims)
 {
 	temp_s->top = (dims.y / 2) * (j % 2);
 	temp_s->left = dims.x / 2 * (j - j % 2);
@@ -42,7 +42,7 @@ void	parse_screen_dims(t_screen_dim *screens, t_complex_number dims,
 			temp_s.width = d * 2;
 		if (i > mlx->fractal_count - 3)
 			temp_s.width += ((int)dims.x % (parts / 2));
-		get_coords(&temp_s, j, create_complex_number(d, (int)dims.y), parts);
+		get_coords(&temp_s, j, create_complex_number(d, (int)dims.y));
 		screens[i] = temp_s;
 	}
 	draw_screen_image(screens, mlx);
