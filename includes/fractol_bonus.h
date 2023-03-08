@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 20:13:11 by mgama            ###   ########.fr       */
+/*   Updated: 2023/03/08 11:23:04 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,6 @@ typedef struct s_screen_dim {
 	int		center_y;
 }				t_screen_dim;
 
-typedef struct s_transition {
-	double				start_time;
-	double				current_time;
-	double				duration;
-	t_complex_number	*st;
-	t_complex_number	*ed;
-}				t_transition;
-
 typedef struct s_thread
 {
 	int				id;
@@ -138,7 +130,6 @@ typedef struct s_data {
 	int					current_fractal_type;
 	int					fractal_count;
 	int					transition_req;
-	t_transition		current_transition;
 	t_render			render;
 	int					smooth;
 	int					no_multithp;
@@ -298,12 +289,6 @@ void				fractal_tricorn(t_data *mlx, t_screen_dim s_dims);
 void				render_fractal_tricorn(t_data *mlx, t_screen_dim s_dims, int x, int y);
 t_pixel				calcule_tricorn_series(t_complex_number point, t_data *mlx);
 
-/* fractal_v */
-
-void				fractal_v(t_data *mlx, t_screen_dim s_dims);
-void				render_fractal_v(t_data *mlx, t_screen_dim s_dims, int x, int y);
-t_pixel				calcule_fractal_v_series(t_complex_number point, t_data *mlx);
-
 /* circles */
 
 t_circle			create_circle(double r, t_complex_number center);
@@ -381,12 +366,6 @@ void				key_events(int key_code, t_data *mlx);
 
 int					mouse_home_event(t_data *mlx, int button, int x, int y);
 void				catch_fractal_from_screen(t_data *mlx, int x, int y);
-
-/* transitions */
-
-t_complex_number	transition_cubic(t_complex_number start_coords, t_complex_number end_coords, t_transition trans);
-double				ft_minf(double a, double b);
-double				ft_maxf(double a, double b);
 
 /*** utils ***/
 
