@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 20:12:24 by mgama             #+#    #+#             */
-/*   Updated: 2023/03/08 11:25:08 by mgama            ###   ########.fr       */
+/*   Updated: 2023/03/10 12:13:46 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	mlx_update_image_multitp(t_data *mlx)
 		r->args[i].mlx = mlx;
 		if (pthread_create(r->threads + i, NULL,
 				render_thread, &(r->args[i])) != 0)
-			printf("could not create pthread %d\n", i);
+			ft_printf("could not create pthread %d\n", i);
 		i++;
 	}
 	i = -1;
