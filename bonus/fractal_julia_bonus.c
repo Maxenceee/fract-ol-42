@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:28:46 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 16:23:59 by mgama            ###   ########.fr       */
+/*   Updated: 2023/03/22 15:07:05 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	julia_set(t_data *mlx, t_screen_dim s_dims)
 					mlx->center_offset,
 					mlx->scale,
 					create_complex_number(s_dims.center_x, s_dims.center_y));
-			pix = calcule_julia_series(u, mlx->formula, mlx->scale, mlx);
+			pix = calcule_julia_series(u, mlx->formula, mlx);
 			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
 				get_color(mlx, pix, pallet));
 		}
@@ -52,13 +52,13 @@ void	render_julia_set(t_data *mlx, t_screen_dim s_dims, int x, int y)
 			mlx->center_offset,
 			mlx->scale,
 			create_complex_number(s_dims.center_x, s_dims.center_y));
-	pix = calcule_julia_series(u, mlx->formula, mlx->scale, mlx);
+	pix = calcule_julia_series(u, mlx->formula, mlx);
 	my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
 		get_color(mlx, pix, pallet));
 }
 
 t_pixel	calcule_julia_series(t_complex_number point,
-	t_complex_number point_offset, double scale, t_data *mlx)
+	t_complex_number point_offset, t_data *mlx)
 {
 	t_complex_number	num;
 	t_complex_number	temp_num;
@@ -68,7 +68,7 @@ t_pixel	calcule_julia_series(t_complex_number point,
 
 	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
 	num = create_complex_number(point.x, point.y);
-	max_iter = get_max_iter_from_scale(scale);
+	max_iter = get_max_iter_from_scale();
 	i = 0;
 	while (modulus_complex_2(num) < (1 << 8) && i < max_iter)
 	{
@@ -89,8 +89,7 @@ int	handle_exp_variants(t_data *mlx)
 	return (mlx->fractal_list[mlx->current_fractal_type].formula_exp);
 }
 
-int	get_max_iter_from_scale(double scale)
+int	get_max_iter_from_scale(void)
 {
-	UNUSED(scale);
 	return (MAX_ITER);
 }

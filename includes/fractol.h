@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/03/10 12:09:37 by mgama            ###   ########.fr       */
+/*   Updated: 2023/03/22 15:10:37 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 # define MIN_RADIUS 2
 /* mlx */
 # define MLX_ERROR 1
-# define UNUSED(x) (void)(x)
 
 struct	s_complex_number;
 struct	s_color;
@@ -194,9 +193,9 @@ t_complex_number	complex_sqrt(t_complex_number cmpl);
 void				julia_set(t_data *mlx, t_screen_dim s_dims);
 int					calcule_julia_series(t_complex_number point,
 						t_complex_number point_offset,
-						double scale, t_data *mlx);
+						t_data *mlx);
 int					handle_exp_variants(t_data *mlx);
-int					get_max_iter_from_scale(double scale);
+int					get_max_iter_from_scale(void);
 
 t_complex_number	convert_corner_to_center(t_complex_number point,
 						t_complex_number mouse_offset, double scale,
@@ -212,7 +211,7 @@ int					calcule_mandelbrot_series(t_complex_number point,
 
 void				burningship_set(t_data *mlx, t_screen_dim s_dims);
 int					calcule_burningship_series(t_complex_number point,
-						double scale, t_data *mlx);
+						t_data *mlx);
 
 /* apollonian_gasket */
 

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 12:10:50 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 02:01:12 by mgama            ###   ########.fr       */
+/*   Updated: 2023/03/22 15:07:56 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	mouse_home_event(t_data *mlx, int button, int x, int y)
 {
-	UNUSED(button);
+	(void)(button);
 	catch_fractal_from_screen(mlx, x, y);
 	return (0);
 }

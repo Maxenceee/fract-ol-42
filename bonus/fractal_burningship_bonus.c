@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:56:17 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 01:58:26 by mgama            ###   ########.fr       */
+/*   Updated: 2023/03/22 15:06:54 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	burningship_set(t_data *mlx, t_screen_dim s_dims)
 						mlx->center_offset, mlx->scale,
 						create_complex_number(
 							s_dims.center_x, s_dims.center_y)),
-					mlx->scale, mlx);
+					mlx);
 			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
 				get_color(mlx, pix, pallet));
 		}
@@ -52,13 +52,12 @@ void	render_burningship_set(t_data *mlx, t_screen_dim s_dims, int x, int y)
 				mlx->center_offset, mlx->scale,
 				create_complex_number(
 					s_dims.center_x, s_dims.center_y)),
-			mlx->scale, mlx);
+			mlx);
 	my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
 		get_color(mlx, pix, pallet));
 }
 
-t_pixel	calcule_burningship_series(t_complex_number point,
-	double scale, t_data *mlx)
+t_pixel	calcule_burningship_series(t_complex_number point, t_data *mlx)
 {
 	t_complex_number	num;
 	t_complex_number	temp_num;
@@ -68,7 +67,7 @@ t_pixel	calcule_burningship_series(t_complex_number point,
 
 	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
 	num = create_complex_number(0, 0);
-	max_iter = get_max_iter_from_scale(scale);
+	max_iter = get_max_iter_from_scale();
 	i = 0;
 	while (modulus_complex_2(num) < (1 << 8) && i < max_iter)
 	{

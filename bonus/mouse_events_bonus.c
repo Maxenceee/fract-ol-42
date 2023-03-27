@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:30:45 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 02:00:55 by mgama            ###   ########.fr       */
+/*   Updated: 2023/03/22 15:08:20 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int	mouse_up_event(int button, int x, int y, void *param)
 	t_data		*mlx;
 
 	mlx = (t_data *)param;
-	UNUSED(x);
-	UNUSED(y);
+	(void)(x);
+	(void)(y);
 	if (button == 1)
 		mlx->mouse_clicked = 0;
 	return (0);

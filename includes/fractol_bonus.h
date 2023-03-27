@@ -6,12 +6,12 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/03/13 18:22:43 by mgama            ###   ########.fr       */
+/*   Updated: 2023/03/22 15:10:58 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTOL_BONUS_H
+# define FRACTOL_BONUS_H
 
 # include <stdio.h>
 # include <unistd.h>
@@ -43,7 +43,6 @@
 # define THREADS 8
 /* mlx */
 # define MLX_ERROR 1
-# define UNUSED(x) (void)(x)
 
 struct	s_complex_number;
 struct	s_color;
@@ -165,19 +164,19 @@ typedef struct s_args {
 	char	**argv;
 }				t_args;
 
-typedef struct		s_rgba
+typedef struct s_rgba
 {
 	uint8_t		b;
 	uint8_t		g;
 	uint8_t		r;
 	uint8_t		a;
-}					t_rgba;
+}				t_rgba;
 
-typedef union		u_color
+typedef union u_color
 {
 	int			value;
 	t_rgba		rgba;
-}					t_colorf;
+}				t_colorf;
 
 /* fractol */
 
@@ -248,17 +247,19 @@ t_complex_number	complex_cos(t_complex_number a);
 /* julia */
 
 void				julia_set(t_data *mlx, t_screen_dim s_dims);
-void				render_julia_set(t_data *mlx, t_screen_dim s_dims, int x, int y);
-t_pixel					calcule_julia_series(t_complex_number point,
+void				render_julia_set(t_data *mlx, t_screen_dim s_dims,
+						int x, int y);
+t_pixel				calcule_julia_series(t_complex_number point,
 						t_complex_number point_offset,
-						double scale, t_data *mlx);
+						t_data *mlx);
 int					handle_exp_variants(t_data *mlx);
-int					get_max_iter_from_scale(double scale);
+int					get_max_iter_from_scale(void);
 
 /* mandelbrot */
 
 void				mandelbrot_set(t_data *mlx, t_screen_dim s_dims);
-void				render_mandelbrot_set(t_data *mlx, t_screen_dim s_dims, int y, int x);
+void				render_mandelbrot_set(t_data *mlx, t_screen_dim s_dims,
+						int y, int x);
 t_pixel				calcule_mandelbrot_series(t_complex_number point,
 						t_data *mlx);
 
@@ -269,9 +270,10 @@ t_complex_number	convert_corner_to_center(t_complex_number point,
 /* burningship */
 
 void				burningship_set(t_data *mlx, t_screen_dim s_dims);
-void				render_burningship_set(t_data *mlx, t_screen_dim s_dims, int x, int y);
+void				render_burningship_set(t_data *mlx, t_screen_dim s_dims,
+						int x, int y);
 t_pixel				calcule_burningship_series(t_complex_number point,
-						double scale, t_data *mlx);
+						t_data *mlx);
 
 /* apollonian_gasket */
 
@@ -286,7 +288,8 @@ t_circle			*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims);
 /* fractal_tricorn */
 
 void				fractal_tricorn(t_data *mlx, t_screen_dim s_dims);
-void				render_fractal_tricorn(t_data *mlx, t_screen_dim s_dims, int x, int y);
+void				render_fractal_tricorn(t_data *mlx, t_screen_dim s_dims,
+						int x, int y);
 t_pixel				calcule_tricorn_series(t_complex_number point, t_data *mlx);
 
 /* circles */
@@ -379,4 +382,4 @@ int					ft_frtolower(int num);
 char				*ft_frstrtolower(char *str);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 
-#endif /* fractol_h */
+#endif /* fractol_bonus_h */
