@@ -123,7 +123,7 @@ clean:
 	@$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-	@echo "$(RED)Cleaning build folder$(DEFAULT)"
+	@echo "$(RED)Cleaning $(NAME)$(DEFAULT)"
 	@$(RM) $(NAME)
 
 re:				fclean all
