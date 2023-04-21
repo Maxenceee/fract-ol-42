@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 02:07:34 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/21 22:57:00 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static void	print_state(t_data *mlx)
 	ft_printf("\n\033[1;35mCurrent fractal: \033[4m%s%s\n",
 		mlx->fractal_list[mlx->current_fractal_type].fractal_name,
 		"\033[0m");
-	if (mlx->fractal_list[mlx->current_fractal_type].has_formula)
-		ft_printf("\033[1;35mCurrent formula: Z^%d %+.3f %+.3fi %s\n",
-			mlx->fractal_list[mlx->current_fractal_type].formula_exp,
-			mlx->formula.x, mlx->formula.y, "\033[0m");
+	// if (mlx->fractal_list[mlx->current_fractal_type].has_formula)
+	// 	ft_printf("\033[1;35mCurrent formula: Z^%d %+.3f %+.3fi %s\n",
+	// 		mlx->fractal_list[mlx->current_fractal_type].formula_exp,
+	// 		mlx->formula.x, mlx->formula.y, "\033[0m");
 	if (mlx->fractal_list[mlx->current_fractal_type].formula_exp != -1
 		&& !mlx->fractal_list[mlx->current_fractal_type].has_formula)
 		ft_printf("\033[1;35mCurrent exponent: %d %s\n",
