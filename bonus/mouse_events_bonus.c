@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:30:45 by mgama             #+#    #+#             */
-/*   Updated: 2023/03/22 15:08:20 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/21 23:22:50 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	mouse_event(int button, int x, int y, void *param)
 		mouse_home_event(mlx, button, x, y);
 		return (0);
 	}
-	mids = create_complex_number((double)WINDOW_WIDTH / 2,
-			(double)WINDOW_HEIGHT / 2);
+	mids = create_complex_number((double)WINDOW_WIDTH * 0.5,
+			(double)WINDOW_HEIGHT * 0.5);
 	temp_pos = create_complex_number(x, y);
 	mouse_scroll(button, temp_pos, mids, mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:20:57 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:08 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/21 23:22:19 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ t_circle	*symmetric_set(double x, double y, double radius)
 	if (!fni)
 		return (0);
 	c1 = create_circle(-radius, create_complex_number(x, y));
-	c2 = create_circle(radius / 2,
-			create_complex_number(x - (radius / 2), y));
+	c2 = create_circle(radius * 0.5,
+			create_complex_number(x - (radius * 0.5), y));
 	c3r = fabs(c1.r) - c2.r;
 	c3 = create_circle(c3r,
 			create_complex_number(c2.center.x + c2.r + c3r,

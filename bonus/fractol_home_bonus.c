@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/25 16:24:17 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/21 23:25:08 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	get_coords(t_screen_dim *temp_s, int j,
 	t_complex_number dims)
 {
-	temp_s->top = (dims.y / 2) * (j % 2);
-	temp_s->left = dims.x / 2 * (j - j % 2);
-	temp_s->height = (dims.y / 2);
-	temp_s->center_x = temp_s->left + (temp_s->width / 2);
-	temp_s->center_y = temp_s->top + (temp_s->height / 2);
+	temp_s->top = (dims.y * 0.5) * (j % 2);
+	temp_s->left = dims.x * 0.5 * (j - j % 2);
+	temp_s->height = (dims.y * 0.5);
+	temp_s->center_x = temp_s->left + (temp_s->width * 0.5);
+	temp_s->center_y = temp_s->top + (temp_s->height * 0.5);
 }
 
 void	parse_screen_dims(t_screen_dim *screens, t_complex_number dims,

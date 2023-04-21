@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2023/03/08 11:25:17 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/21 23:22:50 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	init_screen_dims(t_data *mlx)
 	mlx->screen_dims.top = 0;
 	mlx->screen_dims.width = WINDOW_WIDTH;
 	mlx->screen_dims.height = WINDOW_HEIGHT;
-	mlx->screen_dims.center_x = WINDOW_WIDTH / 2;
-	mlx->screen_dims.center_y = WINDOW_HEIGHT / 2;
+	mlx->screen_dims.center_x = WINDOW_WIDTH * 0.5;
+	mlx->screen_dims.center_y = WINDOW_HEIGHT * 0.5;
 }
 
 void	init_fractol(t_data *mlx)

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:43:58 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 02:02:56 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/21 23:22:50 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	arrow_key_events(int key_code, t_data *mlx)
 {
 	t_complex_number	factor;
 
-	factor = create_complex_number(INITIAL_SCALE / 2 / mlx->scale,
-			INITIAL_SCALE / 2 / mlx->scale);
+	factor = create_complex_number(INITIAL_SCALE * 0.5 / mlx->scale,
+			INITIAL_SCALE * 0.5 / mlx->scale);
 	if (key_code == 123)
 	{
 		mlx->center_offset.x -= factor.x;
