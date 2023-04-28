@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:30:45 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/21 23:22:03 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/28 21:44:00 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	mouse_down_event(int button, int x, int y, void *param)
 {
 	t_data		*mlx;
 
+	
 	mlx = (t_data *)param;
 	if (button == 1 && !mlx->is_home)
 	{

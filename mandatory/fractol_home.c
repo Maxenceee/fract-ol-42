@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/21 23:21:24 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/28 21:25:27 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	parse_screen_dims(int width, int height, int parts, t_data *mlx)
 	while (++i < parts)
 	{
 		temp_s.top = (height >> 1) * (i % 2);
-		temp_s.left = (width / (parts >> 1)) >> 1 * (i - i % 2);
+		temp_s.left = (width / (parts >> 1)) / 2 * (i - i % 2);
 		temp_s.width = (width / (parts >> 1));
 		temp_s.height = (height >> 1);
 		temp_s.center_x = temp_s.left + (temp_s.width >> 1);

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:20:15 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/21 23:21:03 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/28 21:02:28 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,13 @@ t_circle	*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims)
 		circles_s = a_symmetric_set(
 				s_dims.center_x - mlx->center_offset.x * (mlx->scale * 0.5),
 				s_dims.center_y - mlx->center_offset.y * (mlx->scale * 0.5),
-				((s_dims.height * 0.5) - s_dims.height / 5 + (mlx->scale * 0.5)));
+				((s_dims.height * 0.5) - s_dims.height / 5
+					+ (mlx->scale * 0.5)));
 	else
 		circles_s = symmetric_set(
 				s_dims.center_x - mlx->center_offset.x * (mlx->scale * 0.5),
 				s_dims.center_y - mlx->center_offset.y * (mlx->scale * 0.5),
-				((s_dims.height * 0.5) - s_dims.height / 5 + (mlx->scale * 0.5)));
+				((s_dims.height * 0.5) - s_dims.height / 5
+					+ (mlx->scale * 0.5)));
 	return (circles_s);
 }

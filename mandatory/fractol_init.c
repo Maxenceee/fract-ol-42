@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/21 23:21:40 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/28 21:59:25 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void	init_mlx_f(t_data *mlx)
 		return ;
 	}
 	mlx_hook(mlx->window, 17, 1L << 0, &stop_mlx, mlx);
-	mlx_hook(mlx->window, 2, 0L, &key_down_event, mlx);
-	mlx_hook(mlx->window, 3, 0L, &key_up_event, mlx);
-	mlx_hook(mlx->window, 4, 0L, &mouse_down_event, mlx);
-	mlx_hook(mlx->window, 5, 0L, &mouse_up_event, mlx);
+	mlx_hook(mlx->window, 2, 1L << 0, &key_down_event, mlx);
+	mlx_hook(mlx->window, 3, 1L << 1, &key_up_event, mlx);
+	mlx_hook(mlx->window, 4, 1L << 2, &mouse_down_event, mlx);
+	mlx_hook(mlx->window, 5, 1L << 3, &mouse_up_event, mlx);
 	mlx_hook(mlx->window, 6, 1L << 6, &mouse_move, mlx);
 	mlx_loop_hook(mlx->mlx, &loop_hook_events, mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/22 01:31:26 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/28 22:31:02 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	key_up_event(int key_code, void *param)
 	}
 	if (key_code == 41)
 	{
+		ft_printf("\033[1;34mMulti thread enabled \033[1;31m\033[4m%d\n%s", mlx->no_multithp, "\033[0m");
 		mlx->no_multithp = !mlx->no_multithp;
 		mlx_update_image_multitp(mlx);
 	}
