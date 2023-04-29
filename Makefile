@@ -68,7 +68,8 @@ SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 					$(BONUS_DIR)/mouse_move_bonus.c	\
 					$(BONUS_DIR)/pallets_bonus.c	\
 					$(BONUS_DIR)/pallets2_bonus.c	\
-					$(BONUS_DIR)/pallets3_bonus.c
+					$(BONUS_DIR)/pallets3_bonus.c	\
+					$(BONUS_DIR)/fractal_zc_bonus.c
 
 OBJS_BONUS		=	$(patsubst $(BONUS_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS_BONUS))
 

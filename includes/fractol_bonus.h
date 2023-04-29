@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/03/22 15:10:58 by mgama            ###   ########.fr       */
+/*   Updated: 2023/04/30 00:02:06 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,9 +240,10 @@ t_complex_number	complex_sqrt(t_complex_number cmpl);
 
 /* complex_nums_trigo */
 
-t_complex_number	complex_sinh(t_complex_number a);
+t_complex_number	complex_sinh(t_complex_number n);
 t_complex_number	complex_sin(t_complex_number a);
 t_complex_number	complex_cos(t_complex_number a);
+t_complex_number	complex_absv(t_complex_number a);
 
 /* julia */
 
@@ -381,5 +382,19 @@ int					ft_isstrdigit(char *num);
 int					ft_frtolower(int num);
 char				*ft_frstrtolower(char *str);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
+
+/** zc **/
+void	zc_set(t_data *mlx, t_screen_dim s_dims);
+void	render_zc_set(t_data *mlx, t_screen_dim s_dims, int x, int y);
+t_pixel	calcule_zc_series(t_complex_number point,
+	t_complex_number point_offset, t_data *mlx);
+	
+void	sinzc_set(t_data *mlx, t_screen_dim s_dims);
+void	render_sinzc_set(t_data *mlx, t_screen_dim s_dims, int x, int y);
+t_pixel	calcule_sinzc_series(t_complex_number point,
+	t_complex_number point_offset, t_data *mlx);
+
+t_fractal	f_fractal_zc(int type);
+t_fractal	f_fractal_sinzc(int type);
 
 #endif /* fractol_bonus_h */
