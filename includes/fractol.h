@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/29 23:28:22 by mgama            ###   ########.fr       */
+/*   Updated: 2023/05/02 01:52:00 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WINDOW_HEIGHT 740
 /* viewport defaults scales */
 # define INITIAL_SCALE 200
-# define HOME_SCALE 100
+// # define HOME_SCALE 100
 /* julia formula offset */
 # define COMPLEX_NUMBER_OFFSET 0.005
 /* julia divergence max iterations */
@@ -115,6 +115,7 @@ typedef struct s_fractal {
 	int					command_id;
 	t_screen_dim		home_dims;
 	int					home_pallet;
+	int					home_scale;
 	int					is_registered;
 }				t_fractal;
 

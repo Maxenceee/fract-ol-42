@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:17:33 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/18 19:18:58 by mgama            ###   ########.fr       */
+/*   Updated: 2023/05/02 01:52:46 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_fractal	f_julia(t_complex_number formula, int type)
 	fractal.formula_exp = 2;
 	fractal.no_pallet = 0;
 	fractal.command_id = 1;
+	fractal.home_scale = 100;
 	fractal.type_i = type;
 	return (fractal);
 }
@@ -41,6 +42,7 @@ t_fractal	f_mandelbrot(int type)
 	fractal.formula_exp = 2;
 	fractal.no_pallet = 0;
 	fractal.command_id = 2;
+	fractal.home_scale = 100;
 	fractal.type_i = type;
 	return (fractal);
 }
@@ -57,6 +59,7 @@ t_fractal	f_apollonian(int type)
 	fractal.formula_exp = -1;
 	fractal.no_pallet = 1;
 	fractal.command_id = 3;
+	fractal.home_scale = 50;
 	fractal.type_i = type;
 	return (fractal);
 }
@@ -73,6 +76,7 @@ t_fractal	f_burningship(int type)
 	fractal.formula_exp = 2;
 	fractal.no_pallet = 0;
 	fractal.command_id = 2;
+	fractal.home_scale = 100;
 	fractal.type_i = type;
 	return (fractal);
 }
