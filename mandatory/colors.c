@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 20:03:31 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:50:36 by mgama            ###   ########.fr       */
+/*   Updated: 2023/05/02 18:14:34 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_color(float iterations, int *pallet, int colors_nb)
 	if (iterations == MAX_ITER)
 		return (0x000000);
 	i = -1;
-	while (++i < (int)colors_nb)
+	while (++i < (int)(colors_nb - 1))
 	{
 		min_value = (float)i / colors_nb;
 		max_value = (float)(i + 1) / colors_nb;

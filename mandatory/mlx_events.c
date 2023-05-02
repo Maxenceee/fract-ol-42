@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/28 21:57:09 by mgama            ###   ########.fr       */
+/*   Updated: 2023/05/02 17:14:21 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	stop_mlx(t_data *mlx)
 		free(mlx->pallets->pallet);
 	if (mlx->fractal_list != NULL)
 		free(mlx->fractal_list);
+	free(mlx->mlx);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
