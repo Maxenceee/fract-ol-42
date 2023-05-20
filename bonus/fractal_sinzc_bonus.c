@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:37:10 by mgama             #+#    #+#             */
-/*   Updated: 2023/05/02 01:41:55 by mgama            ###   ########.fr       */
+/*   Updated: 2023/05/20 22:40:46 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	sinzc_set(t_data *mlx, t_screen_dim s_dims)
 
 	y = -1;
 	handle_exp_variants(mlx);
+	if (mlx->fractal_list[mlx->current_fractal_type].formula_exp < 3)
+		mlx->fractal_list[mlx->current_fractal_type].formula_exp = 3;
 	pallet = mlx->pallets[mlx->pallet_type];
 	while (++y < s_dims.height)
 	{
@@ -66,8 +68,6 @@ t_pixel	calcule_sinzc_series(t_complex_number point,
 	int					i;
 	int					mul;
 
-	if (mlx->fractal_list[mlx->current_fractal_type].formula_exp < 3)
-		mlx->fractal_list[mlx->current_fractal_type].formula_exp = 3;
 	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
 	num = create_complex_number(point.x, point.y);
 	max_iter = get_max_iter_from_scale();
