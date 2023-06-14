@@ -110,7 +110,7 @@ all: lib $(NAME)
 
 lib:
 	@echo "$(YELLOW)Make MLX$(DEFAULT)"
-	@make -C libmlx
+	@make -sC libmlx
 	@echo "$(BLUE)Compiling...$(DEFAULT)"
 
 $(NAME): $(OBJS)
