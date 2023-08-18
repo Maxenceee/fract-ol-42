@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2023/05/20 22:07:13 by mgama            ###   ########.fr       */
+/*   Updated: 2023/07/12 18:57:44 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	ft_fractol(int argc, char **argv)
 	t_data	mlx;
 
 	ft_bzero(&mlx, sizeof(t_data));
+	init_fractol(&mlx);
 	init_mlx_f(&mlx);
 	init_pallets(&mlx);
-	init_fractol(&mlx);
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel,
 			&mlx.line_length, &mlx.endian);
 	if (argc > 1)

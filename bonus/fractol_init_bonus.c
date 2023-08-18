@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2023/05/02 01:40:01 by mgama            ###   ########.fr       */
+/*   Updated: 2023/07/12 18:58:00 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void	init_mlx_f(t_data *mlx)
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
 		exit(1);
-	mlx->window = mlx_new_window(mlx->mlx, WINDOW_WIDTH,
-			WINDOW_HEIGHT, "Fract-ol");
+	mlx->window = mlx_new_window(mlx->mlx, mlx->screen_dims.width,
+			mlx->screen_dims.height, "Fract-ol");
 	if (!mlx->window)
 	{
 		stop_mlx(mlx);
 		return ;
 	}
-	mlx->img = mlx_new_image(mlx->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	mlx->img = mlx_new_image(mlx->mlx, mlx->screen_dims.width, mlx->screen_dims.height);
 	if (!mlx->img)
 	{
 		stop_mlx(mlx);
