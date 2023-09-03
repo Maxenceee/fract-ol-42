@@ -284,7 +284,7 @@ void				apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims);
 void				draw_circle(t_circle circle, t_data *mlx,
 						t_screen_dim s_dims);
 void				clear_image(t_data *mlx, t_screen_dim s_dims);
-void				draw_gasket(t_circle crls[3], t_data *mlx,
+void				draw_gasket(t_circle *crls, t_data *mlx,
 						t_screen_dim s_dims);
 t_circle			*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims);
 
