@@ -79,7 +79,6 @@ void	draw_gasket(t_circle crls[3], t_data *mlx, t_screen_dim s_dims)
 		create_recursive_circle(crls[0], crls[1], crls[2], c4), mlx, s_dims);
 	recursive_circle(
 		create_recursive_circle(c5, crls[1], crls[2], c4), mlx, s_dims);
-	free(crls);
 }
 
 t_circle	*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims)
