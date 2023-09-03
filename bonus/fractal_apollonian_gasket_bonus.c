@@ -63,7 +63,7 @@ void	clear_image(t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-void	draw_gasket(t_circle crls[3], t_data *mlx, t_screen_dim s_dims)
+void	draw_gasket(t_circle *crls, t_data *mlx, t_screen_dim s_dims)
 {
 	t_circle	c4;
 	t_circle	c5;
