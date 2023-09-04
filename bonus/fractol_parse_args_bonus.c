@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2023/05/20 22:41:43 by mgama            ###   ########.fr       */
+/*   Updated: 2023/09/04 21:30:20 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ static void	parse_args(t_args args, t_data *mlx)
 	else if (ft_strcmp(ft_frstrtolower(args.argv[1]), "tricorn") == 0
 		|| ft_strcmp(ft_frstrtolower(args.argv[1]), "t") == 0)
 		parse_arg_in_mlx(mlx, 4);
+	else if (ft_strcmp(ft_frstrtolower(args.argv[1]), "mandelbrot_var_1") == 0
+		|| ft_strcmp(ft_frstrtolower(args.argv[1]), "mv1") == 0)
+		parse_arg_in_mlx(mlx, 5);
+	else if (ft_strcmp(ft_frstrtolower(args.argv[1]), "mandelbrot_var_2") == 0
+		|| ft_strcmp(ft_frstrtolower(args.argv[1]), "mv2") == 0)
+		parse_arg_in_mlx(mlx, 6);
 	else
 		show_args(0);
 }
