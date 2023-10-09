@@ -20,17 +20,15 @@ Use the `-c` parameter to display the various commands available.
 
 ## 
 
-![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img4.png "Julia")
+![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img4.png "Julia Z^2")
 
-![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img2.png "Mandelbrot")
+![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img2.png "Mandelbrot Z^2")
 
-![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img6.png "Mandelbrot Variant")
+![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img6.png "Mandelbrot Variant Z^2")
 
-![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img5.png "Mandelbrot Variant Z^3")
+![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img7.png "Mandelbrot Variant Z^2")
 
-![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img7.png "Mandelbrot Variant")
-
-![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img8.png "Julia")
+![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img8.png "Julia Z^2")
 
 ![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img9.png "Apollonian Gasket")
 
@@ -39,5 +37,7 @@ Use the `-c` parameter to display the various commands available.
 ![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img11.png "Julia Z^3")
 
 ![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img12.png "Mandelbrot Z^3")
+
+![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img5.png "Mandelbrot Variant Z^4")
 
 <!-- You can also generate a specific fractal among the following, the Julia set, the Mandelbrot set, the Burningship set or the Apollonian gasket fractal. -->
