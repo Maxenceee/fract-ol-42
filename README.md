@@ -28,9 +28,9 @@ Use the `-c` parameter to display the various commands available.
 
 ![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img7.png "Mandelbrot Variant Z^2")
 
-![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img8.png "Julia Z^2")
-
 ![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img9.png "Apollonian Gasket")
+
+![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img8.png "Julia Z^2")
 
 ![alt text](https://github.com/Maxenceee/fract-ol-42/blob/main/images/img10.png "Mandelbrot Variant Z^3")
 
