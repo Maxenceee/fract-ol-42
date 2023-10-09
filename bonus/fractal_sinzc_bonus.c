@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:37:10 by mgama             #+#    #+#             */
-/*   Updated: 2023/05/20 22:40:46 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/10 01:36:09 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ t_pixel	calcule_sinzc_series(t_complex_number point,
 
 	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
 	num = create_complex_number(point.x, point.y);
+	if (num.x == 0.f && num.y == 0.f)
+		num = create_complex_number(1, 1);
 	max_iter = get_max_iter_from_scale();
 	i = 0;
 	while (modulus_complex_2(num) < (1 << 8) && i < max_iter)
