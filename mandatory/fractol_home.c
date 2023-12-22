@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2023/05/02 01:52:16 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 int	parse_screen_dims(int width, int height, int parts, t_data *mlx)
 {

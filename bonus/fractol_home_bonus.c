@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2023/05/02 01:50:09 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol_bonus.h"
+#include "fractol_bonus.h"
 
 static void	get_coords(t_screen_dim *temp_s, int j,
 	t_complex_number dims)

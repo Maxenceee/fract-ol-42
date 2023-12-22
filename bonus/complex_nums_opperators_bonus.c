@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:11:20 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/29 23:27:56 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol_bonus.h"
+#include "fractol_bonus.h"
 
 t_complex_number	complex_add(t_complex_number a, t_complex_number b)
 {

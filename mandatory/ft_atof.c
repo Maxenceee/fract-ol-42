@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 00:30:04 by mgama             #+#    #+#             */
-/*   Updated: 2022/12/01 13:43:16 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 double	ft_get_floating_part(char *s, double a, int c, int sign)
 {

@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:43:58 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/28 21:27:44 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 void	arrow_key_events(int key_code, t_data *mlx)
 {

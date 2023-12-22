@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 00:37:46 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/28 23:10:59 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol_bonus.h"
+#include "fractol_bonus.h"
 
 void	mandelbrot_set(t_data *mlx, t_screen_dim s_dims)
 {

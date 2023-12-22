@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2023/07/10 12:33:23 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol_bonus.h"
+#include "fractol_bonus.h"
 
 static void	print_state(t_data *mlx)
 {

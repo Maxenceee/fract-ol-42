@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/28 21:59:25 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 static void	init_screen_dims(t_data *mlx)
 {

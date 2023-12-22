@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtolower.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 01:24:52 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/29 21:16:55 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:44:58 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 int	ft_frtolower(int num)
 {
@@ -26,7 +26,7 @@ char	*ft_frstrtolower(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		str[i] = ft_tolower(str[i]);
+		str[i] = ft_frtolower(str[i]);
 	}
 	return (str);
 }

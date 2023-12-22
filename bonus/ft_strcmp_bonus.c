@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:51:24 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:57 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol_bonus.h"
+#include "fractol_bonus.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {

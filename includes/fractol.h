@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/05/02 01:52:00 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:45:34 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include <math.h>
 # include "../libmlx/mlx.h"
-# include "../printf/ft_printf.h"
+# include "ft_printf.h"
 
 /* viewport size */
 # define WINDOW_WIDTH 1440
@@ -231,7 +232,6 @@ t_circle			*symmetric_set(double x, double y, double radius);
 t_circle			*a_symmetric_set(double x, double y, double radius);
 t_complex_number	solve_equation(t_complex_number a, t_complex_number b,
 						t_complex_number c);
-int					ft_min(int a, int b);
 
 /* circles_utils */
 
@@ -308,5 +308,7 @@ int					ft_isdigit(int num);
 int					ft_frtolower(int num);
 char				*ft_frstrtolower(char *str);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
+void				*ft_memset(void *b, int c, size_t len);
+void				ft_bzero(void *s, size_t n);
 
 #endif /* fractol_h */

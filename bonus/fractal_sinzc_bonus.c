@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:37:10 by mgama             #+#    #+#             */
-/*   Updated: 2023/10/10 01:36:09 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:47:35 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol_bonus.h"
+#include "fractol_bonus.h"
 
 void	sinzc_set(t_data *mlx, t_screen_dim s_dims)
 {
@@ -32,8 +32,7 @@ void	sinzc_set(t_data *mlx, t_screen_dim s_dims)
 		{
 			u = convert_corner_to_center(
 					create_complex_number(s_dims.left + x, s_dims.top + y),
-					mlx->center_offset,
-					mlx->scale,
+					mlx->center_offset, mlx->scale,
 					create_complex_number(s_dims.center_x, s_dims.center_y));
 			pix = calcule_sinzc_series(u, mlx->formula, mlx);
 			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,

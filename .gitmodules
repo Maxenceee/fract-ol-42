@@ -1,0 +1,3 @@
+[submodule "printf-42"]
+	path = printf-42
+	url = https://github.com/Maxenceee/printf-42.git

@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:20:57 by mgama             #+#    #+#             */
-/*   Updated: 2023/04/21 23:20:46 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:45:27 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 t_circle	create_circle(double r, t_complex_number center)
 {
@@ -87,11 +87,4 @@ t_complex_number	solve_equation(t_complex_number a, t_complex_number b,
 	ks = complex_add(k1, complex_add(k2, k3));
 	return (complex_add(complex_mul(complex_sqrt(ks),
 				create_complex_number(2, 0)), s));
-}
-
-int	ft_min(int a, int b)
-{
-	if (a > b)
-		return (b);
-	return (a);
 }

@@ -6,11 +6,11 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:44:29 by mgama             #+#    #+#             */
-/*   Updated: 2023/10/10 01:33:15 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:48:29 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol_bonus.h"
+#include "fractol_bonus.h"
 
 static void	init_screen_dims(t_data *mlx)
 {
@@ -52,7 +52,8 @@ void	init_mlx_f(t_data *mlx)
 		stop_mlx(mlx);
 		return ;
 	}
-	mlx->img = mlx_new_image(mlx->mlx, mlx->screen_dims.width, mlx->screen_dims.height);
+	mlx->img = mlx_new_image(mlx->mlx, mlx->screen_dims.width,
+			mlx->screen_dims.height);
 	if (!mlx->img)
 	{
 		stop_mlx(mlx);

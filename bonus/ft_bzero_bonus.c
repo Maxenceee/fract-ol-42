@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 18:41:59 by mgama             #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:55 by mgama            ###   ########.fr       */
+/*   Created: 2022/11/07 16:48:29 by mgama             #+#    #+#             */
+/*   Updated: 2023/12/22 11:26:41 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol_bonus.h"
+#include "fractol.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -27,4 +27,22 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		i++;
 	}
 	return (lst_dst);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((char *)b)[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, '\0', n);
 }

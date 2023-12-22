@@ -20,7 +20,7 @@ SRCS			=	$(MANDATORY_DIR)/circles_utils.c	\
 					$(MANDATORY_DIR)/ft_atof.c	\
 					$(MANDATORY_DIR)/ft_atoi.c	\
 					$(MANDATORY_DIR)/ft_isdigit.c	\
-					$(MANDATORY_DIR)/ft_memcpy.c	\
+					$(MANDATORY_DIR)/ft_bzero.c	\
 					$(MANDATORY_DIR)/ft_strcmp.c	\
 					$(MANDATORY_DIR)/ft_strstr.c	\
 					$(MANDATORY_DIR)/ft_strtolower.c	\
@@ -59,7 +59,7 @@ SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 					$(BONUS_DIR)/ft_atof_bonus.c	\
 					$(BONUS_DIR)/ft_atoi_bonus.c	\
 					$(BONUS_DIR)/ft_isdigit_bonus.c	\
-					$(BONUS_DIR)/ft_memcpy_bonus.c	\
+					$(BONUS_DIR)/ft_bzero_bonus.c	\
 					$(BONUS_DIR)/ft_strcmp_bonus.c	\
 					$(BONUS_DIR)/ft_strstr_bonus.c	\
 					$(BONUS_DIR)/ft_strtolower_bonus.c	\
@@ -80,10 +80,11 @@ HEADERS_DIR		=	includes/
 HEADERS			=	$(addprefix $(HEADERS_DIR), $(HEADER_SRCS))
 CC				=	cc
 RM				=	rm -f
-CFLAGS			=	-Wall -Wextra -Werror -o3 -g3
 #MLX_INCLUDES	=	-I /usr/X11/include
 #MLX_LIB		=	-L /usr/X11/lib -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
-MLX_LIB			=	-L ./libmlx -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
+INCLUDES_DIR	=	-I $(HEADERS_DIR) -I./printf-42
+MLX_LIB			=	-L ./libmlx -lmlx -framework OpenGL -framework AppKit -L ./printf-42 -lftprintf
+CFLAGS			=	-Wall -Wextra -Werror -o3 -g3 $(INCLUDES_DIR)
 NAME			=	fractol
 
 GREEN			=	\033[1;32m
@@ -111,6 +112,8 @@ all: lib $(NAME)
 lib:
 	@echo "$(YELLOW)Make MLX$(DEFAULT)"
 	@make -sC libmlx
+	@echo "$(YELLOW)Make ft_printf$(DEFAULT)"
+	@make bonus -sC printf-42
 	@echo "$(BLUE)Compiling...$(DEFAULT)"
 
 $(NAME): $(OBJS)

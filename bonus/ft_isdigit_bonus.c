@@ -6,11 +6,24 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 00:30:32 by mgama             #+#    #+#             */
-/*   Updated: 2023/02/19 04:07:04 by mgama            ###   ########.fr       */
+/*   Updated: 2023/12/22 11:38:35 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol_bonus.h"
+#include "fractol_bonus.h"
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	count;
+
+	count = 0;
+	while (*str != '\0')
+	{
+		str++;
+		count++;
+	}
+	return (count);
+}
 
 int	ft_isdigit(int num)
 {
