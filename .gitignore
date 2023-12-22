@@ -1,7 +1,10 @@
 fractol
-a.out
-*/*.o
-.objs
 .vscode
 */*.vscode
+.objs
+*/*.o
+*/*.a
+*/*.out
+*.a
+*.out
 *.dSYM
