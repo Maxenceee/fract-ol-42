@@ -6,19 +6,19 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:37:10 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:47:35 by mgama            ###   ########.fr       */
+/*   Updated: 2024/01/29 16:21:05 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-void	sinzc_set(t_data *mlx, t_screen_dim s_dims)
+inline void	sinzc_set(t_data *mlx, t_screen_dim s_dims)
 {
-	int					y;
-	int					x;
-	t_color				pallet;
-	t_pixel				pix;
-	t_complex_number	u;
+	register int				y;
+	register int				x;
+	register t_color			pallet;
+	register t_pixel			pix;
+	register t_complex_number	u;
 
 	y = -1;
 	handle_exp_variants(mlx);
@@ -41,11 +41,11 @@ void	sinzc_set(t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-void	render_sinzc_set(t_data *mlx, t_screen_dim s_dims, int x, int y)
+inline void	render_sinzc_set(t_data *mlx, t_screen_dim s_dims, int x, int y)
 {
-	t_color				pallet;
-	t_pixel				pix;
-	t_complex_number	u;
+	register t_color			pallet;
+	register t_pixel			pix;
+	register t_complex_number	u;
 
 	pallet = mlx->pallets[mlx->pallet_type];
 	u = convert_corner_to_center(
@@ -58,14 +58,14 @@ void	render_sinzc_set(t_data *mlx, t_screen_dim s_dims, int x, int y)
 		get_color(mlx, pix, pallet));
 }
 
-t_pixel	calcule_sinzc_series(t_complex_number point,
+inline t_pixel	calcule_sinzc_series(t_complex_number point,
 	t_complex_number point_offset, t_data *mlx)
 {
-	t_complex_number	num;
-	t_complex_number	temp_num;
-	int					max_iter;
-	int					i;
-	int					mul;
+	register t_complex_number	num;
+	register t_complex_number	temp_num;
+	int							max_iter;
+	int							i;
+	int							mul;
 
 	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
 	num = create_complex_number(point.x, point.y);

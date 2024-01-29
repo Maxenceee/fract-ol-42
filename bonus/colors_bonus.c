@@ -6,13 +6,13 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 20:03:31 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/01/29 16:01:58 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-int	get_color(t_data *mlx, t_pixel pix, t_color pallet)
+inline int	get_color(t_data *mlx, t_pixel pix, t_color pallet)
 {
 	if (pix.i >= MAX_ITER)
 		return (0x000000);
@@ -55,7 +55,7 @@ void	pallet_error(int *colors, t_color *color_data)
 	exit(EXIT_FAILURE);
 }
 
-int	mix(int from, int to, float mix)
+inline int	mix(int from, int to, float mix)
 {
 	float	r;
 	float	g;

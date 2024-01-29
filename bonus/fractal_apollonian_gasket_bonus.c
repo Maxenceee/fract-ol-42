@@ -6,15 +6,15 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:20:15 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/01/29 16:04:13 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-void	apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims)
+inline void	apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims)
 {
-	t_circle	*circles_s;
+	register t_circle	*circles_s;
 
 	circles_s = handle_gasket_variants(mlx, s_dims);
 	if (!circles_s)
@@ -23,13 +23,13 @@ void	apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims)
 	draw_gasket(circles_s, mlx, s_dims);
 }
 
-void	draw_circle(t_circle circle, t_data *mlx, t_screen_dim s_dims)
+inline void	draw_circle(t_circle circle, t_data *mlx, t_screen_dim s_dims)
 {
 	static const double	pi = 3.141592653589793;
-	double				i;
-	double				angle;
-	double				x1;
-	double				y1;
+	register double		i;
+	register double		angle;
+	register double		y1;
+	register double		x1;
 
 	i = 0;
 	while (i < 360)
@@ -47,10 +47,10 @@ void	draw_circle(t_circle circle, t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-void	clear_image(t_data *mlx, t_screen_dim s_dims)
+inline void	clear_image(t_data *mlx, t_screen_dim s_dims)
 {
-	int		y;
-	int		x;
+	register int	y;
+	register int	x;
 
 	y = -1;
 	while (++y < s_dims.height)
@@ -63,7 +63,7 @@ void	clear_image(t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-void	draw_gasket(t_circle *crls, t_data *mlx, t_screen_dim s_dims)
+inline void	draw_gasket(t_circle *crls, t_data *mlx, t_screen_dim s_dims)
 {
 	t_circle	c4;
 	t_circle	c5;
@@ -82,7 +82,7 @@ void	draw_gasket(t_circle *crls, t_data *mlx, t_screen_dim s_dims)
 	free(crls);
 }
 
-t_circle	*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims)
+inline t_circle	*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims)
 {
 	static int	is_a;
 	t_circle	*circles_s;

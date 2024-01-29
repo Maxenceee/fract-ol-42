@@ -6,18 +6,18 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:03:08 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/01/29 16:06:22 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-void	fractal_tricorn(t_data *mlx, t_screen_dim s_dims)
+inline void	fractal_tricorn(t_data *mlx, t_screen_dim s_dims)
 {
-	int		y;
-	int		x;
-	t_color	pallet;
-	t_pixel	pix;
+	register int		y;
+	register int		x;
+	register t_color	pallet;
+	register t_pixel	pix;
 
 	y = -1;
 	handle_exp_variants(mlx);
@@ -40,10 +40,10 @@ void	fractal_tricorn(t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-void	render_fractal_tricorn(t_data *mlx, t_screen_dim s_dims, int x, int y)
+inline void	render_fractal_tricorn(t_data *mlx, t_screen_dim s_dims, int x, int y)
 {
-	t_color	pallet;
-	t_pixel	pix;
+	register t_color	pallet;
+	register t_pixel	pix;
 
 	pallet = mlx->pallets[mlx->pallet_type];
 	pix = calcule_tricorn_series(
@@ -57,12 +57,12 @@ void	render_fractal_tricorn(t_data *mlx, t_screen_dim s_dims, int x, int y)
 		get_color(mlx, pix, pallet));
 }
 
-t_pixel	calcule_tricorn_series(t_complex_number point, t_data *mlx)
+inline t_pixel	calcule_tricorn_series(t_complex_number point, t_data *mlx)
 {
-	t_complex_number	num;
-	t_complex_number	temp_num;
-	int					max_iter;
-	int					i;
+	register t_complex_number	num;
+	register t_complex_number	temp_num;
+	int							max_iter;
+	int							i;
 
 	(void)(mlx);
 	num = create_complex_number(0, 0);

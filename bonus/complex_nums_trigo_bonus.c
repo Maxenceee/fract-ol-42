@@ -6,13 +6,13 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 18:47:53 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/01/29 16:02:27 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-t_complex_number	complex_sinh(t_complex_number n)
+inline t_complex_number	complex_sinh(t_complex_number n)
 {
 	double	a;
 	double	b;
@@ -22,7 +22,7 @@ t_complex_number	complex_sinh(t_complex_number n)
 	return ((t_complex_number){.x = a, .y = b});
 }
 
-t_complex_number	complex_sin(t_complex_number n)
+inline t_complex_number	complex_sin(t_complex_number n)
 {
 	double	a;
 	double	b;
@@ -32,7 +32,7 @@ t_complex_number	complex_sin(t_complex_number n)
 	return ((t_complex_number){.x = a, .y = b});
 }
 
-t_complex_number	complex_cos(t_complex_number n)
+inline t_complex_number	complex_cos(t_complex_number n)
 {
 	double	a;
 	double	b;
@@ -42,7 +42,7 @@ t_complex_number	complex_cos(t_complex_number n)
 	return ((t_complex_number){.x = a, .y = b});
 }
 
-t_complex_number	complex_absv(t_complex_number a)
+inline t_complex_number	complex_absv(t_complex_number a)
 {
 	return ((t_complex_number){.x = fabs(a.x), .y = fabs(a.y)});
 }

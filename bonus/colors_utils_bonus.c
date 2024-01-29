@@ -6,20 +6,20 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 20:27:12 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/01/29 16:14:19 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-int	ft_lerpi(int first, int second, double p)
+static inline int	ft_lerpi(int first, int second, double p)
 {
 	if (first == second)
 		return (first);
 	return ((int)((double)first + (second - first) * p));
 }
 
-int	flinear_color(float iterations, t_color pallet)
+inline int	flinear_color(float iterations, t_color pallet)
 {
 	float	value;
 	float	min_value;
@@ -41,7 +41,7 @@ int	flinear_color(float iterations, t_color pallet)
 	return (0x000000);
 }
 
-t_colorf	clerp(t_colorf c1, t_colorf c2, double p)
+static inline t_colorf	clerp(t_colorf c1, t_colorf c2, double p)
 {
 	t_colorf	c;
 
@@ -54,7 +54,7 @@ t_colorf	clerp(t_colorf c1, t_colorf c2, double p)
 	return (c);
 }
 
-t_colorf	linear_color(double i, int max, t_color p)
+inline t_colorf	linear_color(double i, int max, t_color p)
 {
 	double		index;
 	double		adjust;
@@ -68,7 +68,7 @@ t_colorf	linear_color(double i, int max, t_color p)
 		(int)(adjust + 1) - adjust));
 }
 
-t_colorf	smooth_color(t_pixel p, int max, t_color pal)
+inline t_colorf	smooth_color(t_pixel p, int max, t_color pal)
 {
 	double	i;
 	double	zn;
