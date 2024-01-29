@@ -84,7 +84,7 @@ RM				=	rm -f
 #MLX_LIB		=	-L /usr/X11/lib -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
 INCLUDES_DIR	=	-I $(HEADERS_DIR) -I./printf-42
 MLX_LIB			=	-L ./libmlx -lmlx -framework OpenGL -framework AppKit -L ./printf-42 -lftprintf
-CFLAGS			=	-Wall -Wextra -Werror -o3 -g3 $(INCLUDES_DIR)
+CFLAGS			=	-Wall -Wextra -Werror -o3 -g3 $(INCLUDES_DIR) -funroll-loops -flto
 NAME			=	fractol
 
 GREEN			=	\033[1;32m
