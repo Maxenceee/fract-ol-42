@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:43:11 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 19:31:08 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_fractal	f_fractal_sinzc(int type)
 	fractal.fractol_function_nothp = &sinzc_set;
 	fractal.has_variants = 1;
 	fractal.formula_exp = 3;
+	fractal.min_exp = 3;
 	fractal.no_pallet = 0;
 	fractal.command_id = 2;
 	fractal.home_scale = 100;

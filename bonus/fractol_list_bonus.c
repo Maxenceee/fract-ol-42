@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:17:33 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 19:33:44 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_fractal	f_julia(t_complex_number formula, int type)
 	fractal.fractol_function_nothp = &julia_set;
 	fractal.has_variants = 1;
 	fractal.formula_exp = 2;
+	fractal.min_exp = 1;
 	fractal.no_pallet = 0;
 	fractal.command_id = 1;
 	fractal.home_scale = 100;
@@ -44,6 +45,7 @@ t_fractal	f_mandelbrot(int type)
 	fractal.fractol_function_nothp = &mandelbrot_set;
 	fractal.has_variants = 1;
 	fractal.formula_exp = 2;
+	fractal.min_exp = 1;
 	fractal.no_pallet = 0;
 	fractal.command_id = 2;
 	fractal.home_scale = 100;
@@ -82,6 +84,7 @@ t_fractal	f_burningship(int type)
 	fractal.fractol_function_nothp = &burningship_set;
 	fractal.has_variants = 1;
 	fractal.formula_exp = 2;
+	fractal.min_exp = 1;
 	fractal.no_pallet = 0;
 	fractal.command_id = 2;
 	fractal.home_scale = 100;
@@ -99,8 +102,8 @@ t_fractal	f_fractal_tricorn(int type)
 	fractal.fractal_name = "Tricorn";
 	fractal.fractol_function = &render_fractal_tricorn;
 	fractal.fractol_function_nothp = &fractal_tricorn;
-	fractal.has_variants = 1;
-	fractal.formula_exp = 2;
+	fractal.has_variants = 0;
+	fractal.formula_exp = -1;
 	fractal.no_pallet = 0;
 	fractal.command_id = 2;
 	fractal.home_scale = 100;

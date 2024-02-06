@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 18:47:49 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 19:28:51 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ typedef struct s_fractal {
 	int					has_formula;
 	t_complex_number	formula;
 	int					formula_exp;
+	int					min_exp;
 	void				(*fractol_function_nothp)(t_data *, t_screen_dim);
 	void				(*fractol_function)(t_data *, t_screen_dim, int, int);
 	int					has_variants;
