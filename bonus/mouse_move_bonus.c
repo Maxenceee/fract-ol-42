@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:33:15 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:44:18 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	handle_on_mouse_lock(int x, int y, t_data *mlx)
 	double		rx;
 	double		ry;
 
-	if (!mlx->fractal_list[mlx->current_fractal_type].has_formula)
+	if (!mlx->fractal_list[mlx->curr_fractal_type].has_formula)
 		return ;
 	rx = 1. / WINDOW_WIDTH * x;
 	ry = 1. / WINDOW_HEIGHT * y;
@@ -55,7 +55,7 @@ void	handle_on_mouse_lock(int x, int y, t_data *mlx)
 				- mlx->saved_mouse.x) + rx;
 		mlx->formula.y = (mlx->saved_formula.y
 				- mlx->saved_mouse.y) + ry;
-		mlx->fractal_list[mlx->current_fractal_type].formula = mlx->formula;
+		mlx->fractal_list[mlx->curr_fractal_type].formula = mlx->formula;
 		mlx_update_image_multitp(mlx);
 	}
 }

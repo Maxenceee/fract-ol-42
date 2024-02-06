@@ -6,13 +6,13 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:20:57 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:45:27 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:21:44 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_circle	create_circle(double r, t_complex_number center)
+inline t_circle	create_circle(double r, t_complex_number center)
 {
 	t_circle	circle;
 
@@ -23,7 +23,7 @@ t_circle	create_circle(double r, t_complex_number center)
 	return (circle);
 }
 
-t_circle	*symmetric_set(double x, double y, double radius)
+inline t_circle	*symmetric_set(double x, double y, double radius)
 {
 	t_circle	*fni;
 	t_circle	c1;
@@ -47,7 +47,7 @@ t_circle	*symmetric_set(double x, double y, double radius)
 	return (fni);
 }
 
-t_circle	*a_symmetric_set(double x, double y, double radius)
+inline t_circle	*a_symmetric_set(double x, double y, double radius)
 {
 	t_circle	*fni;
 	t_circle	c1;
@@ -71,7 +71,7 @@ t_circle	*a_symmetric_set(double x, double y, double radius)
 	return (fni);
 }
 
-t_complex_number	solve_equation(t_complex_number a, t_complex_number b,
+inline t_complex_number	solve_equation(t_complex_number a, t_complex_number b,
 	t_complex_number c)
 {
 	t_complex_number	s;

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:44:18 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ int	key_up_event(int key_code, void *param)
 	if (key_code == 31)
 	{
 		ft_printf("\n\033[1;35mCurrent fractal: \033[4m%s%s\n",
-			mlx->fractal_list[mlx->current_fractal_type].fractal_name,
+			mlx->fractal_list[mlx->curr_fractal_type].fractal_name,
 			"\033[0m");
-		if (mlx->fractal_list[mlx->current_fractal_type].has_formula)
+		if (mlx->fractal_list[mlx->curr_fractal_type].has_formula)
 			ft_printf("\033[1;35mCurrent formula: %+.3f %+.3fi %s\n",
 				mlx->formula.x, mlx->formula.y, "\033[0m");
-		if (mlx->fractal_list[mlx->current_fractal_type].formula_exp != -1)
+		if (mlx->fractal_list[mlx->curr_fractal_type].formula_exp != -1)
 			ft_printf("\033[1;35mCurrent exponent: %d %s\n",
-				mlx->fractal_list[mlx->current_fractal_type].formula_exp,
+				mlx->fractal_list[mlx->curr_fractal_type].formula_exp,
 				"\033[0m");
 	}
 	return (0);

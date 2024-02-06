@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:44:18 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	parse_params(int argc, char **argv, t_data *mlx)
 
 static void	parse_arg_in_mlx(t_data *mlx, int type)
 {
-	mlx->current_fractal_type = type;
+	mlx->curr_fractal_type = type;
 	mlx->fractal_list[type].formula = mlx->formula;
 	mlx->fractal_list[type].home_pallet = mlx->pallet_type;
 }

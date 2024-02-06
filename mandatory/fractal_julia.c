@@ -6,83 +6,75 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:28:46 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 19:00:40 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	julia_set(t_data *mlx, t_screen_dim s_dims)
+inline void	julia_set(register t_data *mlx, register t_screen_dim s_d)
 {
 	int					y;
 	int					x;
-	t_color				pallet;
-	int					pix;
-	t_complex_number	u;
+	register t_color	pallet;
+	register int		pix;
 
 	y = -1;
 	handle_exp_variants(mlx);
 	pallet = mlx->pallets[mlx->pallet_type];
-	while (++y < s_dims.height)
+	while (++y < s_d.height)
 	{
 		x = -1;
-		while (++x < s_dims.width)
+		while (++x < s_d.width)
 		{
-			u = convert_corner_to_center(
-					create_complex_number(s_dims.left + x, s_dims.top + y),
-					mlx->center_offset,
-					mlx->scale,
-					create_complex_number(s_dims.center_x, s_dims.center_y));
-			pix = calcule_julia_series(u, mlx->formula, mlx);
-			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
+			pix = calcule_julia_series(
+					convert_corner_to_center(
+						create_complex_number(s_d.left + x, s_d.top + y),
+						mlx->center_offset,
+						mlx->scale,
+						create_complex_number(s_d.center_x, s_d.center_y)),
+					mlx->formula, mlx);
+			my_mlx_pixel_put(mlx, s_d.left + x, s_d.top + y,
 				get_color(pix, pallet.pallet, pallet.pallet_length));
 		}
 	}
 }
 
-int	calcule_julia_series(t_complex_number point,
+inline int	calcule_julia_series(t_complex_number point,
 	t_complex_number point_offset, t_data *mlx)
 {
-	t_complex_number	num;
-	t_complex_number	temp_num;
-	int					max_iter;
-	int					i;
-	int					mul;
+	register t_complex_number	num;
+	register t_complex_number	temp_num;
+	int							i;
 
-	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
 	num = create_complex_number(point.x, point.y);
-	max_iter = get_max_iter_from_scale();
 	i = 0;
-	while (modulus_complex_2(num) < 4. && i < max_iter)
+	while (modulus_complex_2(num) < 4. && i < MAX_ITER)
 	{
 		temp_num = num;
-		num = complex_add(complex_rational_pow(temp_num, mul), point_offset);
+		num = complex_add(
+				complex_rational_pow(temp_num,
+					mlx->fractal_list[mlx->curr_fractal_type].formula_exp),
+				point_offset);
 		i++;
 	}
 	return (i);
 }
 
-int	handle_exp_variants(t_data *mlx)
+inline int	handle_exp_variants(t_data *mlx)
 {
 	if (mlx->next_variant == 1)
-		mlx->fractal_list[mlx->current_fractal_type].formula_exp++;
+		mlx->fractal_list[mlx->curr_fractal_type].formula_exp++;
 	if (mlx->prev_variant == 1
-		&& mlx->fractal_list[mlx->current_fractal_type].formula_exp > 1)
-		mlx->fractal_list[mlx->current_fractal_type].formula_exp--;
-	return (mlx->fractal_list[mlx->current_fractal_type].formula_exp);
+		&& mlx->fractal_list[mlx->curr_fractal_type].formula_exp > 1)
+		mlx->fractal_list[mlx->curr_fractal_type].formula_exp--;
+	return (mlx->fractal_list[mlx->curr_fractal_type].formula_exp);
 }
 
-int	get_max_iter_from_scale(void)
-{
-	return (MAX_ITER);
-}
-
-t_complex_number	convert_corner_to_center(t_complex_number point,
+inline t_complex_number	convert_corner_to_center(t_complex_number point,
 	t_complex_number mouse_offset, double scale, t_complex_number mids)
 {
-	t_complex_number	centered_point;
-
-	centered_point.x = (point.x - mids.x) / scale + mouse_offset.x;
-	centered_point.y = (point.y - mids.y) / scale + mouse_offset.y;
-	return (centered_point);
+	return ((t_complex_number){
+		.x = (point.x - mids.x) / scale + mouse_offset.x,
+		.y = (point.y - mids.y) / scale + mouse_offset.y});
 }

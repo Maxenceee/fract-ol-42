@@ -6,23 +6,23 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:11:20 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:22:11 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_complex_number	complex_add(t_complex_number a, t_complex_number b)
+inline t_complex_number	complex_add(t_complex_number a, t_complex_number b)
 {
 	return (create_complex_number(a.x + b.x, a.y + b.y));
 }
 
-t_complex_number	complex_sub(t_complex_number a, t_complex_number b)
+inline t_complex_number	complex_sub(t_complex_number a, t_complex_number b)
 {
 	return (create_complex_number(a.x - b.x, a.y - b.y));
 }
 
-t_complex_number	complex_mul(t_complex_number a, t_complex_number b)
+inline t_complex_number	complex_mul(t_complex_number a, t_complex_number b)
 {
 	if (b.y == 0 && a.y == 0)
 		return (create_complex_number(a.x * b.x, 0));
@@ -31,7 +31,7 @@ t_complex_number	complex_mul(t_complex_number a, t_complex_number b)
 			a.x * b.y + a.y * b.x));
 }
 
-t_complex_number	complex_div(t_complex_number a, t_complex_number b)
+inline t_complex_number	complex_div(t_complex_number a, t_complex_number b)
 {
 	double	x;
 	double	t;
@@ -58,7 +58,7 @@ t_complex_number	complex_div(t_complex_number a, t_complex_number b)
 	}
 }
 
-t_complex_number	complex_sqrt(t_complex_number cmpl)
+inline t_complex_number	complex_sqrt(t_complex_number cmpl)
 {
 	double	a;
 	double	b;

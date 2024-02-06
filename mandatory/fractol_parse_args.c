@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:52:14 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:44:18 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	parse_arg_in_mlx(t_data *mlx, int type, t_complex_number start_off)
 	if (start_off.x > 1 || start_off.x < -1
 		|| start_off.y > 1 || start_off.y < -1)
 		show_args(2);
-	mlx->current_fractal_type = type;
+	mlx->curr_fractal_type = type;
 	mlx->formula = start_off;
 	mlx->fractal_list[type].formula = start_off;
 	mlx->fractal_list[type].home_pallet = mlx->pallet_type;

@@ -6,22 +6,20 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:03:08 by mgama             #+#    #+#             */
-/*   Updated: 2024/01/29 16:06:22 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:54:49 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-inline void	fractal_tricorn(t_data *mlx, t_screen_dim s_dims)
+inline void	fractal_tricorn(register t_data *mlx, register t_screen_dim s_dims)
 {
-	register int		y;
-	register int		x;
-	register t_color	pallet;
+	int					y;
+	int					x;
 	register t_pixel	pix;
 
 	y = -1;
 	handle_exp_variants(mlx);
-	pallet = mlx->pallets[mlx->pallet_type];
 	while (++y < s_dims.height)
 	{
 		x = -1;
@@ -35,17 +33,16 @@ inline void	fractal_tricorn(t_data *mlx, t_screen_dim s_dims)
 							s_dims.center_x, s_dims.center_y)),
 					mlx);
 			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
-				get_color(mlx, pix, pallet));
+				get_color(mlx, pix, mlx->pallets[mlx->pallet_type]));
 		}
 	}
 }
 
-inline void	render_fractal_tricorn(t_data *mlx, t_screen_dim s_dims, int x, int y)
+inline void	render_fractal_tricorn(register t_data *mlx,
+	register t_screen_dim s_dims, int x, int y)
 {
-	register t_color	pallet;
 	register t_pixel	pix;
 
-	pallet = mlx->pallets[mlx->pallet_type];
 	pix = calcule_tricorn_series(
 			convert_corner_to_center(
 				create_complex_number(s_dims.left + x, s_dims.top + y),
@@ -54,21 +51,19 @@ inline void	render_fractal_tricorn(t_data *mlx, t_screen_dim s_dims, int x, int 
 					s_dims.center_x, s_dims.center_y)),
 			mlx);
 	my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
-		get_color(mlx, pix, pallet));
+		get_color(mlx, pix, mlx->pallets[mlx->pallet_type]));
 }
 
 inline t_pixel	calcule_tricorn_series(t_complex_number point, t_data *mlx)
 {
 	register t_complex_number	num;
 	register t_complex_number	temp_num;
-	int							max_iter;
 	int							i;
 
 	(void)(mlx);
 	num = create_complex_number(0, 0);
-	max_iter = MAX_ITER;
 	i = 0;
-	while (modulus_complex_2(num) < (1 << 4) && i < max_iter)
+	while (modulus_complex_2(num) < (1 << 4) && i < MAX_ITER)
 	{
 		temp_num = num;
 		num.x = temp_num.x * temp_num.x - temp_num.y * temp_num.y + point.x;

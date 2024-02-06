@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 20:27:12 by mgama             #+#    #+#             */
-/*   Updated: 2024/01/29 16:14:19 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 19:05:45 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,14 @@ inline int	flinear_color(float iterations, t_color pallet)
 
 static inline t_colorf	clerp(t_colorf c1, t_colorf c2, double p)
 {
-	t_colorf	c;
-
 	if (c1.value == c2.value)
 		return (c1);
-	c.rgba.r = (char)ft_lerpi((int)c1.rgba.r, (int)c2.rgba.r, p);
-	c.rgba.g = (char)ft_lerpi((int)c1.rgba.g, (int)c2.rgba.g, p);
-	c.rgba.b = (char)ft_lerpi((int)c1.rgba.b, (int)c2.rgba.b, p);
-	c.rgba.a = (char)0x00;
-	return (c);
+	return ((t_colorf){
+		.rgba.r = (char)ft_lerpi((int)c1.rgba.r, (int)c2.rgba.r, p),
+		.rgba.g = (char)ft_lerpi((int)c1.rgba.g, (int)c2.rgba.g, p),
+		.rgba.b = (char)ft_lerpi((int)c1.rgba.b, (int)c2.rgba.b, p),
+		.rgba.a = (char)0x00
+	});
 }
 
 inline t_colorf	linear_color(double i, int max, t_color p)

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:43:58 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:44:18 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	pallet_events(int key_code, t_data *mlx)
 {
 	if (key_code == 35)
 	{
-		if (!mlx->fractal_list[mlx->current_fractal_type].no_pallet)
+		if (!mlx->fractal_list[mlx->curr_fractal_type].no_pallet)
 		{
 			if (mlx->pallet_type == mlx->pallet_nb - 1)
 				mlx->pallet_type = 0;
 			else
 				mlx->pallet_type++;
 			mlx->fractal_list[mlx
-				->current_fractal_type].home_pallet = mlx->pallet_type;
+				->curr_fractal_type].home_pallet = mlx->pallet_type;
 		}
 		mlx_update_image_multitp(mlx);
 	}
@@ -60,14 +60,14 @@ void	pallet_events(int key_code, t_data *mlx)
 void	variants_events(int key_code, t_data *mlx)
 {
 	if (key_code == 9 && mlx->fractal_list[mlx
-			->current_fractal_type].has_variants)
+			->curr_fractal_type].has_variants)
 	{
 		mlx->next_variant = 1;
 		mlx_update_image_multitp(mlx);
 		mlx->next_variant = 0;
 	}
 	if (key_code == 11 && mlx->fractal_list[mlx
-			->current_fractal_type].has_variants)
+			->curr_fractal_type].has_variants)
 	{
 		mlx->prev_variant = 1;
 		mlx_update_image_multitp(mlx);

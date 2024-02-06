@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 20:03:31 by mgama             #+#    #+#             */
-/*   Updated: 2024/01/29 16:01:58 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:12:13 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ inline int	mix(int from, int to, float mix)
 	return (color((int)r, (int)g, (int)b));
 }
 
-int	color(int r, int g, int b)
+inline int	color(int r, int g, int b)
 {
 	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }

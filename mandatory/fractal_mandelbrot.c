@@ -6,18 +6,18 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 00:37:46 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 19:01:36 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	mandelbrot_set(t_data *mlx, t_screen_dim s_dims)
+inline void	mandelbrot_set(register t_data *mlx, register t_screen_dim s_dims)
 {
-	int		y;
-	int		x;
-	t_color	pallet;
-	int		pix;
+	int					y;
+	int					x;
+	register t_color	pallet;
+	register int		pix;
 
 	y = -1;
 	handle_exp_variants(mlx);
@@ -40,22 +40,21 @@ void	mandelbrot_set(t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-int	calcule_mandelbrot_series(t_complex_number point, t_data *mlx)
+inline int	calcule_mandelbrot_series(t_complex_number point, t_data *mlx)
 {
-	t_complex_number	num;
-	t_complex_number	temp_num;
-	int					max_iter;
-	int					i;
-	int					mul;
+	register t_complex_number	num;
+	register t_complex_number	temp_num;
+	int							i;
 
-	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
 	num = create_complex_number(0, 0);
-	max_iter = MAX_ITER;
 	i = 0;
-	while (modulus_complex_2(num) < 4. && i < max_iter)
+	while (modulus_complex_2(num) < 4. && i < MAX_ITER)
 	{
 		temp_num = num;
-		num = complex_add(complex_rational_pow(temp_num, mul), point);
+		num = complex_add(
+				complex_rational_pow(temp_num,
+					mlx->fractal_list[mlx->curr_fractal_type].formula_exp),
+				point);
 		i++;
 	}
 	return (i);

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 12:10:50 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:31:30 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:44:18 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	catch_fractal_from_screen(t_data *mlx, int x, int y)
 		{
 			mlx->scale = INITIAL_SCALE;
 			mlx->is_home = 0;
-			mlx->current_fractal_type = i;
+			mlx->curr_fractal_type = i;
 			if (mlx->fractal_list[i].has_formula)
 				mlx->formula = mlx->fractal_list[i].formula;
 			mlx->pallet_type = mlx->fractal_list[i].home_pallet;

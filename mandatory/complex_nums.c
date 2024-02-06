@@ -6,32 +6,28 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:46:28 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:27:52 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_complex_number	create_complex_number(double x, double y)
+inline t_complex_number	create_complex_number(double x, double y)
 {
-	t_complex_number	num;
-
-	num.x = x;
-	num.y = y;
-	return (num);
+	return ((t_complex_number){.x = x, .y = y});
 }
 
-double	modulus_complex_2(t_complex_number a)
+inline double	modulus_complex_2(t_complex_number a)
 {
 	return (a.x * a.x + a.y * a.y);
 }
 
-double	complex_abs(t_complex_number a)
+inline double	complex_abs(t_complex_number a)
 {
 	return (complex_hypot(a.x, a.y));
 }
 
-double	complex_hypot(double x, double y)
+inline double	complex_hypot(double x, double y)
 {
 	double	a;
 	double	b;
@@ -50,7 +46,7 @@ double	complex_hypot(double x, double y)
 	return (a * sqrtf(1 + b * b));
 }
 
-t_complex_number	complex_rational_pow(t_complex_number a, unsigned int b)
+inline t_complex_number	complex_rational_pow(t_complex_number a, unsigned int b)
 {
 	unsigned int		i;
 	t_complex_number	n;

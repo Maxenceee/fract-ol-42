@@ -6,22 +6,20 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:56:17 by mgama             #+#    #+#             */
-/*   Updated: 2024/01/29 16:04:41 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:52:38 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-inline void	burningship_set(t_data *mlx, t_screen_dim s_dims)
+inline void	burningship_set(register t_data *mlx, register t_screen_dim s_dims)
 {
-	register int		y;
-	register int		x;
-	register t_color	pallet;
+	int					y;
+	int					x;
 	register t_pixel	pix;
 
 	y = -1;
 	handle_exp_variants(mlx);
-	pallet = mlx->pallets[mlx->pallet_type];
 	while (++y < s_dims.height)
 	{
 		x = -1;
@@ -35,17 +33,16 @@ inline void	burningship_set(t_data *mlx, t_screen_dim s_dims)
 							s_dims.center_x, s_dims.center_y)),
 					mlx);
 			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
-				get_color(mlx, pix, pallet));
+				get_color(mlx, pix, mlx->pallets[mlx->pallet_type]));
 		}
 	}
 }
 
-inline void	render_burningship_set(t_data *mlx, t_screen_dim s_dims, int x, int y)
+inline void	render_burningship_set(register t_data *mlx,
+	register t_screen_dim s_dims, int x, int y)
 {
-	register t_color	pallet;
 	register t_pixel	pix;
 
-	pallet = mlx->pallets[mlx->pallet_type];
 	pix = calcule_burningship_series(
 			convert_corner_to_center(
 				create_complex_number(s_dims.left + x, s_dims.top + y),
@@ -54,27 +51,26 @@ inline void	render_burningship_set(t_data *mlx, t_screen_dim s_dims, int x, int 
 					s_dims.center_x, s_dims.center_y)),
 			mlx);
 	my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,
-		get_color(mlx, pix, pallet));
+		get_color(mlx, pix, mlx->pallets[mlx->pallet_type]));
 }
 
 inline t_pixel	calcule_burningship_series(t_complex_number point, t_data *mlx)
 {
 	register t_complex_number	num;
 	register t_complex_number	temp_num;
-	int							max_iter;
 	int							i;
-	int							mul;
 
-	mul = mlx->fractal_list[mlx->current_fractal_type].formula_exp;
 	num = create_complex_number(0, 0);
-	max_iter = get_max_iter_from_scale();
 	i = 0;
-	while (modulus_complex_2(num) < (1 << 8) && i < max_iter)
+	while (modulus_complex_2(num) < (1 << 8) && i < MAX_ITER)
 	{
 		num.x = fabs(num.x);
 		num.y = fabs(num.y);
 		temp_num = num;
-		num = complex_add(complex_rational_pow(temp_num, mul), point);
+		num = complex_add(
+				complex_rational_pow(temp_num,
+					mlx->fractal_list[mlx->curr_fractal_type].formula_exp),
+				point);
 		i++;
 	}
 	return ((t_pixel){.coords = num, .i = i});

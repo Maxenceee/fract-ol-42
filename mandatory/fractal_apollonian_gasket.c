@@ -6,13 +6,13 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:20:15 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:39:49 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims)
+inline void	apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims)
 {
 	t_circle	*circles_s;
 
@@ -23,7 +23,7 @@ void	apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims)
 	draw_gasket(circles_s, mlx, s_dims);
 }
 
-void	draw_circle(t_circle circle, t_data *mlx, t_screen_dim s_dims)
+inline void	draw_circle(t_circle circle, t_data *mlx, t_screen_dim s_dims)
 {
 	static const double	pi = 3.141592653589793;
 	double				i;
@@ -47,7 +47,7 @@ void	draw_circle(t_circle circle, t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-void	clear_image(t_data *mlx, t_screen_dim s_dims)
+inline void	clear_image(register t_data *mlx, register t_screen_dim s_dims)
 {
 	int		y;
 	int		x;
@@ -63,7 +63,8 @@ void	clear_image(t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-void	draw_gasket(t_circle *crls, t_data *mlx, t_screen_dim s_dims)
+inline void	draw_gasket(register t_circle *crls, t_data *mlx,
+	t_screen_dim s_dims)
 {
 	t_circle	c4;
 	t_circle	c5;
@@ -82,24 +83,21 @@ void	draw_gasket(t_circle *crls, t_data *mlx, t_screen_dim s_dims)
 	free(crls);
 }
 
-t_circle	*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims)
+inline t_circle	*handle_gasket_variants(t_data *mlx, t_screen_dim s_dims)
 {
 	static int	is_a;
-	t_circle	*circles_s;
 
 	if (mlx->next_variant || mlx->prev_variant)
 		is_a = !is_a;
 	if (is_a)
-		circles_s = a_symmetric_set(
+		return (a_symmetric_set(
 				s_dims.center_x - mlx->center_offset.x * (mlx->scale * 0.5),
 				s_dims.center_y - mlx->center_offset.y * (mlx->scale * 0.5),
 				((s_dims.height * 0.5) - s_dims.height / 5
-					+ (mlx->scale * 0.5)));
-	else
-		circles_s = symmetric_set(
-				s_dims.center_x - mlx->center_offset.x * (mlx->scale * 0.5),
-				s_dims.center_y - mlx->center_offset.y * (mlx->scale * 0.5),
-				((s_dims.height * 0.5) - s_dims.height / 5
-					+ (mlx->scale * 0.5)));
-	return (circles_s);
+					+ (mlx->scale * 0.5))));
+	return (symmetric_set(
+			s_dims.center_x - mlx->center_offset.x * (mlx->scale * 0.5),
+			s_dims.center_y - mlx->center_offset.y * (mlx->scale * 0.5),
+			((s_dims.height * 0.5) - s_dims.height / 5
+				+ (mlx->scale * 0.5))));
 }

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2024/01/29 16:13:40 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:47:49 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ typedef struct s_data {
 	int					pallet_nb;
 	t_color				*pallets;
 	struct s_fractal	*fractal_list;
-	int					current_fractal_type;
+	int					curr_fractal_type;
 	int					fractal_count;
 	int					transition_req;
 	t_render			render;
@@ -257,7 +257,6 @@ t_pixel				calcule_julia_series(t_complex_number point,
 						t_complex_number point_offset,
 						t_data *mlx);
 int					handle_exp_variants(t_data *mlx);
-int					get_max_iter_from_scale(void);
 
 /* mandelbrot */
 

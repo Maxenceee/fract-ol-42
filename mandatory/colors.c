@@ -6,13 +6,13 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 20:03:31 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:21:53 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	mix(int from, int to, float mix)
+inline int	mix(int from, int to, float mix)
 {
 	float	r;
 	float	g;
@@ -25,7 +25,7 @@ int	mix(int from, int to, float mix)
 	return (color((int)r, (int)g, (int)b));
 }
 
-int	get_color(float iterations, int *pallet, int colors_nb)
+inline int	get_color(float iterations, int *pallet, int colors_nb)
 {
 	float	value;
 	float	min_value;
@@ -47,7 +47,7 @@ int	get_color(float iterations, int *pallet, int colors_nb)
 	return (0x000000);
 }
 
-int	color(int r, int g, int b)
+inline int	color(int r, int g, int b)
 {
 	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }

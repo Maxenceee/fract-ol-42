@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:45:34 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:58:59 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ typedef struct s_data {
 	int					pallet_nb;
 	t_color				*pallets;
 	struct s_fractal	*fractal_list;
-	int					current_fractal_type;
+	int					curr_fractal_type;
 	int					fractal_count;
 }				t_data;
 
@@ -197,7 +197,6 @@ int					calcule_julia_series(t_complex_number point,
 						t_complex_number point_offset,
 						t_data *mlx);
 int					handle_exp_variants(t_data *mlx);
-int					get_max_iter_from_scale(void);
 
 t_complex_number	convert_corner_to_center(t_complex_number point,
 						t_complex_number mouse_offset, double scale,

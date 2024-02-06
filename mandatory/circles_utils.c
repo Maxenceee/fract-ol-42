@@ -6,13 +6,13 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:14:30 by mgama             #+#    #+#             */
-/*   Updated: 2023/12/22 11:26:48 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/06 18:21:31 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_circle	get_adjacent(t_circle c1, t_circle c2, t_circle c3)
+inline t_circle	get_adjacent(t_circle c1, t_circle c2, t_circle c3)
 {
 	t_complex_number	b1;
 	t_complex_number	b2;
@@ -28,7 +28,7 @@ t_circle	get_adjacent(t_circle c1, t_circle c2, t_circle c3)
 	return (create_circle(fabs(1 / b4.x), pos));
 }
 
-t_circle	flip_circle(t_circle c4, t_circle c1, t_circle c2, t_circle c3)
+inline t_circle	flip_circle(t_circle c4, t_circle c1, t_circle c2, t_circle c3)
 {
 	double				bend;
 	t_complex_number	center;
@@ -46,7 +46,7 @@ t_circle	flip_circle(t_circle c4, t_circle c1, t_circle c2, t_circle c3)
 	return (create_circle(1 / bend, center));
 }
 
-t_r_apollonian_c	create_recursive_circle(t_circle c1, t_circle c2,
+inline t_r_apollonian_c	create_recursive_circle(t_circle c1, t_circle c2,
 	t_circle c3, t_circle c4)
 {
 	t_r_apollonian_c	c;
@@ -58,7 +58,7 @@ t_r_apollonian_c	create_recursive_circle(t_circle c1, t_circle c2,
 	return (c);
 }
 
-void	recursive_circle(t_r_apollonian_c circles,
+inline void	recursive_circle(t_r_apollonian_c circles,
 	t_data *mlx, t_screen_dim s_dims)
 {
 	t_circle	cl1;
