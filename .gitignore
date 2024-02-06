@@ -8,3 +8,4 @@ fractol
 *.a
 *.out
 *.dSYM
+.DS_Store
