@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/21 20:02:36 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/21 20:20:28 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static void	print_state(t_data *mlx)
 		ft_printf("\033[1;35mCurrent formula: Z^%d %+.3f %+.3fi %s\n",
 			mlx->fractal_list[mlx->curr_fractal_type].formula_exp,
 			mlx->formula.x, mlx->formula.y, "\033[0m");
-	if (mlx->fractal_list[mlx->curr_fractal_type].formula_exp != -1
-		&& !mlx->fractal_list[mlx->curr_fractal_type].has_formula)
+	if (mlx->fractal_list[mlx->curr_fractal_type].formula_exp != -1)
 		ft_printf("\033[1;35mCurrent exponent: %d %s\n",
 			mlx->fractal_list[mlx->curr_fractal_type].formula_exp,
 			"\033[0m");
@@ -49,7 +48,6 @@ int	key_down_event(int key_code, void *param)
 	t_data	*mlx;
 
 	mlx = (t_data *)param;
-	printf("key_code: %d\n", key_code);
 	if (key_code == KEY_ESC)
 	{
 		stop_mlx(mlx);
