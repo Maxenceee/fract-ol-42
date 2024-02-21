@@ -93,7 +93,7 @@ ifeq ($(shell uname), Darwin)
 	MLX_LIB			=	-L ./$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 else
 	MLX_DIR			=	libmlx_linux
-	MLX_LIB			=	-L./$(MLX_DIR) -lmlx -lX11 -lXext -lm
+	MLX_LIB			=	-L./$(MLX_DIR) -lmlx -lX11 -lXext -lm -lpthread
 endif
 
 GREEN			=	\033[1;32m
