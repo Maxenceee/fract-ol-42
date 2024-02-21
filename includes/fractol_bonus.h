@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/21 19:42:00 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/21 20:08:32 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
+# include <stdint.h>
+# include <limits.h>
 # include <time.h>
 # include <sys/time.h>
 # include <pthread.h>
