@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/21 19:56:20 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/21 20:02:36 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	key_down_event(int key_code, void *param)
 	t_data	*mlx;
 
 	mlx = (t_data *)param;
+	printf("key_code: %d\n", key_code);
 	if (key_code == KEY_ESC)
 	{
 		stop_mlx(mlx);
