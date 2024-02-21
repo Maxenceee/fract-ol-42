@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 18:44:18 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/21 19:56:20 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	stop_mlx(t_data *mlx)
 		free(mlx->pallets->pallet);
 	if (mlx->fractal_list != NULL)
 		free(mlx->fractal_list);
+	ft_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 	exit(EXIT_SUCCESS);
 	return (0);
@@ -48,7 +49,7 @@ int	key_down_event(int key_code, void *param)
 	t_data	*mlx;
 
 	mlx = (t_data *)param;
-	if (key_code == 53)
+	if (key_code == KEY_ESC)
 	{
 		stop_mlx(mlx);
 	}
@@ -70,14 +71,14 @@ int	key_up_event(int key_code, void *param)
 	pallet_events(key_code, mlx);
 	variants_events(key_code, mlx);
 	key_events(key_code, mlx);
-	if (key_code == 31)
+	if (key_code == KEY_O)
 		print_state(mlx);
-	if (key_code == 1)
+	if (key_code == KEY_S)
 	{
 		mlx->smooth = !mlx->smooth;
 		mlx_update_image_multitp(mlx);
 	}
-	if (key_code == 41)
+	if (key_code == KEY_M)
 	{
 		ft_printf("\033[1;34mMulti thread enabled \033[1;31m\033[4m%d\n%s",
 			mlx->no_multithp, "\033[0m");

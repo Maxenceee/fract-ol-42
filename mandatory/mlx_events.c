@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:13:26 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 18:44:18 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/21 19:53:45 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	key_down_event(int key_code, void *param)
 	t_data	*mlx;
 
 	mlx = (t_data *)param;
-	if (key_code == 53)
+	if (key_code == KEY_ESC)
 	{
 		stop_mlx(mlx);
 	}
@@ -55,7 +55,7 @@ int	key_up_event(int key_code, void *param)
 	pallet_events(key_code, mlx);
 	variants_events(key_code, mlx);
 	key_events(key_code, mlx);
-	if (key_code == 31)
+	if (key_code == KEY_O)
 	{
 		ft_printf("\n\033[1;35mCurrent fractal: \033[4m%s%s\n",
 			mlx->fractal_list[mlx->curr_fractal_type].fractal_name,

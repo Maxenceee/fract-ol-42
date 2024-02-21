@@ -26,6 +26,7 @@ SRCS			=	$(MANDATORY_DIR)/circles_utils.c	\
 					$(MANDATORY_DIR)/ft_strtolower.c	\
 					$(MANDATORY_DIR)/home_events.c	\
 					$(MANDATORY_DIR)/key_events.c	\
+					$(MANDATORY_DIR)/mlx_destroy_display.c \
 					$(MANDATORY_DIR)/mlx_draw.c	\
 					$(MANDATORY_DIR)/mlx_events.c	\
 					$(MANDATORY_DIR)/mouse_events.c	\
@@ -65,6 +66,7 @@ SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 					$(BONUS_DIR)/ft_strtolower_bonus.c	\
 					$(BONUS_DIR)/home_events_bonus.c	\
 					$(BONUS_DIR)/key_events_bonus.c	\
+					$(BONUS_DIR)/mlx_destroy_display.c \
 					$(BONUS_DIR)/mlx_draw_bonus.c	\
 					$(BONUS_DIR)/mlx_events_bonus.c	\
 					$(BONUS_DIR)/mouse_events_bonus.c	\
@@ -75,17 +77,24 @@ SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 
 OBJS_BONUS		=	$(patsubst $(BONUS_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS_BONUS))
 
+NAME			=	fractol
+
 HEADER_SRCS		=	fractol.h fractol_bonus.h
 HEADERS_DIR		=	includes/
 HEADERS			=	$(addprefix $(HEADERS_DIR), $(HEADER_SRCS))
 CC				=	cc
 RM				=	rm -f
-#MLX_INCLUDES	=	-I /usr/X11/include
-#MLX_LIB		=	-L /usr/X11/lib -lmlx -framework OpenGL -framework AppKit -L ./printf -lftprintf
 INCLUDES_DIR	=	-I $(HEADERS_DIR) -I./printf-42
-MLX_LIB			=	-L ./libmlx -lmlx -framework OpenGL -framework AppKit -L ./printf-42 -lftprintf
-CFLAGS			=	-Wall -Wextra -Werror -o3 -g3 $(INCLUDES_DIR) -funroll-loops -flto
-NAME			=	fractol
+PRINTF_LIB		=	-L ./printf-42 -lftprintf
+CFLAGS			=	-Wall -Wextra -Werror -o3 -g3 $(INCLUDES_DIR) -funroll-loops -flto -pg
+
+ifeq ($(shell uname), Darwin)
+	MLX_DIR			=	libmlx_mac
+	MLX_LIB			=	-L ./$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+else
+	MLX_DIR			=	libmlx_linux
+	MLX_LIB			=	-L./$(MLX_DIR) -lmlx -lX11 -lXext -lm
+endif
 
 GREEN			=	\033[1;32m
 BLUE			=	\033[1;34m
@@ -111,17 +120,17 @@ all: lib $(NAME)
 
 lib:
 	@echo "$(YELLOW)Make MLX$(DEFAULT)"
-	@make -sC libmlx
+	@make -sC $(MLX_DIR)
 	@echo "$(YELLOW)Make ft_printf$(DEFAULT)"
 	@make bonus -sC printf-42
 	@echo "$(BLUE)Compiling...$(DEFAULT)"
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(MLX_LIB) -o $(NAME)
+	@$(CC) $(OBJS) $(MLX_LIB) $(PRINTF_LIB) -o $(NAME)
 	@echo "$(GREEN)$(NAME) compiled!$(DEFAULT)"
 
 bonus: lib $(OBJS_BONUS)
-	@$(CC) $(OBJS_BONUS) $(MLX_LIB) -o $(NAME)
+	@$(CC) $(OBJS_BONUS) $(MLX_LIB) $(PRINTF_LIB) -o $(NAME)
 	@echo "$(GREEN)$(NAME) bonus compiled!$(DEFAULT)"
 
 clean:

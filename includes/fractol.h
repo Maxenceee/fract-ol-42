@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 18:58:59 by mgama            ###   ########.fr       */
+/*   Updated: 2024/02/21 19:51:39 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-# include "../libmlx/mlx.h"
+# ifdef __APPLE__
+# include "../libmlx_mac/mlx.h"
+# else
+# include "../libmlx_linux/mlx.h"
+# endif /* __APPLE__ */
 # include "ft_printf.h"
+# include "keys.h"
 
 /* viewport size */
 # define WINDOW_WIDTH 1440
@@ -270,6 +275,7 @@ int					stop_mlx(t_data *frame);
 int					key_down_event(int key_code, void *param);
 int					key_up_event(int key_code, void *param);
 int					loop_hook_events(void *params);
+void				ft_destroy_display(void *mlx);
 
 /* mouse_events */
 
