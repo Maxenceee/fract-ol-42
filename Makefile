@@ -140,6 +140,8 @@ clean:
 fclean: clean
 	@echo "$(RED)Cleaning $(NAME)$(DEFAULT)"
 	@$(RM) $(NAME)
+	@make fclean -sC printf-42
+	@make fclean -sC $(MLX_DIR)
 
 re:				fclean all
 
