@@ -86,7 +86,7 @@ CC				=	cc
 RM				=	rm -f
 INCLUDES_DIR	=	-I $(HEADERS_DIR) -I./printf-42
 PRINTF_LIB		=	-L ./printf-42 -lftprintf
-CFLAGS			=	-Wall -Wextra -Werror -o3 -g3 $(INCLUDES_DIR) -funroll-loops -flto -pg
+CFLAGS			=	-Wall -Wextra -Werror -ofast $(INCLUDES_DIR)
 
 ifeq ($(shell uname), Darwin)
 	MLX_DIR			=	libmlx_mac
