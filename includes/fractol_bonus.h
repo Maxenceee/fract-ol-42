@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/21 20:08:32 by mgama            ###   ########.fr       */
+/*   Updated: 2024/10/01 22:16:10 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # include <sys/time.h>
 # include <pthread.h>
 # ifdef __APPLE__
-# include "../libmlx_mac/mlx.h"
+#  include "../libmlx_mac/mlx.h"
 # else
-# include "../libmlx_linux/mlx.h"
+#  include "../libmlx_linux/mlx.h"
 # endif /* __APPLE__ */
 # include "ft_printf.h"
 # include "keys.h"

@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 00:37:46 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 19:01:36 by mgama            ###   ########.fr       */
+/*   Updated: 2024/10/01 22:11:44 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ inline void	mandelbrot_set(register t_data *mlx, register t_screen_dim s_dims)
 	int					x;
 	register t_color	pallet;
 	register int		pix;
+	double				inv_scale;
 
 	y = -1;
 	handle_exp_variants(mlx);
 	pallet = mlx->pallets[mlx->pallet_type];
+	inv_scale = 1 / mlx->scale;
 	while (++y < s_dims.height)
 	{
 		x = -1;
@@ -30,8 +32,7 @@ inline void	mandelbrot_set(register t_data *mlx, register t_screen_dim s_dims)
 			pix = calcule_mandelbrot_series(
 					convert_corner_to_center(
 						create_complex_number(s_dims.left + x, s_dims.top + y),
-						mlx->center_offset, mlx->scale,
-						create_complex_number(
+						mlx->center_offset, inv_scale, create_complex_number(
 							s_dims.center_x, s_dims.center_y)),
 					mlx);
 			my_mlx_pixel_put(mlx, s_dims.left + x, s_dims.top + y,

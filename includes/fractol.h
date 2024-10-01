@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/21 20:08:21 by mgama            ###   ########.fr       */
+/*   Updated: 2024/10/01 22:13:04 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <stdint.h>
 # include <limits.h>
 # ifdef __APPLE__
-# include "../libmlx_mac/mlx.h"
+#  include "../libmlx_mac/mlx.h"
 # else
-# include "../libmlx_linux/mlx.h"
+#  include "../libmlx_linux/mlx.h"
 # endif /* __APPLE__ */
 # include "ft_printf.h"
 # include "keys.h"
@@ -206,7 +206,7 @@ int					calcule_julia_series(t_complex_number point,
 int					handle_exp_variants(t_data *mlx);
 
 t_complex_number	convert_corner_to_center(t_complex_number point,
-						t_complex_number mouse_offset, double scale,
+						t_complex_number mouse_offset, double inv_scale,
 						t_complex_number mids);
 
 /* mandelbrot */

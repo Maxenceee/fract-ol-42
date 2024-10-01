@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 20:03:31 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 18:21:53 by mgama            ###   ########.fr       */
+/*   Updated: 2024/10/01 22:12:26 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 inline int	mix(int from, int to, float mix)
 {
-	float	r;
-	float	g;
-	float	b;
+	int	r;
+	int	g;
+	int	b;
 
-	r = (float)(from >> 16)*(1. - mix) + (float)(to >> 16)*mix;
-	g = (float)((from >> 8) & 255)*(1. - mix)
-		+ (float)((to >> 8) & 255)*mix;
-	b = (float)(from & 255)*(1. - mix) + (float)(to & 255)*mix;
-	return (color((int)r, (int)g, (int)b));
+	r = (from >> 16) * (1. - mix) + (to >> 16) * mix;
+	g = ((from >> 8) & 255) * (1. - mix)
+		+ ((to >> 8) & 255) * mix;
+	b = (from & 255) * (1. - mix) + (to & 255) * mix;
+	return (color(r, g, b));
 }
 
 inline int	get_color(float iterations, int *pallet, int colors_nb)
