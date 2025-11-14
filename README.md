@@ -2,6 +2,8 @@
 
 #### Factal generator made in c
 
+Final grade : `125/100` & `Outstanding Project`
+
 ## Usage
 
 Clone the project and compile it running
