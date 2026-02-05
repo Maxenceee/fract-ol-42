@@ -6,11 +6,14 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 23:26:13 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 19:37:41 by mgama            ###   ########.fr       */
+/*   Updated: 2026/02/06 00:49:21 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
+#ifdef TESTING
+# include "fractol_test_bonus.h"
+#endif /* TESTING */
 
 void	on_fractal_gen(t_data *mlx)
 {
@@ -34,39 +37,43 @@ void	switch_fractal(t_data *mlx)
 	mlx_update_image_multitp(mlx);
 }
 
-int	ft_fractol(int argc, char **argv)
+int	ft_fractol(t_data *mlx, int argc, char **argv)
+{
+	if (argc > 1)
+	{
+		if (!register_fractals(mlx))
+			exit(EXIT_FAILURE);
+		fractal_selector(argc, argv, mlx);
+		on_fractal_gen(mlx);
+		mlx_update_image_multitp(mlx);
+	}
+	else
+	{
+		if (!register_fractals(mlx))
+			exit(EXIT_FAILURE);
+		show_commands();
+		show_home(mlx);
+	}
+	mlx_loop(mlx->mlx);
+	return (0);
+}
+
+int	main(int argc, char **argv)
 {
 	t_data	mlx;
 
+	srand(time(NULL));
 	ft_bzero(&mlx, sizeof(t_data));
 	init_fractol(&mlx);
 	init_mlx_f(&mlx);
 	init_pallets(&mlx);
 	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bits_per_pixel,
 			&mlx.line_length, &mlx.endian);
-	if (argc > 1)
-	{
-		if (!register_fractals(&mlx))
-			exit(EXIT_FAILURE);
-		fractal_selector(argc, argv, &mlx);
-		on_fractal_gen(&mlx);
-		mlx_update_image_multitp(&mlx);
-	}
-	else
-	{
-		if (!register_fractals(&mlx))
-			exit(EXIT_FAILURE);
-		show_commands();
-		show_home(&mlx);
-	}
-	mlx_loop(mlx.mlx);
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	srand(time(NULL));
-	if (ft_fractol(argc, argv))
+#ifndef TESTING
+	if (ft_fractol(&mlx, argc, argv))
+#else
+	if (ft_fractol_testing(&mlx, argc, argv))
+#endif /* TESTING */
 		return (1);
 	return (0);
 }

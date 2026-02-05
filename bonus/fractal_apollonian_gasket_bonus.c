@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:20:15 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 18:40:06 by mgama            ###   ########.fr       */
+/*   Updated: 2026/02/06 00:50:00 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 inline void	apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims)
 {
-	register t_circle	*circles_s;
+	t_circle	*circles_s;
 
 	circles_s = handle_gasket_variants(mlx, s_dims);
 	if (!circles_s)
@@ -26,10 +26,10 @@ inline void	apollonian_gasket_set(t_data *mlx, t_screen_dim s_dims)
 inline void	draw_circle(t_circle circle, t_data *mlx, t_screen_dim s_dims)
 {
 	static const double	pi = 3.141592653589793;
-	register double		i;
-	register double		angle;
-	register double		y1;
-	register double		x1;
+	double				i;
+	double				angle;
+	double				y1;
+	double				x1;
 
 	i = 0;
 	while (i < 360)
@@ -49,8 +49,8 @@ inline void	draw_circle(t_circle circle, t_data *mlx, t_screen_dim s_dims)
 
 inline void	clear_image(t_data *mlx, t_screen_dim s_dims)
 {
-	register int	y;
-	register int	x;
+	int	y;
+	int	x;
 
 	y = -1;
 	while (++y < s_dims.height)
@@ -63,8 +63,8 @@ inline void	clear_image(t_data *mlx, t_screen_dim s_dims)
 	}
 }
 
-inline void	draw_gasket(register t_circle *crls, t_data *mlx,
-	register t_screen_dim s_dims)
+inline void	draw_gasket(t_circle *crls, t_data *mlx,
+	t_screen_dim s_dims)
 {
 	t_circle	c4;
 	t_circle	c5;

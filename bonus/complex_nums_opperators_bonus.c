@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 23:11:20 by mgama             #+#    #+#             */
-/*   Updated: 2024/01/29 15:59:53 by mgama            ###   ########.fr       */
+/*   Updated: 2026/02/06 00:52:15 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ inline t_complex_number	complex_sub(t_complex_number a, t_complex_number b)
 
 inline t_complex_number	complex_mul(t_complex_number a, t_complex_number b)
 {
-	if (b.y == 0 && a.y == 0)
-		return (create_complex_number(a.x * b.x, 0));
 	return (create_complex_number(
 			a.x * b.x - a.y * b.y,
 			a.x * b.y + a.y * b.x));
@@ -33,55 +31,25 @@ inline t_complex_number	complex_mul(t_complex_number a, t_complex_number b)
 
 inline t_complex_number	complex_div(t_complex_number a, t_complex_number b)
 {
-	double	x;
-	double	t;
+	double denom;
 
-	if (a.x == 0 && a.y == 0)
-		return (create_complex_number(0, 0));
-	if (0 == b.y)
-		return (create_complex_number(a.x / b.x, a.y / b.x));
-	if (fabs(b.x) < fabs(b.y))
-	{
-		x = b.x / b.y;
-		t = b.x * x + b.y;
-		return (create_complex_number(
-				(a.x * x + a.y) / t,
-				(a.y * x - a.x) / t));
-	}
-	else
-	{
-		x = b.y / b.x;
-		t = b.y * x + b.x;
-		return (create_complex_number(
-				(a.x + a.y * x) / t,
-				(a.y - a.x * x) / t));
-	}
+	denom = b.x * b.x + b.y * b.y;
+	return (create_complex_number(
+			(a.x * b.x + a.y * b.y) / denom,
+			(a.y * b.x - a.x * b.y) / denom
+		));
 }
 
 inline t_complex_number	complex_sqrt(t_complex_number cmpl)
 {
-	double	a;
-	double	b;
 	double	r;
 	double	re;
 	double	im;
 
-	a = cmpl.x;
-	b = cmpl.y;
-	r = complex_abs(cmpl);
-	if (a >= 0)
-	{
-		if (b == 0)
-			return (create_complex_number(sqrtf(a), 0));
-		re = 0.5 * sqrtf(2.0 * (r + a));
-	}
-	else
-		re = fabs(b) / sqrtf(2 * (r - a));
-	if (a <= 0)
-		im = 0.5 * sqrtf(2.0 * (r - a));
-	else
-		re = fabs(b) / sqrtf(2 * (r + a));
-	if (b < 0)
+	r = sqrt(cmpl.x * cmpl.x + cmpl.y * cmpl.y);
+	re = sqrt((r + cmpl.x) / 2.0);
+	im = sqrt((r - cmpl.x) / 2.0);
+	if (cmpl.y < 0)
 		im = -im;
 	return (create_complex_number(re, im));
 }
