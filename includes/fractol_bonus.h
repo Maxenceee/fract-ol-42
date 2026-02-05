@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 22:13:52 by mgama             #+#    #+#             */
-/*   Updated: 2024/10/01 22:16:10 by mgama            ###   ########.fr       */
+/*   Updated: 2026/02/06 00:04:23 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@
 /* apollonian min circle radius */
 # define MIN_RADIUS 2
 /* threads */
-# define THREADS 8
+# ifndef THREADS
+#  define THREADS 8
+# endif /* THREADS */
 /* mlx */
 # define MLX_ERROR 1
 
@@ -190,7 +192,7 @@ typedef union u_color
 
 /* fractol */
 
-int					ft_fractol(int argc, char **argv);
+int					ft_fractol(t_data *mlx, int argc, char **argv);
 void				on_fractal_gen(t_data *mlx);
 void				switch_fractal(t_data *mlx);
 
@@ -228,6 +230,7 @@ t_fractal			f_fractal_sinzc(int type);
 /* mlx_draw */
 
 void				my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void				put_image_to_window(t_data *mlx);
 void				mlx_update_image(t_data *mlx);
 void				mlx_update_image_multitp(t_data *mlx);
 t_complex_number	aspect_scale(t_data *mlx, t_complex_number mouse_pos,

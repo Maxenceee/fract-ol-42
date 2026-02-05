@@ -6,17 +6,17 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 00:37:46 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 18:53:43 by mgama            ###   ########.fr       */
+/*   Updated: 2026/02/06 00:47:37 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-inline void	mandelbrot_set(register t_data *mlx, register t_screen_dim s_dims)
+inline void	mandelbrot_set(t_data *mlx, t_screen_dim s_dims)
 {
-	int					y;
-	int					x;
-	register t_pixel	pix;
+	int		y;
+	int		x;
+	t_pixel	pix;
 
 	y = -1;
 	handle_exp_variants(mlx);
@@ -38,11 +38,11 @@ inline void	mandelbrot_set(register t_data *mlx, register t_screen_dim s_dims)
 	}
 }
 
-inline void	render_mandelbrot_set(register t_data *mlx,
-	register t_screen_dim s_dims, int x, int y)
+inline void	render_mandelbrot_set(t_data *mlx,
+	t_screen_dim s_dims, int x, int y)
 {
-	register t_color	pallet;
-	register t_pixel	pix;
+	t_color	pallet;
+	t_pixel	pix;
 
 	pallet = mlx->pallets[mlx->pallet_type];
 	pix = calcule_mandelbrot_series(
@@ -58,9 +58,9 @@ inline void	render_mandelbrot_set(register t_data *mlx,
 
 inline t_pixel	calcule_mandelbrot_series(t_complex_number point, t_data *mlx)
 {
-	register t_complex_number	num;
-	register t_complex_number	temp_num;
-	int							i;
+	t_complex_number	num;
+	t_complex_number	temp_num;
+	int					i;
 
 	num = create_complex_number(0, 0);
 	i = 0;

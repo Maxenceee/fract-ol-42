@@ -6,17 +6,17 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 01:37:10 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 18:51:37 by mgama            ###   ########.fr       */
+/*   Updated: 2026/02/06 00:48:07 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-inline void	sinzc_set(register t_data *mlx, register t_screen_dim s_d)
+inline void	sinzc_set(t_data *mlx, t_screen_dim s_d)
 {
-	int							y;
-	int							x;
-	register t_pixel			pix;
+	int		y;
+	int		x;
+	t_pixel	pix;
 
 	y = -1;
 	handle_exp_variants(mlx);
@@ -39,10 +39,10 @@ inline void	sinzc_set(register t_data *mlx, register t_screen_dim s_d)
 	}
 }
 
-inline void	render_sinzc_set(register t_data *mlx, register t_screen_dim s_dims,
+inline void	render_sinzc_set(t_data *mlx, t_screen_dim s_dims,
 	int x, int y)
 {
-	register t_pixel			pix;
+	t_pixel	pix;
 
 	pix = calcule_sinzc_series(
 			convert_corner_to_center(
@@ -58,9 +58,9 @@ inline void	render_sinzc_set(register t_data *mlx, register t_screen_dim s_dims,
 inline t_pixel	calcule_sinzc_series(t_complex_number point,
 	t_complex_number point_offset, t_data *mlx)
 {
-	register t_complex_number	num;
-	register t_complex_number	temp_num;
-	int							i;
+	t_complex_number	num;
+	t_complex_number	temp_num;
+	int					i;
 
 	num = create_complex_number(point.x, point.y);
 	if (num.x == 0.f && num.y == 0.f)

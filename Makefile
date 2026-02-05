@@ -69,6 +69,7 @@ SRCS_BONUS		=	$(BONUS_DIR)/circles_utils_bonus.c	\
 					$(BONUS_DIR)/mlx_destroy_display.c \
 					$(BONUS_DIR)/mlx_draw_bonus.c	\
 					$(BONUS_DIR)/mlx_events_bonus.c	\
+					$(BONUS_DIR)/mlx_render_bonus.c	\
 					$(BONUS_DIR)/mouse_events_bonus.c	\
 					$(BONUS_DIR)/mouse_move_bonus.c	\
 					$(BONUS_DIR)/pallets_bonus.c	\
@@ -85,8 +86,15 @@ HEADERS			=	$(addprefix $(HEADERS_DIR), $(HEADER_SRCS))
 CC				=	cc
 RM				=	rm -f
 INCLUDES_DIR	=	-I $(HEADERS_DIR) -I./printf-42
+
+ifeq ($(shell uname), Darwin)
+    N_THREADS := $(shell sysctl -n hw.logicalcpu)
+else
+    N_THREADS := $(shell nproc)
+endif
+
 PRINTF_LIB		=	-L ./printf-42 -lftprintf
-CFLAGS			=	-Wall -Wextra -Werror -ofast $(INCLUDES_DIR)
+CFLAGS			=	-Wall -Wextra -Werror -O3 -ffast-math $(INCLUDES_DIR) -DTHREADS=$(N_THREADS)
 
 ifeq ($(shell uname), Darwin)
 	MLX_DIR			=	libmlx_mac
@@ -132,6 +140,9 @@ $(NAME): $(OBJS)
 bonus: lib $(OBJS_BONUS)
 	@$(CC) $(OBJS_BONUS) $(MLX_LIB) $(PRINTF_LIB) -o $(NAME)
 	@echo "$(GREEN)$(NAME) bonus compiled!$(DEFAULT)"
+
+test_bonus: CFLAGS += -DTESTING -g3
+test_bonus: bonus
 
 clean:
 	@echo "$(RED)Cleaning build folder$(DEFAULT)"

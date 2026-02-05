@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:11:42 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 18:44:18 by mgama            ###   ########.fr       */
+/*   Updated: 2026/02/05 23:24:54 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	draw_screen_image(t_screen_dim *screens, t_data *mlx)
 	}
 	mlx->screen_dims = s;
 	free(screens);
-	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->img, 0, 0);
+	put_image_to_window(mlx);
 }
 
 int	show_home(t_data *mlx)

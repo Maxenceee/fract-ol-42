@@ -6,17 +6,17 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:03:08 by mgama             #+#    #+#             */
-/*   Updated: 2024/02/06 19:35:45 by mgama            ###   ########.fr       */
+/*   Updated: 2026/02/06 00:47:51 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-inline void	fractal_tricorn(register t_data *mlx, register t_screen_dim s_dims)
+inline void	fractal_tricorn(t_data *mlx, t_screen_dim s_dims)
 {
-	int					y;
-	int					x;
-	register t_pixel	pix;
+	int		y;
+	int		x;
+	t_pixel	pix;
 
 	y = -1;
 	handle_exp_variants(mlx);
@@ -38,10 +38,10 @@ inline void	fractal_tricorn(register t_data *mlx, register t_screen_dim s_dims)
 	}
 }
 
-inline void	render_fractal_tricorn(register t_data *mlx,
-	register t_screen_dim s_dims, int x, int y)
+inline void	render_fractal_tricorn(t_data *mlx,
+	t_screen_dim s_dims, int x, int y)
 {
-	register t_pixel	pix;
+	t_pixel	pix;
 
 	pix = calcule_tricorn_series(
 			convert_corner_to_center(
@@ -56,9 +56,9 @@ inline void	render_fractal_tricorn(register t_data *mlx,
 
 inline t_pixel	calcule_tricorn_series(t_complex_number point, t_data *mlx)
 {
-	register t_complex_number	num;
-	register t_complex_number	temp_num;
-	int							i;
+	t_complex_number	num;
+	t_complex_number	temp_num;
+	int					i;
 
 	(void)(mlx);
 	num = create_complex_number(0, 0);
